@@ -496,12 +496,12 @@
                     <!-- 真正嘅影片播放器 -->
                     <div class="w-full bg-black rounded-2xl aspect-video relative flex items-center justify-center overflow-hidden shadow-inner mb-4">
                         <iframe
-  src="https://vtc.ap.panopto.com/Panopto/Pages/Embed.aspx?id=af1396bc-da70-49c2-8b47-b3a100256b74&v=1"
-  class="w-full h-full"
-  frameborder="0"
-  allow="autoplay; fullscreen"
-  allowfullscreen>
-</iframe>
+                  src="https://vtc.ap.panopto.com/Panopto/Pages/Embed.aspx?id=af1396bc-da70-49c2-8b47-b3a100256b74&v=1"
+                  class="w-full h-full"
+                  frameborder="0"
+                  allow="autoplay; fullscreen"
+                  allowfullscreen>
+                </iframe>
                     </div>
                     
                     <p class="text-sm text-gray-600 px-2">Observe how the speaker uses the non-verbal skills discussed previously. Once you are ready, proceed to record your own briefing.</p>
@@ -604,55 +604,297 @@
         
         // 已經加齊 Unit 1 到 Unit 13 嘅所有生字
         const fullVocab = [
+            // Unit 1
             { unit: "Unit 1", word: "operations", syllables: "op • er • a • tions", meaning: "營運 (n.)" },
+            { unit: "Unit 1", word: "retreat", syllables: "re • treat", meaning: "靜修/團建活動 (n.)" },
+            { unit: "Unit 1", word: "banquets", syllables: "ban • quets", meaning: "宴席 (n.)" },
+            { unit: "Unit 1", word: "logistics", syllables: "lo • gis • tics", meaning: "後勤安排 (n.)" },
+            { unit: "Unit 1", word: "coordinate", syllables: "co • or • di • nate", meaning: "協調 (v.)" },
+            { unit: "Unit 1", word: "execute", syllables: "ex • e • cute", meaning: "執行 (v.)" },
+            { unit: "Unit 1", word: "maintain", syllables: "main • tain", meaning: "維持 (v.)" },
+            { unit: "Unit 1", word: "inspect", syllables: "in • spect", meaning: "檢查 (v.)" },
             { unit: "Unit 1", word: "briefing", syllables: "brief • ing", meaning: "簡報 (n.)" },
-            { unit: "Unit 2", word: "venue", syllables: "ven • ue", meaning: "場地 (n.)" },
+            { unit: "Unit 1", word: "setup", syllables: "set • up", meaning: "佈置/設置 (n.)" },
+            // Unit 2
             { unit: "Unit 2", word: "background", syllables: "back • ground", meaning: "背景 (n.)" },
-            { unit: "Unit 3", word: "security", syllables: "se • cu • ri • ty", meaning: "保安 (n.)" },
-            { unit: "Unit 3", word: "patrol", syllables: "pa • trol", meaning: "巡邏 (n./v.)" },
-            { unit: "Unit 4", word: "housekeeping", syllables: "house • keep • ing", meaning: "房務 (n.)" },
-            { unit: "Unit 4", word: "amenities", syllables: "a • men • i • ties", meaning: "設施 (n.)" },
+            { unit: "Unit 2", word: "venue", syllables: "ven • ue", meaning: "場地 (n.)" },
+            { unit: "Unit 2", word: "conference", syllables: "con • fer • ence", meaning: "會議 (n.)" },
+            { unit: "Unit 2", word: "ballroom", syllables: "ball • room", meaning: "宴會廳 (n.)" },
+            { unit: "Unit 2", word: "pavilion", syllables: "pa • vil • ion", meaning: "涼亭/場館 (n.)" },
+            { unit: "Unit 2", word: "arrange", syllables: "ar • range", meaning: "安排 (v.)" },
+            { unit: "Unit 2", word: "ensure", syllables: "en • sure", meaning: "確保 (v.)" },
+            { unit: "Unit 2", word: "presence", syllables: "pres • ence", meaning: "出席/存在 (n.)" },
+            { unit: "Unit 2", word: "specific", syllables: "spe • cif • ic", meaning: "特定的 (adj.)" },
+            { unit: "Unit 2", word: "reception", syllables: "re • cep • tion", meaning: "歡迎接待 (n.)" },
+            // Unit 3
+            { unit: "Unit 3", word: "duties", syllables: "du • ties", meaning: "職責 (n.)" },
+            { unit: "Unit 3", word: "responsibilities", syllables: "re • spon • si • bil • i • ties", meaning: "責任 (n.)" },
+            { unit: "Unit 3", word: "promptly", syllables: "prompt • ly", meaning: "迅速地 (adv.)" },
+            { unit: "Unit 3", word: "efficiently", syllables: "ef • fi • cient • ly", meaning: "有效率地 (adv.)" },
+            { unit: "Unit 3", word: "courteously", syllables: "cour • te • ous • ly", meaning: "有禮貌地 (adv.)" },
+            { unit: "Unit 3", word: "imperative", syllables: "im • per • a • tive", meaning: "祈使的/命令式 (adj.)" },
+            { unit: "Unit 3", word: "unattended", syllables: "un • at • tend • ed", meaning: "無人看管的 (adj.)" },
+            { unit: "Unit 3", word: "itinerary", syllables: "i • tin • er • ar • y", meaning: "行程 (n.)" },
+            { unit: "Unit 3", word: "walkthrough", syllables: "walk • through", meaning: "實地考察/排練 (n.)" },
+            { unit: "Unit 3", word: "signpost", syllables: "sign • post", meaning: "路標/指示語 (n.)" },
+            // Unit 4
+            { unit: "Unit 4", word: "obligation", syllables: "ob • li • ga • tion", meaning: "責任/義務 (n.)" },
+            { unit: "Unit 4", word: "oversee", syllables: "o • ver • see", meaning: "監督 (v.)" },
+            { unit: "Unit 4", word: "assigning", syllables: "as • sign • ing", meaning: "分配 (v.)" },
+            { unit: "Unit 4", word: "assist", syllables: "as • sist", meaning: "協助 (v.)" },
+            { unit: "Unit 4", word: "arranging", syllables: "ar • rang • ing", meaning: "安排中 (v.)" },
+            { unit: "Unit 4", word: "ensure", syllables: "en • sure", meaning: "確保 (v.)" },
+            { unit: "Unit 4", word: "chunking", syllables: "chunk • ing", meaning: "分組停頓 (n.)" },
+            { unit: "Unit 4", word: "pausing", syllables: "paus • ing", meaning: "暫停 (n.)" },
+            { unit: "Unit 4", word: "stress", syllables: "stress", meaning: "強調 (v.)" },
+            { unit: "Unit 4", word: "fluency", syllables: "flu • en • cy", meaning: "流暢度 (n.)" },
+            // Unit 5
             { unit: "Unit 5", word: "invitation", syllables: "in • vi • ta • tion", meaning: "邀請 (n.)" },
-            { unit: "Unit 5", word: "inspection", syllables: "in • spec • tion", meaning: "檢查 (n.)" },
-            { unit: "Unit 6", word: "catering", syllables: "ca • ter • ing", meaning: "餐飲 (n.)" },
-            { unit: "Unit 6", word: "refreshments", syllables: "re • fresh • ments", meaning: "茶點 (n.)" },
-            { unit: "Unit 7", word: "itinerary", syllables: "i • tin • er • ar • y", meaning: "行程 (n.)" },
-            { unit: "Unit 7", word: "schedule", syllables: "sched • ule", meaning: "時間表 (n.)" },
-            { unit: "Unit 8", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" },
-            { unit: "Unit 8", word: "promotional", syllables: "pro • mo • tion • al", meaning: "推廣的 (adj.)" },
-            { unit: "Unit 9", word: "accommodate", syllables: "ac • com • mo • date", meaning: "容納 (v.)" },
-            { unit: "Unit 9", word: "reservation", syllables: "res • er • va • tion", meaning: "預訂 (n.)" },
-            { unit: "Unit 10", word: "enquiry", syllables: "en • qui • ry", meaning: "查詢 (n.)" },
-            { unit: "Unit 10", word: "assistance", syllables: "as • sis • tance", meaning: "協助 (n.)" },
-            { unit: "Unit 11", word: "coordinate", syllables: "co • or • di • nate", meaning: "協調 (v.)" },
-            { unit: "Unit 11", word: "package", syllables: "pack • age", meaning: "套票 (n.)" },
-            { unit: "Unit 12", word: "layout", syllables: "lay • out", meaning: "佈局 (n.)" },
-            { unit: "Unit 12", word: "ceiling", syllables: "ceil • ing", meaning: "天花板 (n.)" },
-            { unit: "Unit 13", word: "professional", syllables: "pro • fes • sion • al", meaning: "專業的 (adj.)" },
-            { unit: "Unit 13", word: "feedback", syllables: "feed • back", meaning: "回饋 (n.)" }
+            { unit: "Unit 5", word: "formal", syllables: "for • mal", meaning: "正式的 (adj.)" },
+            { unit: "Unit 5", word: "appreciated", syllables: "ap • pre • ci • at • ed", meaning: "受到感激的 (adj.)" },
+            { unit: "Unit 5", word: "purpose", syllables: "pur • pose", meaning: "目的 (n.)" },
+            { unit: "Unit 5", word: "posture", syllables: "pos • ture", meaning: "姿勢 (n.)" },
+            { unit: "Unit 5", word: "gesture", syllables: "ges • ture", meaning: "手勢 (n.)" },
+            { unit: "Unit 5", word: "facial", syllables: "fa • cial", meaning: "面部的 (adj.)" },
+            { unit: "Unit 5", word: "renovated", syllables: "ren • o • vat • ed", meaning: "翻新了的 (adj.)" },
+            { unit: "Unit 5", word: "preparatory", syllables: "pre • par • a • to • ry", meaning: "籌備的 (adj.)" },
+            { unit: "Unit 5", word: "rundown", syllables: "run • down", meaning: "流程表 (n.)" },
+            // Unit 6
+            { unit: "Unit 6", word: "upcoming", syllables: "up • com • ing", meaning: "即將來臨的 (adj.)" },
+            { unit: "Unit 6", word: "arrangement", syllables: "ar • range • ment", meaning: "安排 (n.)" },
+            { unit: "Unit 6", word: "sponsoring", syllables: "spon • sor • ing", meaning: "贊助 (v.)" },
+            { unit: "Unit 6", word: "patrols", syllables: "pa • trols", meaning: "巡邏 (n.)" },
+            { unit: "Unit 6", word: "amenities", syllables: "a • men • i • ties", meaning: "設施/用品 (n.)" },
+            { unit: "Unit 6", word: "facilitate", syllables: "fa • cil • i • tate", meaning: "協助促進 (v.)" },
+            { unit: "Unit 6", word: "hygiene", syllables: "hy • giene", meaning: "衛生 (n.)" },
+            { unit: "Unit 6", word: "shuttle", syllables: "shut • tle", meaning: "穿梭接送 (n.)" },
+            { unit: "Unit 6", word: "highlights", syllables: "high • lights", meaning: "精彩片段 (n.)" },
+            { unit: "Unit 6", word: "emergency", syllables: "e • mer • gen • cy", meaning: "緊急情況 (n.)" },
+            // Unit 7
+            { unit: "Unit 7", word: "conversation", syllables: "con • ver • sa • tion", meaning: "對話 (n.)" },
+            { unit: "Unit 7", word: "enquiry", syllables: "en • qui • ry", meaning: "查詢 (n.)" },
+            { unit: "Unit 7", word: "active", syllables: "ac • tive", meaning: "積極的 (adj.)" },
+            { unit: "Unit 7", word: "exceptional", syllables: "ex • cep • tion • al", meaning: "卓越的 (adj.)" },
+            { unit: "Unit 7", word: "comprehensive", syllables: "com • pre • hen • sive", meaning: "全面的 (adj.)" },
+            { unit: "Unit 7", word: "gatherings", syllables: "gath • er • ings", meaning: "聚會 (n.)" },
+            { unit: "Unit 7", word: "exceed", syllables: "ex • ceed", meaning: "超越 (v.)" },
+            { unit: "Unit 7", word: "confirm", syllables: "con • firm", meaning: "確認 (v.)" },
+            { unit: "Unit 7", word: "proposals", syllables: "pro • pos • als", meaning: "建議書 (n.)" },
+            { unit: "Unit 7", word: "milestone", syllables: "mile • stone", meaning: "里程碑 (n.)" },
+            // Unit 8
+            { unit: "Unit 8", word: "venues", syllables: "ven • ues", meaning: "場地 (n.)" },
+            { unit: "Unit 8", word: "layout", syllables: "lay • out", meaning: "佈局 (n.)" },
+            { unit: "Unit 8", word: "capacity", syllables: "ca • pac • i • ty", meaning: "容納人數 (n.)" },
+            { unit: "Unit 8", word: "configuration", syllables: "con • fig • u • ra • tion", meaning: "座位排列 (n.)" },
+            { unit: "Unit 8", word: "platform", syllables: "plat • form", meaning: "台/平台 (n.)" },
+            { unit: "Unit 8", word: "decor", syllables: "de • cor", meaning: "裝飾/佈置 (n.)" },
+            { unit: "Unit 8", word: "expansive", syllables: "ex • pan • sive", meaning: "寬闊的 (adj.)" },
+            { unit: "Unit 8", word: "spacious", syllables: "spa • cious", meaning: "寬敞的 (adj.)" },
+            { unit: "Unit 8", word: "elegant", syllables: "el • e • gant", meaning: "優雅的 (adj.)" },
+            { unit: "Unit 8", word: "atmosphere", syllables: "at • mos • phere", meaning: "氣氛 (n.)" },
+            // Unit 9
+            { unit: "Unit 9", word: "facility", syllables: "fa • cil • i • ty", meaning: "設施 (n.)" },
+            { unit: "Unit 9", word: "seamless", syllables: "seam • less", meaning: "無縫的/流暢的 (adj.)" },
+            { unit: "Unit 9", word: "sturdy", syllables: "stur • dy", meaning: "堅固的 (adj.)" },
+            { unit: "Unit 9", word: "portable", syllables: "por • ta • ble", meaning: "可攜式的 (adj.)" },
+            { unit: "Unit 9", word: "compound", syllables: "com • pound", meaning: "複合的 (adj.)" },
+            { unit: "Unit 9", word: "resolution", syllables: "res • o • lu • tion", meaning: "解析度 (n.)" },
+            { unit: "Unit 9", word: "visibility", syllables: "vis • i • bil • i • ty", meaning: "能見度 (n.)" },
+            { unit: "Unit 9", word: "captivate", syllables: "cap • ti • vate", meaning: "吸引/迷住 (v.)" },
+            { unit: "Unit 9", word: "state-of-the-art", syllables: "state • of • the • art", meaning: "最先進的 (adj.)" },
+            { unit: "Unit 9", word: "equipped", syllables: "e • quipped", meaning: "配備了的 (adj.)" },
+            // Unit 10
+            { unit: "Unit 10", word: "option", syllables: "op • tion", meaning: "選擇 (n.)" },
+            { unit: "Unit 10", word: "hearty", syllables: "hear • ty", meaning: "豐盛的 (adj.)" },
+            { unit: "Unit 10", word: "fluffy", syllables: "fluf • fy", meaning: "鬆軟的 (adj.)" },
+            { unit: "Unit 10", word: "assortment", syllables: "as • sort • ment", meaning: "各式各樣 (n.)" },
+            { unit: "Unit 10", word: "signature", syllables: "sig • na • ture", meaning: "招牌的 (adj.)" },
+            { unit: "Unit 10", word: "authentic", syllables: "au • then • tic", meaning: "正宗的 (adj.)" },
+            { unit: "Unit 10", word: "texture", syllables: "tex • ture", meaning: "口感/質感 (n.)" },
+            { unit: "Unit 10", word: "accompany", syllables: "ac • com • pa • ny", meaning: "配搭/伴隨 (v.)" },
+            { unit: "Unit 10", word: "vegetarian", syllables: "veg • e • tar • i • an", meaning: "素食的 (adj.)" },
+            { unit: "Unit 10", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" },
+            // Unit 11
+            { unit: "Unit 11", word: "amenity", syllables: "a • men • i • ty", meaning: "便利設施 (n.)" },
+            { unit: "Unit 11", word: "valet", syllables: "val • et", meaning: "泊車服務 (n.)" },
+            { unit: "Unit 11", word: "refreshment", syllables: "re • fresh • ment", meaning: "茶點 (n.)" },
+            { unit: "Unit 11", word: "rate", syllables: "rate", meaning: "收費/價格 (n.)" },
+            { unit: "Unit 11", word: "additional", syllables: "ad • di • tion • al", meaning: "額外的 (adj.)" },
+            { unit: "Unit 11", word: "bespoke", syllables: "be • spoke", meaning: "度身訂造的 (adj.)" },
+            { unit: "Unit 11", word: "interactive", syllables: "in • ter • ac • tive", meaning: "互動的 (adj.)" },
+            { unit: "Unit 11", word: "unlimited", syllables: "un • lim • it • ed", meaning: "無限的 (adj.)" },
+            { unit: "Unit 11", word: "setup", syllables: "set • up", meaning: "佈置/設置 (n.)" },
+            { unit: "Unit 11", word: "streaming", syllables: "stream • ing", meaning: "直播/串流 (n.)" },
+            // Unit 12
+            { unit: "Unit 12", word: "conditional", syllables: "con • di • tion • al", meaning: "有條件的 (adj.)" },
+            { unit: "Unit 12", word: "promote", syllables: "pro • mote", meaning: "推廣 (v.)" },
+            { unit: "Unit 12", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" },
+            { unit: "Unit 12", word: "exclusive", syllables: "ex • clu • sive", meaning: "獨家的 (adj.)" },
+            { unit: "Unit 12", word: "coordination", syllables: "co • or • di • na • tion", meaning: "協調工作 (n.)" },
+            { unit: "Unit 12", word: "discount", syllables: "dis • count", meaning: "折扣 (n.)" },
+            { unit: "Unit 12", word: "entire", syllables: "en • tire", meaning: "整個的 (adj.)" },
+            { unit: "Unit 12", word: "demanding", syllables: "de • mand • ing", meaning: "強硬的/要求高的 (adj.)" },
+            { unit: "Unit 12", word: "centrepiece", syllables: "cen • tre • piece", meaning: "中心裝飾/桌花 (n.)" },
+            { unit: "Unit 12", word: "advance", syllables: "ad • vance", meaning: "預先 (n.)" },
+            // Unit 13
+            { unit: "Unit 13", word: "consolidation", syllables: "con • sol • i • da • tion", meaning: "綜合/鞏固 (n.)" },
+            { unit: "Unit 13", word: "appropriate", syllables: "ap • pro • pri • ate", meaning: "適當的 (adj.)" },
+            { unit: "Unit 13", word: "suitable", syllables: "suit • a • ble", meaning: "合適的 (adj.)" },
+            { unit: "Unit 13", word: "backdrop", syllables: "back • drop", meaning: "背景佈幕 (n.)" },
+            { unit: "Unit 13", word: "connective", syllables: "con • nec • tive", meaning: "連接詞 (n.)" },
+            { unit: "Unit 13", word: "performance", syllables: "per • form • ance", meaning: "表演 (n.)" },
+            { unit: "Unit 13", word: "hygiene", syllables: "hy • giene", meaning: "衛生 (n.)" },
+            { unit: "Unit 13", word: "secure", syllables: "se • cure", meaning: "確定/保留 (v.)" },
+            { unit: "Unit 13", word: "proceed", syllables: "pro • ceed", meaning: "繼續進行 (v.)" },
+            { unit: "Unit 13", word: "reservation", syllables: "res • er • va • tion", meaning: "預訂 (n.)" }
         ];
 
         // --- Data: M2 Vocab Quest (Word Master Style) ---
         // 已經加齊對應嘅測驗題目
         const wordMasterBank = [
-            { id: 1, word: "operations", meaning: "營運 (n.)", q: "The ________ team is responsible for managing the backstage.", options: ["operations", "venue", "itinerary"], ans: 0 },
-            { id: 2, word: "venue", meaning: "場地 (n.)", q: "The event ________ will be set up in the Grand Ballroom.", options: ["operations", "venue", "itinerary"], ans: 1 },
-            { id: 3, word: "itinerary", meaning: "行程 (n.)", q: "Please check the ________ for tomorrow's city tour schedule.", options: ["complimentary", "operations", "itinerary"], ans: 2 },
-            { id: 4, word: "complimentary", meaning: "免費贈送的 (adj.)", q: "We offer ________ Wi-Fi for all hotel guests.", options: ["complimentary", "venue", "itinerary"], ans: 0 },
-            { id: 5, word: "promotional", meaning: "推廣的 (adj.)", q: "Our new event ________ package includes free parking.", options: ["venue", "promotional", "operations"], ans: 1 },
-            { id: 6, word: "accommodate", meaning: "容納 (v.)", q: "The ballroom can ________ up to 300 guests.", options: ["accommodate", "operations", "venue"], ans: 0 },
-            { id: 7, word: "refreshments", meaning: "茶點 (n.)", q: "We will serve light ________ during the break.", options: ["itinerary", "refreshments", "operations"], ans: 1 },
-            { id: 8, word: "enquiry", meaning: "查詢 (n.)", q: "Thank you for your ________ regarding our hotel services.", options: ["enquiry", "venue", "complimentary"], ans: 0 },
-            { id: 9, word: "reservation", meaning: "預訂 (n.)", q: "I would like to make a ________ for a double room.", options: ["operations", "reservation", "itinerary"], ans: 1 },
-            { id: 10, word: "assistance", meaning: "協助 (n.)", q: "Please let us know if you need any further ________.", options: ["assistance", "venue", "promotional"], ans: 0 },
-            { id: 11, word: "amenities", meaning: "設施 (n.)", q: "The hotel provides luxury ________ in every room.", options: ["amenities", "operations", "reservation"], ans: 0 },
-            { id: 12, word: "coordinate", meaning: "協調 (v.)", q: "We need to ________ with the catering team for the lunch arrangement.", options: ["coordinate", "venue", "accommodate"], ans: 0 },
-            { id: 13, word: "briefing", meaning: "簡報 (n.)", q: "The manager will give a short ________ before the event starts.", options: ["briefing", "ceiling", "feedback"], ans: 0 },
-            { id: 14, word: "security", meaning: "保安 (n.)", q: "The ________ team will patrol the area every hour.", options: ["catering", "security", "layout"], ans: 1 },
-            { id: 15, word: "housekeeping", meaning: "房務 (n.)", q: "Please call ________ if you need extra towels.", options: ["housekeeping", "inspection", "package"], ans: 0 },
-            { id: 16, word: "catering", meaning: "餐飲 (n.)", q: "The ________ service provided excellent food for the banquet.", options: ["catering", "patrol", "schedule"], ans: 0 },
-            { id: 17, word: "professional", meaning: "專業的 (adj.)", q: "Our staff are trained to provide ________ customer service.", options: ["professional", "complimentary", "promotional"], ans: 0 },
-            { id: 18, word: "feedback", meaning: "回饋 (n.)", q: "We would love to hear your ________ about your stay.", options: ["feedback", "background", "invitation"], ans: 0 }
+            // Unit 1
+            { id: 1, word: "operations", meaning: "營運 (n.)", q: "The ________ team is responsible for managing the backstage.", options: ["operations", "retreat", "logistics"], ans: 0 },
+            { id: 2, word: "retreat", meaning: "靜修/團建活動 (n.)", q: "Excel Trading Company will be holding a team-building ________ at our hotel.", options: ["banquets", "retreat", "briefing"], ans: 1 },
+            { id: 3, word: "banquets", meaning: "宴席 (n.)", q: "We have common hotel events like Wedding ________ and Charity Galas.", options: ["logistics", "setup", "banquets"], ans: 2 },
+            { id: 4, word: "logistics", meaning: "後勤安排 (n.)", q: "The Facilities Management team will manage all aspects of event ________.", options: ["logistics", "briefing", "setup"], ans: 0 },
+            { id: 5, word: "coordinate", meaning: "協調 (v.)", q: "Our Assistant Event Manager will ________ with all related sections.", options: ["execute", "coordinate", "maintain"], ans: 1 },
+            { id: 6, word: "execute", meaning: "執行 (v.)", q: "The Food Preparation team will plan and ________ event menus.", options: ["inspect", "maintain", "execute"], ans: 2 },
+            { id: 7, word: "maintain", meaning: "維持 (v.)", q: "Housekeeping must clean and ________ event spaces.", options: ["maintain", "coordinate", "execute"], ans: 0 },
+            { id: 8, word: "inspect", meaning: "檢查 (v.)", q: "The team will prepare and ________ event venues before the guests arrive.", options: ["setup", "briefing", "inspect"], ans: 2 },
+            { id: 9, word: "briefing", meaning: "簡報 (n.)", q: "Today, I'm going to give you a ________ on an event order.", options: ["briefing", "retreat", "logistics"], ans: 0 },
+            { id: 10, word: "setup", meaning: "佈置/設置 (n.)", q: "The banquet team will handle the room ________ before the guests arrive.", options: ["operations", "setup", "inspect"], ans: 1 },
+            // Unit 2
+            { id: 11, word: "background", meaning: "背景 (n.)", q: "Let's start with the ________ information of the event.", options: ["background", "venue", "conference"], ans: 0 },
+            { id: 12, word: "venue", meaning: "場地 (n.)", q: "Which ________ in hotels do we usually hold the above events?", options: ["ballroom", "venue", "reception"], ans: 1 },
+            { id: 13, word: "conference", meaning: "會議 (n.)", q: "Excel Trading Company will hold a business ________.", options: ["pavilion", "background", "conference"], ans: 2 },
+            { id: 14, word: "ballroom", meaning: "宴會廳 (n.)", q: "The awards dinner will be held in the Grand ________.", options: ["ballroom", "venue", "reception"], ans: 0 },
+            { id: 15, word: "pavilion", meaning: "涼亭/場館 (n.)", q: "Asia Bank will be holding a retreat at our garden ________.", options: ["conference", "pavilion", "presence"], ans: 1 },
+            { id: 16, word: "arrange", meaning: "安排 (v.)", q: "The concierge will ________ transportation for the city tour.", options: ["ensure", "arrange", "specific"], ans: 1 },
+            { id: 17, word: "ensure", meaning: "確保 (v.)", q: "Work together to ________ the guests enjoy their visit.", options: ["ensure", "arrange", "presence"], ans: 0 },
+            { id: 18, word: "presence", meaning: "出席/存在 (n.)", q: "We use 'there-structure' to describe the existence or ________ of something.", options: ["reception", "specific", "presence"], ans: 2 },
+            { id: 19, word: "specific", meaning: "特定的 (adj.)", q: "What tense should you use for a future activity at a ________ time?", options: ["specific", "ballroom", "arrange"], ans: 0 },
+            { id: 20, word: "reception", meaning: "歡迎接待 (n.)", q: "The welcome ________ will be held on the rooftop terrace tonight.", options: ["conference", "reception", "venue"], ans: 1 },
+            // Unit 3
+            { id: 21, word: "duties", meaning: "職責 (n.)", q: "Let's talk about the major ________ of different job positions in a hotel.", options: ["duties", "responsibilities", "signpost"], ans: 0 },
+            { id: 22, word: "responsibilities", meaning: "責任 (n.)", q: "Key ________: Prepare alcoholic & non-alcoholic beverages.", options: ["itinerary", "responsibilities", "walkthrough"], ans: 1 },
+            { id: 23, word: "promptly", meaning: "迅速地 (adv.)", q: "Respond ________ to guest concerns related to facility issues.", options: ["courteously", "efficiently", "promptly"], ans: 2 },
+            { id: 24, word: "efficiently", meaning: "有效率地 (adv.)", q: "Provide quality service by responding to requests ________.", options: ["efficiently", "promptly", "courteously"], ans: 0 },
+            { id: 25, word: "courteously", meaning: "有禮貌地 (adv.)", q: "Ensure all guests are treated ________ at all times.", options: ["promptly", "courteously", "efficiently"], ans: 1 },
+            { id: 26, word: "imperative", meaning: "祈使的/命令式 (adj.)", q: "We use the ________ form to give instructions or tell someone to do something.", options: ["signpost", "unattended", "imperative"], ans: 2 },
+            { id: 27, word: "unattended", meaning: "無人看管的 (adj.)", q: "Never leave guests' luggage ________.", options: ["unattended", "imperative", "signpost"], ans: 0 },
+            { id: 28, word: "itinerary", meaning: "行程 (n.)", q: "Please check today's event ________ and any last-minute change.", options: ["walkthrough", "itinerary", "duties"], ans: 1 },
+            { id: 29, word: "walkthrough", meaning: "實地考察/排練 (n.)", q: "Conduct a pre-event ________ of the event venue with the client.", options: ["signpost", "responsibilities", "walkthrough"], ans: 2 },
+            { id: 30, word: "signpost", meaning: "路標/指示語 (n.)", q: "An effective use of ________ language can make your presentation more organised.", options: ["signpost", "imperative", "duties"], ans: 0 },
+            // Unit 4
+            { id: 31, word: "obligation", meaning: "責任/義務 (n.)", q: "We use the modal verb 'should' to indicate an ________ or a duty.", options: ["fluency", "obligation", "stress"], ans: 1 },
+            { id: 32, word: "oversee", meaning: "監督 (v.)", q: "The Event Management Team should ________ the overall event logistics.", options: ["assist", "assigning", "oversee"], ans: 2 },
+            { id: 33, word: "assigning", meaning: "分配 (v.)", q: "The Facilities Management Team should take up the duty of ________ cameramen.", options: ["assigning", "oversee", "ensure"], ans: 0 },
+            { id: 34, word: "assist", meaning: "協助 (v.)", q: "Can the Marketing Team ________ with the logistics planning?", options: ["oversee", "assist", "arranging"], ans: 1 },
+            { id: 35, word: "arranging", meaning: "安排中 (v.)", q: "The F&B Team should be responsible for ________ staffing for the dining service.", options: ["chunking", "pausing", "arranging"], ans: 2 },
+            { id: 36, word: "ensure", meaning: "確保 (v.)", q: "The Food Preparation Team should ________ timely food delivery.", options: ["ensure", "assist", "oversee"], ans: 0 },
+            { id: 37, word: "chunking", meaning: "分組停頓 (n.)", q: "Speaking naturally involves ________ and pausing.", options: ["pausing", "chunking", "fluency"], ans: 1 },
+            { id: 38, word: "pausing", meaning: "暫停 (n.)", q: "Take a short ________ after important points or new ideas.", options: ["stress", "obligation", "pausing"], ans: 2 },
+            { id: 39, word: "stress", meaning: "強調 (v.)", q: "Slightly ________ on the key information to show importance.", options: ["stress", "chunking", "fluency"], ans: 0 },
+            { id: 40, word: "fluency", meaning: "流暢度 (n.)", q: "Such skills not only help enhance speaker's ________, but also allow listeners to understand better.", options: ["pausing", "fluency", "stress"], ans: 1 },
+            // Unit 5
+            { id: 41, word: "invitation", meaning: "邀請 (n.)", q: "When making an ________, we need to consider the language, tone and the audience.", options: ["invitation", "purpose", "posture"], ans: 0 },
+            { id: 42, word: "formal", meaning: "正式的 (adj.)", q: "What tone should be used: ________ or informal?", options: ["facial", "renovated", "formal"], ans: 2 },
+            { id: 43, word: "appreciated", meaning: "受到感激的 (adj.)", q: "Your presence would be greatly ________.", options: ["appreciated", "preparatory", "formal"], ans: 0 },
+            { id: 44, word: "purpose", meaning: "目的 (n.)", q: "State the ________ of the briefing at the beginning.", options: ["gesture", "purpose", "rundown"], ans: 1 },
+            { id: 45, word: "posture", meaning: "姿勢 (n.)", q: "________ refers to the way you position your body when sitting or standing.", options: ["gesture", "facial", "posture"], ans: 2 },
+            { id: 46, word: "gesture", meaning: "手勢 (n.)", q: "________ refers to the movement of part of your body, especially your hands.", options: ["gesture", "posture", "purpose"], ans: 0 },
+            { id: 47, word: "facial", meaning: "面部的 (adj.)", q: "________ expressions refer to how your face shows your feelings without words.", options: ["formal", "facial", "preparatory"], ans: 1 },
+            { id: 48, word: "renovated", meaning: "翻新了的 (adj.)", q: "I would like to invite you to the newly ________ conference room.", options: ["appreciated", "preparatory", "renovated"], ans: 2 },
+            { id: 49, word: "preparatory", meaning: "籌備的 (adj.)", q: "Would you like to join us for a ________ meeting at 3 pm tomorrow?", options: ["preparatory", "formal", "facial"], ans: 0 },
+            { id: 50, word: "rundown", meaning: "流程表 (n.)", q: "We will have a meeting with the client to go through the event ________.", options: ["invitation", "rundown", "purpose"], ans: 1 },
+            // Unit 6
+            { id: 51, word: "upcoming", meaning: "即將來臨的 (adj.)", q: "Conduct briefings with colleagues on the arrangements for ________ hotel events.", options: ["upcoming", "arrangement", "shuttle"], ans: 0 },
+            { id: 52, word: "arrangement", meaning: "安排 (n.)", q: "Give a briefing on the ________ of the event hosted by your client.", options: ["sponsoring", "arrangement", "emergency"], ans: 1 },
+            { id: 53, word: "sponsoring", meaning: "贊助 (v.)", q: "Provide information of the brand ________ the event.", options: ["facilitate", "hygiene", "sponsoring"], ans: 2 },
+            { id: 54, word: "patrols", meaning: "巡邏 (n.)", q: "Security should schedule regular ________ including the event venue.", options: ["patrols", "amenities", "highlights"], ans: 0 },
+            { id: 55, word: "amenities", meaning: "設施/用品 (n.)", q: "Housekeeping must ensure supplies of ________ in the restrooms.", options: ["shuttle", "amenities", "hygiene"], ans: 1 },
+            { id: 56, word: "facilitate", meaning: "協助促進 (v.)", q: "The Marketing Team will ________ media interviews.", options: ["emergency", "sponsoring", "facilitate"], ans: 2 },
+            { id: 57, word: "hygiene", meaning: "衛生 (n.)", q: "Maintain ________ standards during the restroom checks.", options: ["hygiene", "patrols", "arrangement"], ans: 0 },
+            { id: 58, word: "shuttle", meaning: "穿梭接送 (n.)", q: "Front Office will coordinate ________ service for VIP guests.", options: ["highlights", "shuttle", "upcoming"], ans: 1 },
+            { id: 59, word: "highlights", meaning: "精彩片段 (n.)", q: "Event Management will shoot video ________ for the event.", options: ["amenities", "emergency", "highlights"], ans: 2 },
+            { id: 60, word: "emergency", meaning: "緊急情況 (n.)", q: "Invite teams to a safety briefing to discuss ________ procedures.", options: ["emergency", "shuttle", "sponsoring"], ans: 0 },
+            // Unit 7
+            { id: 61, word: "conversation", meaning: "對話 (n.)", q: "Start and end telephone ________ appropriately.", options: ["conversation", "enquiry", "proposals"], ans: 0 },
+            { id: 62, word: "enquiry", meaning: "查詢 (n.)", q: "Understand the purpose of event ________ forms.", options: ["milestone", "enquiry", "confirm"], ans: 1 },
+            { id: 63, word: "active", meaning: "積極的 (adj.)", q: "Show ________ listening in conversation to show you are listening positively.", options: ["exceptional", "comprehensive", "active"], ans: 2 },
+            { id: 64, word: "exceptional", meaning: "卓越的 (adj.)", q: "Creating unforgettable moments with our ________ event packages.", options: ["exceptional", "comprehensive", "active"], ans: 0 },
+            { id: 65, word: "comprehensive", meaning: "全面的 (adj.)", q: "We offer ________ packages to exceed your expectations.", options: ["active", "comprehensive", "exceptional"], ans: 1 },
+            { id: 66, word: "gatherings", meaning: "聚會 (n.)", q: "From warm ________ to grand celebrations, we have packages for you.", options: ["proposals", "milestone", "gatherings"], ans: 2 },
+            { id: 67, word: "exceed", meaning: "超越 (v.)", q: "We offer packages to ________ your expectations.", options: ["exceed", "confirm", "gatherings"], ans: 0 },
+            { id: 68, word: "confirm", meaning: "確認 (v.)", q: "I'd like to ________ the operation of the coming corporate event.", options: ["proposals", "confirm", "exceed"], ans: 1 },
+            { id: 69, word: "proposals", meaning: "建議書 (n.)", q: "I'd like to ask the process for requesting event ________.", options: ["conversation", "enquiry", "proposals"], ans: 2 },
+            { id: 70, word: "milestone", meaning: "里程碑 (n.)", q: "Congratulations on 15 years! That's a fantastic ________!", options: ["milestone", "gatherings", "confirm"], ans: 0 },
+            // Unit 8
+            { id: 71, word: "venues", meaning: "場地 (n.)", q: "We will describe hotel ________ with adjectives.", options: ["venues", "layout", "atmosphere"], ans: 0 },
+            { id: 72, word: "layout", meaning: "佈局 (n.)", q: "Describe the details, e.g. ________, sizes, capacities.", options: ["capacity", "layout", "decor"], ans: 1 },
+            { id: 73, word: "capacity", meaning: "容納人數 (n.)", q: "The ________ of the Grand Dining Hall is up to 240 guests.", options: ["platform", "atmosphere", "capacity"], ans: 2 },
+            { id: 74, word: "configuration", meaning: "座位排列 (n.)", q: "The room holds 180 guests for high table ________.", options: ["configuration", "decor", "layout"], ans: 0 },
+            { id: 75, word: "platform", meaning: "台/平台 (n.)", q: "There is an elevated ________ for distinguished guest seating.", options: ["atmosphere", "platform", "capacity"], ans: 1 },
+            { id: 76, word: "decor", meaning: "裝飾/佈置 (n.)", q: "The hall features classic ________ reflecting timeless style.", options: ["venues", "expansive", "decor"], ans: 2 },
+            { id: 77, word: "expansive", meaning: "寬闊的 (adj.)", q: "The ballroom has ________ windows offering city views.", options: ["expansive", "spacious", "elegant"], ans: 0 },
+            { id: 78, word: "spacious", meaning: "寬敞的 (adj.)", q: "The venue offers ________ areas for various event setups.", options: ["elegant", "spacious", "expansive"], ans: 1 },
+            { id: 79, word: "elegant", meaning: "優雅的 (adj.)", q: "The venue is ________ and modern.", options: ["spacious", "atmosphere", "elegant"], ans: 2 },
+            { id: 80, word: "atmosphere", meaning: "氣氛 (n.)", q: "The view provides a natural and relaxing ________ for your celebration.", options: ["atmosphere", "configuration", "platform"], ans: 0 },
+            // Unit 9
+            { id: 81, word: "facility", meaning: "設施 (n.)", q: "Name common ________ in different hotel venues.", options: ["facility", "resolution", "visibility"], ans: 0 },
+            { id: 82, word: "seamless", meaning: "無縫的/流暢的 (adj.)", q: "The advanced video conferencing equipment connects participants ________ly.", options: ["sturdy", "seamless", "portable"], ans: 1 },
+            { id: 83, word: "sturdy", meaning: "堅固的 (adj.)", q: "Adjectives to describe facilities: ________, fast, well-lit.", options: ["portable", "equipped", "sturdy"], ans: 2 },
+            { id: 84, word: "portable", meaning: "可攜式的 (adj.)", q: "Adjectives to describe facilities: ________, ultra-thin, wireless.", options: ["portable", "compound", "seamless"], ans: 0 },
+            { id: 85, word: "compound", meaning: "複合的 (adj.)", q: "Words like 'well-lit' are called ________ adjectives, usually joined with a hyphen.", options: ["resolution", "compound", "visibility"], ans: 1 },
+            { id: 86, word: "resolution", meaning: "解析度 (n.)", q: "The ballroom is equipped with a high-________ LED display wall.", options: ["visibility", "facility", "resolution"], ans: 2 },
+            { id: 87, word: "visibility", meaning: "能見度 (n.)", q: "The well-lit stage provides excellent ________ for all presentations.", options: ["visibility", "captivate", "sturdy"], ans: 0 },
+            { id: 88, word: "captivate", meaning: "吸引/迷住 (v.)", q: "Our LED display wall creates visual presentations that can ________ the audience.", options: ["equipped", "captivate", "seamless"], ans: 1 },
+            { id: 89, word: "state-of-the-art", meaning: "最先進的 (adj.)", q: "Our venue is equipped with ________ technology to ensure your event runs smoothly.", options: ["portable", "compound", "state-of-the-art"], ans: 2 },
+            { id: 90, word: "equipped", meaning: "配備了的 (adj.)", q: "The venue is ________ with a high-end AV system.", options: ["equipped", "facility", "resolution"], ans: 0 },
+            // Unit 10
+            { id: 91, word: "option", meaning: "選擇 (n.)", q: "We will describe menu ________ in event packages.", options: ["option", "hearty", "assortment"], ans: 0 },
+            { id: 92, word: "hearty", meaning: "豐盛的 (adj.)", q: "There is a selection of ________ American breakfast favourites to start your day.", options: ["fluffy", "hearty", "authentic"], ans: 1 },
+            { id: 93, word: "fluffy", meaning: "鬆軟的 (adj.)", q: "Our breakfast features ________ scrambled eggs with crispy bacon.", options: ["vegetarian", "signature", "fluffy"], ans: 2 },
+            { id: 94, word: "assortment", meaning: "各式各樣 (n.)", q: "In the evening, there is an ________ of signature dishes for you to enjoy.", options: ["assortment", "texture", "option"], ans: 0 },
+            { id: 95, word: "signature", meaning: "招牌的 (adj.)", q: "There are a variety of desserts available, such as our ________ chocolate mousse.", options: ["authentic", "signature", "hearty"], ans: 1 },
+            { id: 96, word: "authentic", meaning: "正宗的 (adj.)", q: "Each dish is carefully prepared to highlight ________ tastes and textures.", options: ["complimentary", "fluffy", "authentic"], ans: 2 },
+            { id: 97, word: "texture", meaning: "口感/質感 (n.)", q: "Each dish is carefully prepared to highlight authentic tastes and ________.", options: ["texture", "assortment", "option"], ans: 0 },
+            { id: 98, word: "accompany", meaning: "配搭/伴隨 (v.)", q: "You can enjoy juicy roasted beef ________ied by creamy mashed potatoes.", options: ["vegetarian", "accompany", "signature"], ans: 1 },
+            { id: 99, word: "vegetarian", meaning: "素食的 (adj.)", q: "You can enjoy a range of fresh salads and excellent Thai and Italian ________ mains.", options: ["hearty", "fluffy", "vegetarian"], ans: 2 },
+            { id: 100, word: "complimentary", meaning: "免費贈送的 (adj.)", q: "There are also ________ beverages throughout the event.", options: ["complimentary", "authentic", "texture"], ans: 0 },
+            // Unit 11
+            { id: 101, word: "amenity", meaning: "便利設施 (n.)", q: "Name common services and ________ in event packages.", options: ["amenity", "valet", "streaming"], ans: 0 },
+            { id: 102, word: "valet", meaning: "泊車服務 (n.)", q: "As part of the package, we provide complimentary ________ parking service.", options: ["unlimited", "valet", "bespoke"], ans: 1 },
+            { id: 103, word: "refreshment", meaning: "茶點 (n.)", q: "We provide dim-sum ________ for an extra HK$200 per person.", options: ["rate", "setup", "refreshment"], ans: 2 },
+            { id: 104, word: "rate", meaning: "收費/價格 (n.)", q: "The per-person ________ for this package is HK$1,000.", options: ["rate", "additional", "streaming"], ans: 0 },
+            { id: 105, word: "additional", meaning: "額外的 (adj.)", q: "For alcoholic beverages, we offer a premium wine package for an ________ HK$300 per person.", options: ["interactive", "additional", "bespoke"], ans: 1 },
+            { id: 106, word: "bespoke", meaning: "度身訂造的 (adj.)", q: "We offer ________ runway packages for your collection with professional staging.", options: ["unlimited", "amenity", "bespoke"], ans: 2 },
+            { id: 107, word: "interactive", meaning: "互動的 (adj.)", q: "The event features different facilities, including an ________ projection system.", options: ["interactive", "valet", "rate"], ans: 0 },
+            { id: 108, word: "unlimited", meaning: "無限的 (adj.)", q: "The package includes ________ soft drinks, premium tea and coffee.", options: ["setup", "unlimited", "refreshment"], ans: 1 },
+            { id: 109, word: "setup", meaning: "佈置/設置 (n.)", q: "The package includes professional graduation ceremony ________.", options: ["streaming", "additional", "setup"], ans: 2 },
+            { id: 110, word: "streaming", meaning: "直播/串流 (n.)", q: "You can add our live ________ service for HK$3,000.", options: ["streaming", "bespoke", "interactive"], ans: 0 },
+            // Unit 12
+            { id: 111, word: "conditional", meaning: "有條件的 (adj.)", q: "We are promoting our hotel's ________ offers.", options: ["conditional", "exclusive", "entire"], ans: 0 },
+            { id: 112, word: "promote", meaning: "推廣 (v.)", q: "________ your hotel's conditional offers on event packages.", options: ["discount", "promote", "coordination"], ans: 1 },
+            { id: 113, word: "complimentary", meaning: "免費贈送的 (adj.)", q: "When your guest list reaches 120 people, you can enjoy our ________ premium coat check service.", options: ["demanding", "advance", "complimentary"], ans: 2 },
+            { id: 114, word: "exclusive", meaning: "獨家的 (adj.)", q: "Book between January and March to unlock our ________ Winter Special pricing!", options: ["exclusive", "conditional", "entire"], ans: 0 },
+            { id: 115, word: "coordination", meaning: "協調工作 (n.)", q: "Book through our certified wedding planner and enjoy 30% OFF all ________ fees!", options: ["centrepiece", "coordination", "advance"], ans: 1 },
+            { id: 116, word: "discount", meaning: "折扣 (n.)", q: "If you can confirm your booking with a deposit, we'll offer you a 10% ________.", options: ["entire", "demanding", "discount"], ans: 2 },
+            { id: 117, word: "entire", meaning: "整個的 (adj.)", q: "We'll offer you a 10% discount on the ________ package.", options: ["entire", "exclusive", "conditional"], ans: 0 },
+            { id: 118, word: "demanding", meaning: "強硬的/要求高的 (adj.)", q: "Sometimes we use 'can' in the condition to make us sound less ________.", options: ["advance", "demanding", "centrepiece"], ans: 1 },
+            { id: 119, word: "centrepiece", meaning: "中心裝飾/桌花 (n.)", q: "For events of 75 or more guests, we'll offer complimentary floral ________s for all tables.", options: ["coordination", "promote", "centrepiece"], ans: 2 },
+            { id: 120, word: "advance", meaning: "預先 (n.)", q: "If you can pay the full amount 30 days in ________, we'll upgrade your table linens.", options: ["advance", "discount", "exclusive"], ans: 0 },
+            // Unit 13
+            { id: 121, word: "consolidation", meaning: "綜合/鞏固 (n.)", q: "Unit 13 is a ________ task for the previous units.", options: ["consolidation", "appropriate", "connective"], ans: 0 },
+            { id: 122, word: "appropriate", meaning: "適當的 (adj.)", q: "Make sure you use the ________ connective, 'if' or 'for', to introduce the condition.", options: ["suitable", "appropriate", "performance"], ans: 1 },
+            { id: 123, word: "suitable", meaning: "合適的 (adj.)", q: "We'd like to know if there are any ________ packages for our event.", options: ["secure", "proceed", "suitable"], ans: 2 },
+            { id: 124, word: "backdrop", meaning: "背景佈幕 (n.)", q: "A photography ________ is available at $4,000.", options: ["backdrop", "connective", "reservation"], ans: 0 },
+            { id: 125, word: "connective", meaning: "連接詞 (n.)", q: "Make sure you use the appropriate ________, 'if' or 'for', to introduce the condition.", options: ["hygiene", "connective", "performance"], ans: 1 },
+            { id: 126, word: "performance", meaning: "表演 (n.)", q: "Our venue features an elegant setting, including live piano ________.", options: ["reservation", "appropriate", "performance"], ans: 2 },
+            { id: 127, word: "hygiene", meaning: "衛生 (n.)", q: "Maintain ________ standards during the restroom checks.", options: ["hygiene", "backdrop", "suitable"], ans: 0 },
+            { id: 128, word: "secure", meaning: "確定/保留 (v.)", q: "Would you like me to ________ this booking for you?", options: ["proceed", "secure", "consolidation"], ans: 1 },
+            { id: 129, word: "proceed", meaning: "繼續進行 (v.)", q: "Shall we ________ with the booking today?", options: ["connective", "appropriate", "proceed"], ans: 2 },
+            { id: 130, word: "reservation", meaning: "預訂 (n.)", q: "Feel free to call us if you want to make a ________.", options: ["reservation", "secure", "backdrop"], ans: 0 }
         ];
         
         let m2Questions = []; 
@@ -798,16 +1040,17 @@
             // 2. Fill the rest with random words
             let remainingPool = wordMasterBank.filter(w => !mistakeIds.has(w.id));
             
-            // Shuffle pools
-            mistakePool.sort(() => 0.5 - Math.random());
-            remainingPool.sort(() => 0.5 - Math.random());
+            // Proper Fisher-Yates shuffle
+            const fy = arr => { for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr; };
+            fy(mistakePool);
+            fy(remainingPool);
             
             // Combine to get 10 questions
             let combined = [...mistakePool, ...remainingPool];
             m2Questions = combined.slice(0, 10);
             
             // Shuffle the final 10 questions so mistakes aren't always first
-            m2Questions.sort(() => 0.5 - Math.random());
+            fy(m2Questions);
 
             m2Index = 0; m2Score = 0;
             
@@ -846,11 +1089,12 @@
             
             const container = document.getElementById('m2-options-container');
             container.innerHTML = '';
-            q.options.forEach((opt, idx) => {
+            const shuffledOpts = [...q.options]; fy(shuffledOpts);
+            shuffledOpts.forEach((opt, idx) => {
                 const btn = document.createElement('button');
                 btn.className = "w-full text-left bg-gray-50 hover:bg-emerald-50 border-2 border-gray-200 hover:border-emerald-400 rounded-2xl p-4 font-bold text-gray-700 transition active:scale-95";
                 btn.innerText = opt;
-                btn.onclick = () => checkM2Answer(idx, q.ans, q.id);
+                btn.onclick = () => checkM2Answer(opt, q.options[q.ans], q.id);
                 container.appendChild(btn);
             });
         }
