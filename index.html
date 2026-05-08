@@ -1032,6 +1032,9 @@
         }
 
         // --- M2: Vocab Quest (Word Master Style) ---
+        // Fisher-Yates global shuffle
+        const fy = arr => { for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr; };
+
         function startM2(zone) {
             m2Questions = [];
             
@@ -1040,8 +1043,6 @@
             // 2. Fill the rest with random words
             let remainingPool = wordMasterBank.filter(w => !mistakeIds.has(w.id));
             
-            // Proper Fisher-Yates shuffle
-            const fy = arr => { for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr; };
             fy(mistakePool);
             fy(remainingPool);
             
