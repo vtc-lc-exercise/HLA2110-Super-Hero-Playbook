@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Service Hero Playbook 🦸‍♂️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            color: #1f2937;
+            touch-action: manipulation;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            height: 100vh;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .app-container { 
+                max-width: 1024px; 
+                height: 95vh; 
+                border-radius: 2rem; 
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            }
+            .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+
+        .view-section { display: none; animation: fadeIn 0.4s ease-out forwards; }
+        .view-section.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Flip Card */
+        .flip-card { perspective: 1000px; width: 100%; height: 350px; }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            backface-visibility: hidden; border-radius: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem;
+        }
+        .flip-card-front { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .flip-card-back { background: white; color: #333; transform: rotateY(180deg); border: 2px solid #e2e8f0; }
+
+        .script-active { border-left: 4px solid #4f46e5; background: #e0e7ff; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header id="main-header" class="hidden pt-6 pb-4 px-6 md:px-10 bg-white border-b border-gray-100 flex justify-between items-center shrink-0 z-20 shadow-sm">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-indigo-900 leading-tight">HLA2110 🚀</h1>
+                <p class="text-xs md:text-sm text-indigo-500 font-bold uppercase tracking-widest">Service Hero Playbook</p>
+            </div>
+            <div class="flex gap-3 items-center">
+                <div class="bg-amber-100 text-amber-700 font-bold px-4 py-2 rounded-full text-sm flex items-center shadow-sm">
+                    <span id="exp-text-header">0</span> EXP ✨
+                </div>
+                <button onclick="toggleSettings()" class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center justify-center transition shadow-sm">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Global Settings Modal -->
+        <div id="settings-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex-col items-center justify-center px-4 backdrop-blur-sm">
+            <div class="bg-white rounded-3xl p-6 w-full max-w-sm shadow-2xl transform transition-all">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-extrabold text-gray-800"><i class="fa-solid fa-sliders text-indigo-500 mr-2"></i> Voice Settings</h3>
+                    <button onclick="toggleSettings()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-2xl"></i></button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Accent / Voice</label>
+                        <select id="global-voice" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-700 font-medium outline-none focus:ring-2 focus:ring-indigo-400">
+                            <option value="en-GB">🇬🇧 UK English</option>
+                            <option value="en-US" selected>🇺🇸 US English</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Speech Speed</label>
+                        <select id="global-speed" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-700 font-medium outline-none focus:ring-2 focus:ring-indigo-400">
+                            <option value="0.8">0.8x (Slow)</option>
+                            <option value="1.0" selected>1.0x (Normal)</option>
+                            <option value="1.2">1.2x (Fast)</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="toggleSettings()" class="w-full mt-8 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold shadow-md transition">Save & Close</button>
+            </div>
+        </div>
+
+        <main class="flex-1 overflow-y-auto p-0 md:p-10 relative md:pb-10">
+
+            <!-- ================= LANDING PAGE ================= -->
+            <div id="view-landing" class="view-section active flex-col h-full items-center justify-center text-center relative bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center">
+                <div class="absolute inset-0 bg-indigo-900/40 mix-blend-multiply"></div>
+                <div class="relative z-10 glass-panel p-10 md:p-14 rounded-[2.5rem] shadow-2xl max-w-lg w-[90%] mx-auto transform transition hover:scale-[1.02] duration-300">
+                    <div class="w-24 h-24 mx-auto bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center shadow-lg mb-6 rotate-3">
+                        <i class="fa-solid fa-headset text-5xl text-white"></i>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-gray-800 mb-2 tracking-tight">HLA2110</h1>
+                    <h2 class="text-lg md:text-xl font-bold text-gray-500 mb-8 uppercase tracking-widest">Oral Communication<br><span class="text-indigo-600">Service Hero Playbook</span></h2>
+                    <button onclick="navTo('lobby')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xl py-4 px-8 rounded-2xl shadow-[0_10px_20px_rgba(79,70,229,0.3)] transform transition active:scale-95 flex items-center justify-center gap-3">
+                        Start Journey <i class="fa-solid fa-rocket"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= LOBBY ================= -->
+            <div id="view-lobby" class="view-section flex-col gap-8 h-full p-6 md:p-0">
+                <div class="grid-layout">
+                    <!-- Profile Section -->
+                    <div class="bg-gradient-to-br from-amber-400 to-orange-500 rounded-3xl p-8 text-white shadow-lg relative overflow-hidden flex flex-col justify-center min-h-[200px]">
+                        <div class="absolute -right-4 -bottom-4 opacity-20 text-9xl">🏆</div>
+                        <div class="flex items-center gap-6 relative z-10">
+                            <div class="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center text-5xl border-4 border-white/50 shadow-inner shrink-0">🧑‍🍳</div>
+                            <div class="flex-1">
+                                <p class="text-sm opacity-90 font-bold uppercase tracking-wider">Current Rank</p>
+                                <h2 class="text-3xl md:text-4xl font-extrabold mb-2" id="user-rank">Trainee 🥉</h2>
+                                <div class="w-full bg-black/20 rounded-full h-3 mt-4">
+                                    <div id="exp-bar" class="bg-white h-3 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                                </div>
+                                <p class="text-sm mt-2 text-right font-bold"><span id="exp-text">0</span> / 1000 EXP</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zones Section -->
+                    <div class="flex flex-col gap-4 overflow-y-auto pr-2 pb-10">
+                        <h3 class="text-xl font-bold text-gray-700 ml-2">🗺️ Select Your Zone</h3>
+                        
+                        <button onclick="navTo('zone-a')" class="w-full text-left bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent hover:border-indigo-400 transition group relative overflow-hidden active:scale-95">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="bg-indigo-100 text-indigo-700 text-xs font-black px-2 py-1 rounded mb-2 inline-block uppercase">Zone A</span>
+                                    <h4 class="text-xl font-bold text-gray-800">Backstage Ops (CA)</h4>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-right"></i></div>
+                            </div>
+                        </button>
+
+                        <button onclick="navTo('zone-b')" class="w-full text-left bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent hover:border-rose-400 transition group relative overflow-hidden active:scale-95">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="bg-rose-100 text-rose-700 text-xs font-black px-2 py-1 rounded mb-2 inline-block uppercase">Zone B</span>
+                                    <h4 class="text-xl font-bold text-gray-800">Frontline Command (EA)</h4>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500 group-hover:bg-rose-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-right"></i></div>
+                            </div>
+                        </button>
+
+                        <button onclick="navTo('zone-c-menu')" class="w-full text-left bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent hover:border-amber-400 transition group relative overflow-hidden active:scale-95">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="bg-amber-100 text-amber-700 text-xs font-black px-2 py-1 rounded mb-2 inline-block uppercase">Zone C</span>
+                                    <h4 class="text-xl font-bold text-gray-800">Number & Date Drill</h4>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-right"></i></div>
+                            </div>
+                        </button>
+
+                        <button onclick="navTo('zone-d')" class="w-full text-left bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent hover:border-violet-400 transition group relative overflow-hidden active:scale-95">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="bg-violet-100 text-violet-700 text-xs font-black px-2 py-1 rounded mb-2 inline-block uppercase">Zone D</span>
+                                    <h4 class="text-xl font-bold text-gray-800">Assessment Prep (TTS)</h4>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-violet-50 flex items-center justify-center text-violet-500 group-hover:bg-violet-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-right"></i></div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= ZONE A MENU ================= -->
+            <div id="view-zone-a" class="view-section flex-col gap-6 h-full max-w-3xl mx-auto w-full p-6 md:p-0">
+                <button onclick="navTo('lobby')" class="self-start bg-white px-5 py-2.5 rounded-full text-sm font-bold text-gray-600 shadow-sm border border-gray-200 active:scale-95 hover:bg-gray-50"><i class="fa-solid fa-arrow-left mr-2"></i>Back</button>
+                <h2 class="text-3xl font-extrabold text-indigo-900">Zone A: Backstage Ops 📋</h2>
+                <div class="flex flex-col gap-4">
+                    <button onclick="openUnitSelect('A')" class="w-full bg-white rounded-3xl p-5 shadow-sm border-2 border-transparent hover:border-blue-400 flex items-center gap-5 active:scale-95 transition">
+                        <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center text-3xl shrink-0">🃏</div>
+                        <div class="text-left flex-1"><h4 class="text-xl font-bold text-gray-800">Mission 1: Lingo Swipe</h4><p class="text-xs text-gray-500">Units 1 - 6</p></div>
+                    </button>
+                    <button onclick="startM2('A')" class="w-full bg-white rounded-3xl p-5 shadow-sm border-2 border-transparent hover:border-emerald-400 flex items-center gap-5 active:scale-95 transition">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center text-3xl shrink-0">📝</div>
+                        <div class="text-left flex-1"><h4 class="text-xl font-bold text-gray-800">Mission 2: Vocab Quest</h4><p class="text-xs text-gray-500">Word Master Practice</p></div>
+                    </button>
+                    <button onclick="startM3AIntro()" class="w-full bg-white rounded-3xl p-5 shadow-sm border-2 border-transparent hover:border-purple-400 flex items-center gap-5 active:scale-95 transition">
+                        <div class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-3xl shrink-0">💼</div>
+                        <div class="text-left flex-1"><h4 class="text-xl font-bold text-gray-800">Mission 3: Briefing Simulator</h4><p class="text-xs text-gray-500">Read Aloud Practice</p></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= ZONE B MENU ================= -->
+            <div id="view-zone-b" class="view-section flex-col gap-6 h-full max-w-3xl mx-auto w-full p-6 md:p-0">
+                <button onclick="navTo('lobby')" class="self-start bg-white px-5 py-2.5 rounded-full text-sm font-bold text-gray-600 shadow-sm border border-gray-200 active:scale-95 hover:bg-gray-50"><i class="fa-solid fa-arrow-left mr-2"></i>Back</button>
+                <h2 class="text-3xl font-extrabold text-rose-900">Zone B: Frontline Command 📞</h2>
+                <div class="flex flex-col gap-4">
+                    <button onclick="openUnitSelect('B')" class="w-full bg-white rounded-3xl p-5 shadow-sm border-2 border-transparent hover:border-blue-400 flex items-center gap-5 active:scale-95 transition">
+                        <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center text-3xl shrink-0">🃏</div>
+                        <div class="text-left flex-1"><h4 class="text-xl font-bold text-gray-800">Mission 1: Lingo Swipe</h4><p class="text-xs text-gray-500">Units 7 - 13</p></div>
+                    </button>
+                    <button onclick="startM2('B')" class="w-full bg-white rounded-3xl p-5 shadow-sm border-2 border-transparent hover:border-emerald-400 flex items-center gap-5 active:scale-95 transition">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center text-3xl shrink-0">📝</div>
+                        <div class="text-left flex-1"><h4 class="text-xl font-bold text-gray-800">Mission 2: Vocab Quest</h4><p class="text-xs text-gray-500">Word Master Practice</p></div>
+                    </button>
+                    <button onclick="startM3B()" class="w-full bg-white rounded-3xl p-5 shadow-sm border-2 border-transparent hover:border-rose-400 flex items-center gap-5 active:scale-95 transition">
+                        <div class="w-16 h-16 rounded-2xl bg-rose-100 flex items-center justify-center text-3xl shrink-0">🎧</div>
+                        <div class="text-left flex-1"><h4 class="text-xl font-bold text-gray-800">Mission 3: Telephone Script Reader</h4><p class="text-xs text-gray-500">Interactive Call</p></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= MISSION 2: REVIEW PAGE (WORD MASTER STYLE) ================= -->
+            <div id="view-m2-review" class="view-section flex-col h-full relative max-w-3xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-4">
+                    <button onclick="navTo('lobby')" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <span class="bg-emerald-100 text-emerald-700 text-sm font-bold px-4 py-2 rounded-full">Vocab Review 🧠</span>
+                    <div class="w-12"></div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-6 shadow-md border border-gray-100 mb-6 flex-1 flex flex-col overflow-hidden">
+                    <h3 class="text-2xl font-extrabold text-gray-800 mb-2">Target Words for This Round</h3>
+                    <p class="text-gray-500 text-sm mb-4">Review the vocabulary below before starting. <span class="text-rose-500 font-bold">If you make mistakes, the system will remember them and prioritise them in your next game!</span></p>
+                    
+                    <div id="m2-review-list" class="flex-1 overflow-y-auto space-y-3 pr-2 pb-4">
+                        <!-- Words injected via JS -->
+                    </div>
+                </div>
+                
+                <button onclick="startM2Quiz()" class="w-full mt-auto bg-emerald-500 hover:bg-emerald-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition">
+                    Start Game <i class="fa-solid fa-play ml-2"></i>
+                </button>
+            </div>
+
+            <!-- ================= MISSION 2: DAILY QUEST ================= -->
+            <div id="view-m2-daily" class="view-section flex-col h-full relative max-w-2xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-6">
+                    <button onclick="navTo('lobby')" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <span class="bg-emerald-100 text-emerald-700 text-sm font-bold px-4 py-2 rounded-full">Vocab Quest 📝</span>
+                    <div class="text-base font-bold text-gray-400"><span id="m2-counter">1</span> / 10</div>
+                </div>
+
+                <div id="m2-quiz-container" class="flex-1 flex flex-col justify-center w-full">
+                    <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-md w-full mb-6 relative">
+                        <div class="absolute -top-4 right-6 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full border border-amber-200 shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-lightbulb"></i> <span id="m2-hint-text">Hint</span>
+                        </div>
+                        <p class="text-sm font-bold text-emerald-500 uppercase tracking-widest mb-4">Fill in the blank</p>
+                        <h2 id="m2-question-text" class="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed">Loading question...</h2>
+                    </div>
+                    <div id="m2-options-container" class="flex flex-col gap-4 w-full">
+                        <!-- Options injected via JS -->
+                    </div>
+                </div>
+
+                <div id="m2-result-container" class="hidden flex-1 flex-col items-center justify-center w-full text-center">
+                    <div class="text-7xl mb-4">🏆</div>
+                    <h2 class="text-3xl font-extrabold text-gray-800 mb-2">Practice Complete!</h2>
+                    <p class="text-lg text-gray-600 mb-8">You scored <span id="m2-final-score" class="font-bold text-emerald-600 text-2xl">0</span> out of 10.</p>
+                    
+                    <div class="flex flex-col gap-4 w-full max-w-xs">
+                        <button onclick="startM2('A')" class="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-2xl font-bold shadow-md active:scale-95 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-rotate-right"></i> Play Again (Reshuffle)
+                        </button>
+                        <button onclick="navTo('lobby')" class="bg-white border-2 border-gray-200 hover:bg-gray-50 text-gray-700 py-3 px-6 rounded-2xl font-bold shadow-sm active:scale-95 transition">
+                            Claim EXP & Exit
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= ZONE C MENU (NUMBER DRILL) ================= -->
+            <div id="view-zone-c-menu" class="view-section flex-col gap-6 h-full max-w-3xl mx-auto w-full p-6 md:p-0">
+                <button onclick="navTo('lobby')" class="self-start bg-white px-5 py-2.5 rounded-full text-sm font-bold text-gray-600 shadow-sm border border-gray-200 active:scale-95 hover:bg-gray-50"><i class="fa-solid fa-arrow-left mr-2"></i>Back</button>
+                <h2 class="text-3xl font-extrabold text-amber-900">Zone C: Number & Date Drill 🔢</h2>
+                <p class="text-gray-600">Select a category to practice your pronunciation. All modes are endlessly generated!</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="startZoneC('prices')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-green-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Endless</div>
+                        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-3xl text-green-600"><i class="fa-solid fa-dollar-sign"></i></div>
+                        <h4 class="text-lg font-bold text-gray-800">Prices</h4>
+                    </button>
+                    <button onclick="startZoneC('dates')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-blue-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Endless</div>
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl text-blue-600"><i class="fa-regular fa-calendar-days"></i></div>
+                        <h4 class="text-lg font-bold text-gray-800">Dates</h4>
+                    </button>
+                    <button onclick="startZoneC('times')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-purple-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-purple-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Endless</div>
+                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-3xl text-purple-600"><i class="fa-regular fa-clock"></i></div>
+                        <h4 class="text-lg font-bold text-gray-800">Times</h4>
+                    </button>
+                    <button onclick="startZoneC('measurements')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-orange-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Endless</div>
+                        <div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center text-3xl text-orange-600"><i class="fa-solid fa-ruler-combined"></i></div>
+                        <h4 class="text-lg font-bold text-gray-800">Measurements</h4>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= ZONE C: DRILL UI ================= -->
+            <div id="view-zone-c-drill" class="view-section flex-col h-full relative max-w-2xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-6">
+                    <button onclick="navTo('zone-c-menu')" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <span id="zc-badge" class="bg-amber-100 text-amber-700 text-sm font-bold px-4 py-2 rounded-full">Drill 🔢</span>
+                    <div class="text-base font-bold text-gray-400" id="zc-counter-box"><span class="text-blue-500"><i class="fa-solid fa-infinity"></i> Endless</span></div>
+                </div>
+
+                <div class="flex-1 flex flex-col items-center justify-center">
+                    <p class="text-gray-500 font-bold uppercase tracking-widest mb-4 text-sm" id="zc-type">Read Aloud</p>
+                    <div class="bg-white border-4 border-amber-200 rounded-3xl p-10 shadow-lg w-full text-center mb-10">
+                        <h1 id="zc-target" class="text-3xl md:text-5xl font-extrabold text-gray-800 tracking-wider">$180,000</h1>
+                    </div>
+                    
+                    <button onclick="checkZoneC()" class="w-full max-w-md bg-amber-500 hover:bg-amber-600 text-white py-5 rounded-2xl font-bold text-xl shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-microphone-lines"></i> Tap to Speak
+                    </button>
+                    
+                    <button id="zc-skip-btn" onclick="skipZoneC()" class="mt-4 text-gray-400 font-bold text-sm underline">Skip to next</button>
+                </div>
+            </div>
+
+            <!-- ================= ZONE D: ASSESSMENT PREP ================= -->
+            <div id="view-zone-d" class="view-section flex-col h-full relative max-w-4xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-violet-100 rounded-lg flex items-center justify-center text-violet-600 text-xl"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h2 class="text-2xl font-extrabold text-violet-900">Assessment Prep</h2>
+                    </div>
+                    <button onclick="navTo('lobby')" class="bg-white px-4 py-2 rounded-full text-sm font-bold text-gray-600 shadow-sm border border-gray-200 active:scale-95 hover:bg-gray-50"><i class="fa-solid fa-arrow-left mr-2"></i>Back</button>
+                </div>
+
+                <p class="text-gray-600 mb-4 text-sm">Paste your own script below to practise text-to-speech and record your audio.</p>
+                
+                <textarea id="zd-script" class="w-full h-48 bg-white border border-gray-200 rounded-2xl p-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-400 resize-none shadow-sm mb-4" placeholder="Paste your script here..."></textarea>
+
+                <div class="bg-violet-50/50 border border-violet-100 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <p class="text-xs text-gray-500 font-bold"><i class="fa-solid fa-circle-info mr-1"></i> Uses global Voice/Speed settings (Gear icon in header)</p>
+                    <div class="flex gap-2">
+                        <button onclick="playTTS()" class="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-md transition flex items-center gap-2"><i class="fa-solid fa-volume-high"></i> Listen</button>
+                        <button onclick="stopTTS()" class="bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 px-6 py-2.5 rounded-xl font-bold text-sm shadow-sm transition flex items-center gap-2"><i class="fa-solid fa-stop"></i> Stop</button>
+                    </div>
+                </div>
+
+                <!-- Recording Controls -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-6 flex flex-col items-center justify-center shadow-sm pb-10">
+                    <h3 class="text-gray-700 font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-microphone text-rose-500"></i> Audio Recording</h3>
+                    <button id="zd-btn-record" onclick="toggleRecording()" class="bg-rose-500 hover:bg-rose-600 text-white px-8 py-3 rounded-full font-bold shadow-md transition flex items-center gap-2 w-full max-w-xs justify-center">
+                        <i class="fa-solid fa-microphone"></i> Start Recording
+                    </button>
+                    
+                    <div id="zd-audio-container" class="w-full mt-6 hidden flex-col items-center gap-4">
+                        <audio id="zd-audio-player" controls class="w-full max-w-md"></audio>
+                        <div class="flex gap-3 w-full max-w-md">
+                            <a id="zd-download-link" class="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2.5 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center"><i class="fa-solid fa-download mr-2"></i>Download</a>
+                            <button onclick="shareToWhatsApp()" class="flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white py-2.5 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center"><i class="fa-brands fa-whatsapp mr-2"></i>Share File</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= MISSION 1: UNIT SELECTION ================= -->
+            <div id="view-m1-select" class="view-section flex-col gap-6 h-full max-w-3xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-2">
+                    <button id="btn-m1-select-back" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-left"></i></button>
+                    <span class="bg-blue-100 text-blue-700 text-sm font-bold px-4 py-2 rounded-full">Select Unit 📚</span>
+                    <div class="w-12"></div>
+                </div>
+                <div id="unit-buttons-container" class="grid grid-cols-2 md:grid-cols-3 gap-4 overflow-y-auto pb-10"></div>
+            </div>
+
+            <!-- ================= MISSION 1: LINGO SWIPE ================= -->
+            <div id="view-m1" class="view-section flex-col h-full items-center relative max-w-2xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-6">
+                    <button onclick="navTo('m1-select')" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-left"></i></button>
+                    <span id="m1-current-unit-badge" class="bg-blue-100 text-blue-700 text-sm font-bold px-4 py-2 rounded-full">Unit 1</span>
+                    <div class="w-12"></div>
+                </div>
+                <div class="flip-card cursor-pointer w-full" id="vocab-card" onclick="flipCard()">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front relative overflow-hidden">
+                            <h1 id="card-word" class="text-4xl md:text-5xl font-extrabold tracking-wide text-center px-4 mt-4">operations</h1>
+                            <p class="text-white/80 mt-10 text-sm bg-white/20 px-5 py-2.5 rounded-full"><i class="fa-solid fa-hand-pointer mr-2"></i>Tap to reveal</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-2 mt-6">Syllables 🗣️</p>
+                            <h2 id="card-syllables" class="text-2xl md:text-3xl font-bold text-indigo-600 mb-6">op • er • a • tions</h2>
+                            <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-2">Meaning 📖</p>
+                            <p id="card-meaning" class="text-xl md:text-2xl text-gray-800 font-bold mb-8">營運 (n.)</p>
+                            <div class="flex gap-4 w-full px-4 mt-auto">
+                                <button onclick="event.stopPropagation(); playAudio(document.getElementById('card-word').innerText)" class="flex-1 bg-indigo-50 text-indigo-700 py-4 rounded-2xl font-bold active:scale-95 transition border border-indigo-100 hover:bg-indigo-100">
+                                    <i class="fa-solid fa-volume-high mr-2"></i>Listen
+                                </button>
+                                <button onclick="event.stopPropagation(); startVoiceCheck(document.getElementById('card-word').innerText)" class="flex-1 bg-rose-50 text-rose-700 py-4 rounded-2xl font-bold active:scale-95 transition border border-rose-100 hover:bg-rose-100">
+                                    <i class="fa-solid fa-microphone mr-2"></i>Speak
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center w-full mt-10 px-4">
+                    <button onclick="prevCard()" class="w-14 h-14 rounded-full bg-white shadow-md flex items-center justify-center text-gray-600 active:scale-90 transition hover:bg-gray-50"><i class="fa-solid fa-arrow-left text-xl"></i></button>
+                    <div class="text-base font-bold text-gray-400"><span id="card-counter" class="text-gray-800 text-2xl">1</span> / <span id="card-total">10</span></div>
+                    <button onclick="nextCard()" class="w-14 h-14 rounded-full bg-white shadow-md flex items-center justify-center text-gray-600 active:scale-90 transition hover:bg-gray-50"><i class="fa-solid fa-arrow-right text-xl"></i></button>
+                </div>
+            </div>
+
+            <!-- ================= MISSION 3A: INTRO (NON-VERBAL) ================= -->
+            <div id="view-m3-a-intro" class="view-section flex-col h-full relative max-w-3xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-4">
+                    <button onclick="navTo('zone-a')" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <span class="bg-purple-100 text-purple-700 text-sm font-bold px-4 py-2 rounded-full">Briefing Prep 💡</span>
+                    <div class="w-12"></div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-6 shadow-md border border-gray-100 mb-6 flex-1 overflow-y-auto">
+                    <h3 class="text-2xl font-extrabold text-gray-800 mb-2">Non-verbal Skills</h3>
+                    <p class="text-gray-500 text-sm mb-6">Before you start, remember these key points for a professional briefing:</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-2xl">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-eye"></i></div>
+                            <div><h4 class="font-bold text-gray-800">Eye Contact</h4><p class="text-sm text-gray-600">Maintain steady eye contact with your audience to build trust.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-2xl">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-child-reaching"></i></div>
+                            <div><h4 class="font-bold text-gray-800">Posture</h4><p class="text-sm text-gray-600">Stand straight and confident. Avoid crossing your arms.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-2xl">
+                            <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-face-smile"></i></div>
+                            <div><h4 class="font-bold text-gray-800">Facial Expression</h4><p class="text-sm text-gray-600">Smile naturally to appear approachable and friendly.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+                            <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-person-chalkboard"></i></div>
+                            <div><h4 class="font-bold text-indigo-800">Click PPT</h4><p class="text-sm text-indigo-600">Remember to click the presentation slides at the right moment to keep your audience engaged.</p></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="navTo('m3-a-video')" class="w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition">
+                    Next: Watch Demo <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+
+            <!-- ================= MISSION 3A: VIDEO DEMO ================= -->
+            <div id="view-m3-a-video" class="view-section flex-col h-full relative max-w-3xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-4">
+                    <button onclick="navTo('m3-a-intro')" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-left"></i></button>
+                    <span class="bg-purple-100 text-purple-700 text-sm font-bold px-4 py-2 rounded-full">Demo Video 🎬</span>
+                    <div class="w-12"></div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-4 shadow-md border border-gray-100 mb-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 px-2">Watch & Learn</h3>
+                    
+                    <!-- 真正嘅影片播放器 -->
+                    <div class="w-full bg-black rounded-2xl aspect-video relative flex items-center justify-center overflow-hidden shadow-inner mb-4">
+                        <video controls class="w-full h-full object-cover">
+                            <source src="Demo_Briefing.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 px-2">Observe how the speaker uses the non-verbal skills discussed previously. Once you are ready, proceed to record your own briefing.</p>
+                </div>
+                
+                <button onclick="startM3A()" class="w-full mt-auto bg-rose-500 hover:bg-rose-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition">
+                    Start Recording Practice <i class="fa-solid fa-microphone ml-2"></i>
+                </button>
+            </div>
+
+            <!-- ================= MISSION 3A: PRACTICE ================= -->
+            <div id="view-m3-a" class="view-section flex-col h-full relative max-w-3xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-4 shrink-0">
+                    <button onclick="navTo('m3-a-video')" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-left"></i></button>
+                    <span class="bg-purple-100 text-purple-700 text-sm font-bold px-4 py-2 rounded-full">Briefing Practice 💼</span>
+                    <div class="text-sm font-bold text-gray-400"><span id="m3a-progress">1/5</span></div>
+                </div>
+                <div class="bg-white rounded-3xl p-6 shadow-md border border-gray-100 flex-1 flex flex-col overflow-y-auto">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span id="m3a-section-title" class="bg-gray-800 text-white text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">1. Introduction</span>
+                    </div>
+                    
+                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 relative">
+                        <div class="absolute -top-3 -right-2 text-2xl">💡</div>
+                        <p class="text-xs font-bold text-amber-800 uppercase mb-1">Quick Tip</p>
+                        <p id="m3a-hint" class="text-sm text-amber-900 font-medium">Revisit Unit 1 for the expressions we use to start a briefing.</p>
+                    </div>
+
+                    <p class="text-sm text-gray-500 font-bold mb-2 uppercase tracking-wider">Read the script aloud:</p>
+                    <h3 id="m3a-sentence" class="text-lg md:text-xl font-bold text-gray-800 leading-relaxed mb-8">
+                        "Good morning. I'm Carol Yeung from the Event Management & Operations Section. Today, I'm going to brief you on an event order."
+                    </h3>
+                    <button onclick="checkM3ASentence()" class="mt-auto w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-microphone-lines"></i> Tap to Speak
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= MISSION 3B: TELEPHONE SCRIPT ================= -->
+            <div id="view-m3-b" class="view-section flex-col h-full relative max-w-3xl mx-auto w-full p-6 md:p-0">
+                <div class="w-full flex justify-between items-center mb-4 shrink-0">
+                    <button onclick="navTo('zone-b')" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <span class="bg-rose-100 text-rose-700 text-sm font-bold px-4 py-2 rounded-full">Call Script Reader 📞</span>
+                    <div class="text-sm font-bold text-gray-400"><span id="m3b-progress">1/6</span></div>
+                </div>
+
+                <div class="flex-1 flex flex-col gap-4 overflow-y-auto pb-4">
+                    <div class="bg-gray-50 rounded-3xl p-5 border border-gray-200 shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"><i class="fa-solid fa-user mr-1"></i> Client</span>
+                            <button onclick="playAudio(document.getElementById('m3b-client-text').innerText)" class="text-rose-500 hover:bg-rose-50 p-2 rounded-full"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <p id="m3b-client-text" class="text-gray-700 text-lg">"Good morning. Estate Pro Co. Ltd. Henry Lee speaking. How may I help you?"</p>
+                    </div>
+
+                    <div id="user-script-box" class="bg-white rounded-3xl p-6 border-2 border-indigo-400 shadow-md script-active relative mt-2">
+                        <span class="absolute -top-3 left-6 bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">You</span>
+                        <p id="m3b-user-hint" class="text-xs text-indigo-500 font-bold mb-3 italic">(Hint: Greet the client and state your purpose)</p>
+                        <h3 id="m3b-user-text" class="text-lg md:text-xl font-bold text-gray-800 leading-relaxed mb-6">
+                            "Good morning. This is Rocky Poon from the International Hotel. We've received your enquiry about our event packages. May I know more about your event?"
+                        </h3>
+                        <button onclick="checkM3BScript()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-microphone"></i> Read Your Line
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Toast -->
+            <div id="toast-feedback" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 w-[90%] max-w-md opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+                <div class="bg-gray-800 text-white text-center py-4 px-6 rounded-2xl shadow-2xl text-base font-bold w-full" id="toast-text">
+                    Listening...
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // --- Global Settings ---
+        function toggleSettings() {
+            const modal = document.getElementById('settings-modal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+
+        function getVoiceSettings() {
+            return {
+                lang: document.getElementById('global-voice').value,
+                rate: parseFloat(document.getElementById('global-speed').value)
+            };
+        }
+
+        // --- Global State ---
+        let exp = 0;
+        
+        // --- Data: M1 Lingo Swipe (Units 1-13) ---
+        const zoneAUnits = ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"];
+        const zoneBUnits = ["Unit 7", "Unit 8", "Unit 9", "Unit 10", "Unit 11", "Unit 12", "Unit 13"];
+        const fullVocab = [
+            { unit: "Unit 1", word: "operations", syllables: "op • er • a • tions", meaning: "營運 (n.)" },
+            { unit: "Unit 2", word: "venue", syllables: "ven • ue", meaning: "場地 (n.)" },
+            { unit: "Unit 7", word: "itinerary", syllables: "i • tin • er • ar • y", meaning: "行程 (n.)" },
+            { unit: "Unit 8", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" }
+        ];
+
+        // --- Data: M2 Vocab Quest (Word Master Style) ---
+        const wordMasterBank = [
+            { id: 1, word: "operations", meaning: "營運 (n.)", q: "The ________ team is responsible for managing the backstage.", options: ["operations", "venue", "itinerary"], ans: 0 },
+            { id: 2, word: "venue", meaning: "場地 (n.)", q: "The event ________ will be set up in the Grand Ballroom.", options: ["operations", "venue", "itinerary"], ans: 1 },
+            { id: 3, word: "itinerary", meaning: "行程 (n.)", q: "Please check the ________ for tomorrow's city tour schedule.", options: ["complimentary", "operations", "itinerary"], ans: 2 },
+            { id: 4, word: "complimentary", meaning: "免費贈送的 (adj.)", q: "We offer ________ Wi-Fi for all hotel guests.", options: ["complimentary", "venue", "itinerary"], ans: 0 },
+            { id: 5, word: "promotional", meaning: "推廣的 (adj.)", q: "Our new event ________ package includes free parking.", options: ["venue", "promotional", "operations"], ans: 1 },
+            { id: 6, word: "accommodate", meaning: "容納 (v.)", q: "The ballroom can ________ up to 300 guests.", options: ["accommodate", "operations", "venue"], ans: 0 },
+            { id: 7, word: "refreshments", meaning: "茶點 (n.)", q: "We will serve light ________ during the break.", options: ["itinerary", "refreshments", "operations"], ans: 1 },
+            { id: 8, word: "enquiry", meaning: "查詢 (n.)", q: "Thank you for your ________ regarding our hotel services.", options: ["enquiry", "venue", "complimentary"], ans: 0 },
+            { id: 9, word: "reservation", meaning: "預訂 (n.)", q: "I would like to make a ________ for a double room.", options: ["operations", "reservation", "itinerary"], ans: 1 },
+            { id: 10, word: "assistance", meaning: "協助 (n.)", q: "Please let us know if you need any further ________.", options: ["assistance", "venue", "promotional"], ans: 0 },
+            { id: 11, word: "amenities", meaning: "設施 (n.)", q: "The hotel provides luxury ________ in every room.", options: ["amenities", "operations", "reservation"], ans: 0 },
+            { id: 12, word: "coordinate", meaning: "協調 (v.)", q: "We need to ________ with the catering team for the lunch arrangement.", options: ["coordinate", "venue", "accommodate"], ans: 0 }
+        ];
+        
+        let m2Questions = []; 
+        let m2Index = 0; 
+        let m2Score = 0;
+        let mistakeIds = new Set(); // Stores IDs of words the user got wrong
+
+        // --- Data: M3A & M3B ---
+        const m3aData = [
+            { section: "1. Introduction", hint: "Revisit Unit 1 for the expressions we use to start a briefing.", text: "Good morning. I'm Carol Yeung from the Event Management & Operations Section. Today, I'm going to brief you on an event order." },
+            { section: "2. Background Information", hint: "Revisit Unit 2 for the expressions we use to introduce event details.", text: "Let's start with the background information. Football Stars will be holding a press conference at our hotel on the 21st of July, from 5:30 pm to 7:30 pm at our Rooftop Garden. There will be 80 guests." },
+            { section: "3. Duties of Different Teams", hint: "Revisit Units 3 & 4 for the expressions we use to describe the duties of different teams.", text: "For the duties of different teams, would the Marketing Team please manage the social media live stream? For the Security Team, please schedule regular patrols including the event venue and the hotel entrances. Also, the Housekeeping Team should arrange a restroom attendant to ensure supplies of amenities, and the Facilities Management Team will be setting up the event venue." },
+            { section: "4. Invitation", hint: "Revisit Unit 5 for the expressions we use to make invitation.", text: "To conduct a final venue inspection, we will have a pre-event meeting at 3 pm next Monday. Please feel free to join us." },
+            { section: "5. Closing", hint: "Revisit Unit 1 for the expressions we use to end a briefing.", text: "If you have any questions, please feel free to contact me. Thank you." }
+        ];
+
+        const m3bScriptData = [
+            { client: "Good morning. Estate Pro Co. Ltd. Henry Lee speaking. How may I help you?", hint: "(Hint: Greet the client and state your purpose)", you: "Good morning. This is Rocky Poon from the International Hotel. We've received your enquiry about our event packages. May I know more about your event?" },
+            { client: "Certainly. We plan to organise a full-day Real Estate Showroom for around 300 people in April. Are there any suitable packages available?", hint: "(Hint: Describe the details of the package)", you: "Sure! Our Show & Tell Package would be perfect for your event. The package includes 12 hours' use of our Grand Ballroom. It covers 7,000 square feet of space, and it can accommodate up to 300 guests. The venue features a grand layout, including an 8-metre high ceiling and a 360-degree harbour view. Also, the package includes free-flow soft drinks during the event. The package is priced at $180,000 per event." },
+            { client: "Wonderful! Do you offer any refreshments?", hint: "(Hint: Describe the add-on items)", you: "You can add our dim sum refreshment package for only HK$80 per person. Also, you can book our private meeting rooms for HK$2,000 per day." },
+            { client: "That's helpful to know. Are there any special offers available for business events?", hint: "(Hint: Describe the conditional offers & offer help)", you: "For bookings made 3 months in advance, we'll offer free parking for up to 5 vehicles on the event day. Would you like to book this package now?" },
+            { client: "I see. I'll have to discuss this with my team members before making a decision.", hint: "(Hint: Be polite and offer future assistance)", you: "No problem. Feel free to call us if you want to make a reservation. Is there anything else I can help you with?" },
+            { client: "That's all for now. Thank you.", hint: "(Hint: End the call professionally)", you: "You're most welcome. Have a great day!" }
+        ];
+
+        // --- Zone C: Endless Generators ---
+        const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const ordinals = ["1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th","13th","14th","15th","16th","17th","18th","19th","20th","21st","22nd","23rd","24th","25th","26th","27th","28th","29th","30th","31st"];
+        
+        function generateRandomDate() {
+            const d = days[Math.floor(Math.random() * days.length)];
+            const m = months[Math.floor(Math.random() * months.length)];
+            const ord = ordinals[Math.floor(Math.random() * ordinals.length)];
+            return { target: `${d}, ${ord} ${m}`, matchStr: parseInt(ord).toString() };
+        }
+        function generateRandomPrice() {
+            const amounts = [50, 120, 500, 1500, 12000, 180000, 2500000];
+            const val = amounts[Math.floor(Math.random() * amounts.length)];
+            const currency = Math.random() > 0.5 ? "$" : "HK$";
+            return { target: `${currency}${val.toLocaleString()}`, matchStr: val.toString() };
+        }
+        function generateRandomTime() {
+            const hrs = Math.floor(Math.random() * 12) + 1;
+            const mins = ["00", "15", "30", "45"][Math.floor(Math.random() * 4)];
+            const ampm = Math.random() > 0.5 ? "am" : "pm";
+            return { target: `${hrs}:${mins} ${ampm}`, matchStr: hrs.toString() }; 
+        }
+        function generateRandomMeasurement() {
+            const units = ["sq ft", "sq m", "metres high"];
+            const unit = units[Math.floor(Math.random() * units.length)];
+            const val = Math.floor(Math.random() * 900) + 100;
+            return { target: `${val.toLocaleString()} ${unit}`, matchStr: val.toString() };
+        }
+
+        // --- State Variables ---
+        let currentVocabList = []; let m1Index = 0;
+        let m3aIndex = 0; let m3bIndex = 0; 
+        let zcCategory = ''; let zcCurrentData = null;
+
+        // --- Core Functions ---
+        function navTo(viewId) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('view-' + viewId).classList.add('active');
+            const header = document.getElementById('main-header');
+            if(viewId === 'landing') header.classList.add('hidden');
+            else header.classList.remove('hidden');
+        }
+
+        function addExp(amount) {
+            exp += amount; if(exp > 1000) exp = 1000;
+            document.getElementById('exp-text').innerText = exp;
+            document.getElementById('exp-text-header').innerText = exp;
+            document.getElementById('exp-bar').style.width = (exp / 1000 * 100) + '%';
+            let rank = "Trainee 🥉";
+            if(exp >= 400) rank = "Pro Server 🥈";
+            if(exp >= 800) rank = "Manager 🥇";
+            document.getElementById('user-rank').innerText = rank;
+            showToast(`🎉 +${amount} EXP Earned!`, true);
+        }
+
+        function showToast(msg, isSuccess) {
+            const fb = document.getElementById('toast-feedback');
+            const text = document.getElementById('toast-text');
+            text.innerText = msg;
+            text.className = isSuccess ? 'bg-emerald-500 text-white text-center py-4 px-6 rounded-2xl shadow-2xl text-base font-bold w-full' : 'bg-rose-500 text-white text-center py-4 px-6 rounded-2xl shadow-2xl text-base font-bold w-full';
+            fb.style.opacity = '1';
+            setTimeout(() => { fb.style.opacity = '0'; }, 3000);
+        }
+
+        // --- M1: Lingo Swipe ---
+        function openUnitSelect(zone) {
+            const container = document.getElementById('unit-buttons-container');
+            container.innerHTML = '';
+            const unitsToShow = zone === 'A' ? zoneAUnits : zoneBUnits;
+            
+            unitsToShow.forEach(unit => {
+                const btn = document.createElement('button');
+                btn.className = `w-full bg-white border-2 border-gray-100 p-4 rounded-2xl text-center font-bold text-gray-700 text-sm active:scale-95 transition shadow-sm hover:border-blue-400`;
+                btn.innerText = unit;
+                btn.onclick = () => startM1(unit);
+                container.appendChild(btn);
+            });
+            document.getElementById('btn-m1-select-back').onclick = () => navTo(zone === 'A' ? 'zone-a' : 'zone-b');
+            navTo('m1-select');
+        }
+        function startM1(selectedUnit) {
+            currentVocabList = fullVocab.filter(item => item.unit === selectedUnit);
+            if(currentVocabList.length === 0) currentVocabList = [{ unit: selectedUnit, word: "Coming Soon", syllables: "-", meaning: "即將推出" }];
+            m1Index = 0;
+            document.getElementById('m1-current-unit-badge').innerText = selectedUnit;
+            updateM1(); navTo('m1');
+            document.getElementById('vocab-card').classList.remove('flipped');
+        }
+        function updateM1() {
+            const data = currentVocabList[m1Index];
+            document.getElementById('card-word').innerText = data.word;
+            document.getElementById('card-syllables').innerText = data.syllables;
+            document.getElementById('card-meaning').innerText = data.meaning;
+            document.getElementById('card-counter').innerText = m1Index + 1;
+            document.getElementById('card-total').innerText = currentVocabList.length;
+        }
+        function flipCard() { document.getElementById('vocab-card').classList.toggle('flipped'); }
+        function nextCard() {
+            if (m1Index < currentVocabList.length - 1) {
+                document.getElementById('vocab-card').classList.remove('flipped');
+                setTimeout(() => { m1Index++; updateM1(); }, 200);
+            } else { addExp(50); navTo('m1-select'); }
+        }
+        function prevCard() {
+            if (m1Index > 0) {
+                document.getElementById('vocab-card').classList.remove('flipped');
+                setTimeout(() => { m1Index--; updateM1(); }, 200);
+            }
+        }
+
+        // --- M2: Vocab Quest (Word Master Style) ---
+        function startM2(zone) {
+            m2Questions = [];
+            
+            // 1. Prioritize mistakes from previous rounds
+            let mistakePool = wordMasterBank.filter(w => mistakeIds.has(w.id));
+            // 2. Fill the rest with random words
+            let remainingPool = wordMasterBank.filter(w => !mistakeIds.has(w.id));
+            
+            // Shuffle pools
+            mistakePool.sort(() => 0.5 - Math.random());
+            remainingPool.sort(() => 0.5 - Math.random());
+            
+            // Combine to get 10 questions
+            let combined = [...mistakePool, ...remainingPool];
+            m2Questions = combined.slice(0, 10);
+            
+            // Shuffle the final 10 questions so mistakes aren't always first
+            m2Questions.sort(() => 0.5 - Math.random());
+
+            m2Index = 0; m2Score = 0;
+            
+            // Render Review List
+            const reviewList = document.getElementById('m2-review-list');
+            reviewList.innerHTML = '';
+            m2Questions.forEach(q => {
+                const isMistake = mistakeIds.has(q.id);
+                const item = document.createElement('div');
+                item.className = `flex justify-between items-center p-4 rounded-2xl border ${isMistake ? 'bg-rose-50 border-rose-200' : 'bg-gray-50 border-gray-100'}`;
+                item.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-lg">${q.word}</h4>
+                        <p class="text-sm text-gray-500">${q.meaning}</p>
+                    </div>
+                    ${isMistake ? '<span class="text-xs font-bold bg-rose-200 text-rose-700 px-2 py-1 rounded">Needs Review</span>' : ''}
+                `;
+                reviewList.appendChild(item);
+            });
+
+            navTo('m2-review');
+        }
+
+        function startM2Quiz() {
+            document.getElementById('m2-quiz-container').classList.remove('hidden');
+            document.getElementById('m2-result-container').classList.add('hidden');
+            renderM2(); 
+            navTo('m2-daily');
+        }
+
+        function renderM2() {
+            const q = m2Questions[m2Index];
+            document.getElementById('m2-counter').innerText = m2Index + 1;
+            document.getElementById('m2-question-text').innerText = q.q;
+            document.getElementById('m2-hint-text').innerText = q.meaning; // Show Chinese meaning as hint
+            
+            const container = document.getElementById('m2-options-container');
+            container.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left bg-gray-50 hover:bg-emerald-50 border-2 border-gray-200 hover:border-emerald-400 rounded-2xl p-4 font-bold text-gray-700 transition active:scale-95";
+                btn.innerText = opt;
+                btn.onclick = () => checkM2Answer(idx, q.ans, q.id);
+                container.appendChild(btn);
+            });
+        }
+
+        function checkM2Answer(selected, correct, wordId) {
+            if(selected === correct) {
+                showToast("✅ Correct!", true);
+                m2Score++;
+                mistakeIds.delete(wordId); // Remove from mistakes if correct
+            } else {
+                showToast("❌ Incorrect!", false);
+                mistakeIds.add(wordId); // Add to mistakes if wrong
+            }
+            
+            setTimeout(() => {
+                if(m2Index < 9) {
+                    m2Index++; renderM2();
+                } else {
+                    document.getElementById('m2-quiz-container').classList.add('hidden');
+                    document.getElementById('m2-result-container').classList.remove('hidden');
+                    document.getElementById('m2-result-container').classList.add('flex');
+                    document.getElementById('m2-final-score').innerText = m2Score;
+                    addExp(m2Score * 10);
+                }
+            }, 1000);
+        }
+
+        // --- M3A: Briefing Simulator ---
+        function startM3AIntro() { navTo('m3-a-intro'); }
+        function startM3A() { m3aIndex = 0; renderM3A(); navTo('m3-a'); }
+        function renderM3A() {
+            const data = m3aData[m3aIndex];
+            document.getElementById('m3a-progress').innerText = `${m3aIndex + 1}/${m3aData.length}`;
+            document.getElementById('m3a-section-title').innerText = data.section;
+            document.getElementById('m3a-hint').innerText = data.hint;
+            document.getElementById('m3a-sentence').innerText = `"${data.text}"`;
+        }
+        function checkM3ASentence() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
+            
+            let targetText = m3aData[m3aIndex].text.replace(/[.,"]/g, '').toLowerCase();
+            let keyWords = targetText.split(' ').filter(w => w.length > 3); 
+            
+            const rec = new SR(); rec.lang = getVoiceSettings().lang;
+            showToast("🎤 Reading aloud...", true); rec.start();
+            rec.onresult = (e) => {
+                const spoken = e.results[0][0].transcript.toLowerCase();
+                let matchCount = 0;
+                keyWords.forEach(kw => { if(spoken.includes(kw)) matchCount++; });
+                
+                if (matchCount >= keyWords.length * 0.3 || spoken.length > 15) {
+                    showToast(`🌟 Excellent Delivery!`, true);
+                    setTimeout(() => {
+                        if(m3aIndex < m3aData.length - 1) { m3aIndex++; renderM3A(); }
+                        else { addExp(200); navTo('zone-a'); }
+                    }, 1500);
+                } else { showToast(`❌ Please speak louder and clearer!`, false); }
+            };
+        }
+
+        // --- M3B: Telephone Script Reader ---
+        function startM3B() { m3bIndex = 0; renderM3B(); navTo('m3-b'); }
+        function renderM3B() {
+            const data = m3bScriptData[m3bIndex];
+            document.getElementById('m3b-progress').innerText = `${m3bIndex + 1}/${m3bScriptData.length}`;
+            document.getElementById('m3b-client-text').innerText = `"${data.client}"`;
+            document.getElementById('m3b-user-hint').innerText = data.hint;
+            document.getElementById('m3b-user-text').innerText = `"${data.you}"`;
+        }
+        function checkM3BScript() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
+            
+            let targetText = m3bScriptData[m3bIndex].you.replace(/[.,"$]/g, '').toLowerCase();
+            let keyWords = targetText.split(' ').filter(w => w.length > 4); 
+            
+            const rec = new SR(); rec.lang = getVoiceSettings().lang;
+            showToast("🎤 Reading your line...", true); rec.start();
+            rec.onresult = (e) => {
+                const spoken = e.results[0][0].transcript.toLowerCase();
+                let matchCount = 0;
+                keyWords.forEach(kw => { if(spoken.includes(kw)) matchCount++; });
+                
+                if (matchCount >= keyWords.length * 0.3 || spoken.length > 15) {
+                    showToast(`🌟 Great Job!`, true);
+                    setTimeout(() => {
+                        if(m3bIndex < m3bScriptData.length - 1) { m3bIndex++; renderM3B(); }
+                        else { addExp(250); navTo('zone-b'); }
+                    }, 1500);
+                } else { showToast(`❌ Please try again!`, false); }
+            };
+        }
+
+        // --- Zone C: Endless Number & Date Drill ---
+        function startZoneC(category) {
+            zcCategory = category;
+            renderZoneC(); navTo('zone-c-drill');
+        }
+        
+        function renderZoneC() {
+            if(zcCategory === 'dates') zcCurrentData = generateRandomDate();
+            else if(zcCategory === 'prices') zcCurrentData = generateRandomPrice();
+            else if(zcCategory === 'times') zcCurrentData = generateRandomTime();
+            else if(zcCategory === 'measurements') zcCurrentData = generateRandomMeasurement();
+            
+            document.getElementById('zc-type').innerText = `Read the ${zcCategory.slice(0,-1)}`;
+            document.getElementById('zc-target').innerText = zcCurrentData.target;
+        }
+        
+        function skipZoneC() { renderZoneC(); }
+
+        function checkZoneC() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
+            
+            const rec = new SR(); rec.lang = getVoiceSettings().lang;
+            showToast("🎤 Speak now...", true); rec.start();
+            rec.onresult = (e) => {
+                const spoken = e.results[0][0].transcript.toLowerCase();
+                if (spoken.includes(zcCurrentData.matchStr) || spoken.length > 2) {
+                    showToast(`🌟 Correct!`, true);
+                    addExp(10); 
+                    setTimeout(() => { renderZoneC(); }, 1500);
+                } else { showToast(`❌ Try again! You said: ${spoken}`, false); }
+            };
+        }
+
+        // --- Zone D: Assessment Prep (TTS & Record) ---
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+        let currentAudioFile = null;
+
+        function playTTS() {
+            if (!window.speechSynthesis) return showToast("⚠️ TTS not supported.", false);
+            const text = document.getElementById('zd-script').value;
+            if (!text) return showToast("⚠️ Please paste your script first.", false);
+            
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            const settings = getVoiceSettings();
+            utterance.lang = settings.lang;
+            utterance.rate = settings.rate;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function stopTTS() {
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+        }
+
+        async function toggleRecording() {
+            const btn = document.getElementById('zd-btn-record');
+            if (isRecording) {
+                mediaRecorder.stop();
+                isRecording = false;
+                btn.innerHTML = '<i class="fa-solid fa-microphone"></i> Start Recording';
+                btn.className = "bg-rose-500 hover:bg-rose-600 text-white px-8 py-3 rounded-full font-bold shadow-md transition flex items-center gap-2 w-full max-w-xs justify-center";
+            } else {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = [];
+                    currentAudioFile = null;
+                    
+                    mediaRecorder.ondataavailable = e => { if(e.data.size > 0) audioChunks.push(e.data); };
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        currentAudioFile = new File([audioBlob], 'My_Oral_Recording.webm', { type: 'audio/webm' });
+                        
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        document.getElementById('zd-audio-player').src = audioUrl;
+                        document.getElementById('zd-download-link').href = audioUrl;
+                        document.getElementById('zd-download-link').download = 'My_Oral_Recording.webm';
+                        document.getElementById('zd-audio-container').classList.remove('hidden');
+                        document.getElementById('zd-audio-container').classList.add('flex');
+                    };
+                    
+                    mediaRecorder.start();
+                    isRecording = true;
+                    btn.innerHTML = '<i class="fa-solid fa-stop"></i> Stop Recording';
+                    btn.className = "bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-full font-bold shadow-md transition flex items-center gap-2 w-full max-w-xs justify-center animate-pulse";
+                } catch (err) {
+                    showToast("⚠️ Microphone access denied.", false);
+                }
+            }
+        }
+
+        async function shareToWhatsApp() {
+            if (!currentAudioFile) {
+                showToast("⚠️ Please record an audio first.", false);
+                return;
+            }
+            if (navigator.share && navigator.canShare && navigator.canShare({ files: [currentAudioFile] })) {
+                try {
+                    await navigator.share({
+                        title: 'My Oral Recording',
+                        text: 'Hi Teacher, here is my oral recording for the assessment prep!',
+                        files: [currentAudioFile]
+                    });
+                    showToast("✅ Shared successfully!", true);
+                } catch (error) {}
+            } else {
+                const text = encodeURIComponent("Hi Teacher, I have downloaded my oral recording for the assessment prep! I will attach it here.");
+                window.open(`https://wa.me/?text=${text}`, '_blank');
+                showToast("⚠️ Please attach the downloaded file manually.", false);
+            }
+        }
+
+        // --- Shared Audio ---
+        function playAudio(text) {
+            if (!window.speechSynthesis) return;
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text.replace(/["$]/g, ''));
+            const settings = getVoiceSettings();
+            utterance.lang = settings.lang;
+            utterance.rate = settings.rate;
+            window.speechSynthesis.speak(utterance);
+        }
+        function startVoiceCheck(targetWord) {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
+            const rec = new SR(); rec.lang = getVoiceSettings().lang;
+            showToast("🎤 Listening...", true); rec.start();
+            rec.onresult = (e) => {
+                const spoken = e.results[0][0].transcript.toLowerCase().trim();
+                const target = targetWord.toLowerCase().trim();
+                if (spoken.includes(target) || target.includes(spoken)) showToast(`🌟 Perfect!`, true);
+                else showToast(`❌ Try again! You said: "${spoken}"`, false);
+            };
+        }
+    </script>
+</body>
+</html>
