@@ -395,6 +395,8 @@
                             <a id="zd-download-link" class="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2.5 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center"><i class="fa-solid fa-download mr-2"></i>Download</a>
                             <button onclick="shareToWhatsApp()" class="flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white py-2.5 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center"><i class="fa-brands fa-whatsapp mr-2"></i>Share File</button>
                         </div>
+                        <button onclick="checkPronunciationZD()" class="w-full max-w-md bg-violet-500 hover:bg-violet-600 text-white py-3 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center gap-2 mt-1"><i class="fa-solid fa-microphone-lines"></i> Check My Pronunciation</button>
+                        <div id="zd-accuracy-result" class="hidden w-full max-w-md bg-white rounded-2xl p-4 border border-violet-200 shadow-sm text-sm"></div>
                     </div>
                 </div>
             </div>
@@ -1210,18 +1212,31 @@
 
         function checkZoneC() {
             const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
-            
-            const rec = new SR(); rec.lang = getVoiceSettings().lang;
-            showToast("🎤 Speak now...", true); rec.start();
+            if (!SR) return showToast('⚠️ Voice recognition not supported on this browser.', false);
+            const rec = new SR();
+            rec.lang = getVoiceSettings().lang;
+            rec.interimResults = false;
+            showToast('🎤 Speak now...', true);
+            rec.start();
             rec.onresult = (e) => {
-                const spoken = e.results[0][0].transcript.toLowerCase();
-                if (spoken.includes(zcCurrentData.matchStr) || spoken.length > 2) {
-                    showToast(`🌟 Correct!`, true);
-                    addExp(10); 
-                    setTimeout(() => { renderZoneC(); }, 1500);
-                } else { showToast(`❌ Try again! You said: ${spoken}`, false); }
+                const spoken = e.results[0][0].transcript.toLowerCase().trim();
+                const target = zcCurrentData.target.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+                const spokenWords = spoken.split(/\s+/);
+                const targetWords = target.split(/\s+/);
+                let matched = 0;
+                targetWords.forEach(tw => { if (spokenWords.includes(tw)) matched++; });
+                const accuracy = Math.round((matched / targetWords.length) * 100);
+                let feedback, expGain;
+                if (accuracy >= 90) { feedback = '🌟 Excellent!'; expGain = 15; }
+                else if (accuracy >= 70) { feedback = '👍 Good try!'; expGain = 10; }
+                else { feedback = '💪 Keep practising!'; expGain = 5; }
+                const missed = targetWords.filter(tw => !spokenWords.includes(tw));
+                const missedText = missed.length > 0 ? ' | Missed: ' + missed.join(', ') : '';
+                showToast(feedback + ' Accuracy: ' + accuracy + '%' + missedText, accuracy >= 70);
+                addExp(expGain);
+                setTimeout(() => { renderZoneC(); }, 2800);
             };
+            rec.onerror = () => { showToast('⚠️ Could not hear you. Try again!', false); };
         }
 
         // --- Zone D: Assessment Prep (TTS & Record) ---
@@ -1257,23 +1272,29 @@
             } else {
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder = // Auto-detect format: iOS Safari needs mp4, others use webm
+                    const mimeType = MediaRecorder.isTypeSupported('audio/mp4') ? 'audio/mp4' :
+                                     MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' :
+                                     MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : '';
+                    const recOpts = mimeType ? { mimeType } : {};
+                    mediaRecorder = new MediaRecorder(stream, recOpts);
                     audioChunks = [];
                     currentAudioFile = null;
-                    
+
                     mediaRecorder.ondataavailable = e => { if(e.data.size > 0) audioChunks.push(e.data); };
                     mediaRecorder.onstop = () => {
-                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-                        currentAudioFile = new File([audioBlob], 'My_Oral_Recording.webm', { type: 'audio/webm' });
-                        
+                        const ext = mimeType.includes('mp4') ? 'mp4' : 'webm';
+                        const finalType = mimeType || 'audio/webm';
+                        const audioBlob = new Blob(audioChunks, { type: finalType });
+                        currentAudioFile = new File([audioBlob], `My_Oral_Recording.${ext}`, { type: finalType });
                         const audioUrl = URL.createObjectURL(audioBlob);
                         document.getElementById('zd-audio-player').src = audioUrl;
                         document.getElementById('zd-download-link').href = audioUrl;
-                        document.getElementById('zd-download-link').download = 'My_Oral_Recording.webm';
+                        document.getElementById('zd-download-link').download = `My_Oral_Recording.${ext}`;
                         document.getElementById('zd-audio-container').classList.remove('hidden');
                         document.getElementById('zd-audio-container').classList.add('flex');
+                        showToast('✅ Recording saved! Ready to share.', true);
                     };
-                    
                     mediaRecorder.start();
                     isRecording = true;
                     btn.innerHTML = '<i class="fa-solid fa-stop"></i> Stop Recording';
@@ -1282,6 +1303,61 @@
                     showToast("⚠️ Microphone access denied.", false);
                 }
             }
+        }
+
+        function checkPronunciationZD() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SR) return showToast('⚠️ Voice recognition not supported on this browser.', false);
+            const script = document.getElementById('zd-script').value.trim();
+            if (!script) return showToast('⚠️ Please paste your script first!', false);
+
+            const rec = new SR();
+            rec.lang = getVoiceSettings().lang;
+            rec.interimResults = false;
+            showToast('🎤 Read your script aloud now...', true);
+            rec.start();
+
+            rec.onresult = (e) => {
+                const spoken = e.results[0][0].transcript.toLowerCase().trim();
+                const target = script.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+                const spokenWords = spoken.split(/\s+/);
+                const targetWords = target.split(/\s+/);
+
+                // Calculate accuracy
+                let matched = 0;
+                const missedWords = [];
+                targetWords.forEach(tw => {
+                    if (spokenWords.includes(tw)) { matched++; }
+                    else { missedWords.push(tw); }
+                });
+                const accuracy = Math.round((matched / targetWords.length) * 100);
+
+                // Build highlighted result HTML
+                let emoji, feedbackMsg, bgColor;
+                if (accuracy >= 90) { emoji = '🌟'; feedbackMsg = 'Excellent pronunciation!'; bgColor = 'bg-green-50 border-green-200'; }
+                else if (accuracy >= 70) { emoji = '👍'; feedbackMsg = 'Good try! Keep practising.'; bgColor = 'bg-yellow-50 border-yellow-200'; }
+                else { emoji = '💪'; feedbackMsg = 'Keep practising!'; bgColor = 'bg-red-50 border-red-200'; }
+
+                // Word-by-word highlight
+                const highlightedHTML = targetWords.map(w => {
+                    const clean = w.replace(/[^a-z0-9]/g, '');
+                    const correct = spokenWords.includes(clean);
+                    return correct
+                        ? '<span class="text-green-600 font-bold">' + w + '</span>'
+                        : '<span class="text-red-500 font-bold underline">' + w + '</span>';
+                }).join(' ');
+
+                const resultDiv = document.getElementById('zd-accuracy-result');
+                resultDiv.className = 'w-full max-w-md rounded-2xl p-4 border shadow-sm text-sm ' + bgColor;
+                resultDiv.innerHTML =
+                    '<div class="text-lg font-extrabold mb-1">' + emoji + ' Accuracy: ' + accuracy + '% — ' + feedbackMsg + '</div>' +
+                    '<div class="text-xs text-gray-500 mb-2">Green = correct &nbsp;|&nbsp; <span class="text-red-500 underline">Red underline</span> = missed/mispronounced</div>' +
+                    '<div class="leading-7 text-gray-700">' + highlightedHTML + '</div>' +
+                    (missedWords.length > 0 ? '<div class="mt-2 text-red-500 text-xs font-bold">❌ Missed words: ' + missedWords.slice(0, 10).join(', ') + (missedWords.length > 10 ? '...' : '') + '</div>' : '');
+                resultDiv.classList.remove('hidden');
+                addExp(accuracy >= 90 ? 20 : accuracy >= 70 ? 10 : 5);
+            };
+            rec.onerror = () => { showToast('⚠️ Could not hear you. Try again!', false); };
         }
 
         async function shareToWhatsApp() {
