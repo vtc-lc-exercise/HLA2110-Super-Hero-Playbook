@@ -313,7 +313,19 @@
             <div id="view-zone-c-menu" class="view-section flex-col gap-6 h-full max-w-3xl mx-auto w-full p-6 md:p-0">
                 <button onclick="navTo('lobby')" class="self-start bg-white px-5 py-2.5 rounded-full text-sm font-bold text-gray-600 shadow-sm border border-gray-200 active:scale-95 hover:bg-gray-50"><i class="fa-solid fa-arrow-left mr-2"></i>Back</button>
                 <h2 class="text-3xl font-extrabold text-amber-900">Zone C: Number & Date Drill 🔢</h2>
-                <p class="text-gray-600">Select a category to practice your pronunciation. All modes are endlessly generated!</p>
+                <p class="text-gray-600 mb-2">Select a category to practice your pronunciation. All modes are endlessly generated!</p>
+                <!-- System Requirements Warning -->
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6 shadow-sm">
+                    <h3 class="text-amber-800 font-bold flex items-center gap-2 mb-2"><i class="fa-solid fa-bullhorn"></i> System Requirements (系統要求)</h3>
+                    <div class="text-sm text-amber-900 space-y-2">
+                        <p>💻 <strong>Computer (Recommended)</strong> Use Google Chrome or Microsoft Edge.</p>
+                        <p>📱 <strong>Mobile</strong> Use Safari for iPhone, and Google Chrome for Android.</p>
+                        <p class="text-amber-700 italic border-l-4 border-amber-300 pl-3 py-1 my-1">⚠️ Note: Built-in browsers on some mainland Chinese phone brands may not support the voice feature.</p>
+                        <hr class="border-amber-200 my-2">
+                        <p class="text-xs text-amber-700">為了獲得最佳體驗，強烈建議使用電腦 (Chrome/Edge)。手機用戶請使用 Safari (iPhone) 或 Chrome (Android)。部分內地品牌手機的內置瀏覽器可能無法支援語音功能。</p>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-2 gap-4">
                     <button onclick="startZoneC('prices')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-green-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
                         <div class="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Endless</div>
@@ -371,7 +383,18 @@
                 </div>
 
                 <p class="text-gray-600 mb-4 text-sm">Paste your own script below to practise text-to-speech and record your audio.</p>
-                
+                <!-- System Requirements Warning -->
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6 shadow-sm">
+                    <h3 class="text-amber-800 font-bold flex items-center gap-2 mb-2"><i class="fa-solid fa-bullhorn"></i> System Requirements (系統要求)</h3>
+                    <div class="text-sm text-amber-900 space-y-2">
+                        <p>💻 <strong>Computer (Recommended)</strong> Use Google Chrome or Microsoft Edge.</p>
+                        <p>📱 <strong>Mobile</strong> Use Safari for iPhone, and Google Chrome for Android.</p>
+                        <p class="text-amber-700 italic border-l-4 border-amber-300 pl-3 py-1 my-1">⚠️ Note: Built-in browsers on some mainland Chinese phone brands may not support the voice feature.</p>
+                        <hr class="border-amber-200 my-2">
+                        <p class="text-xs text-amber-700">為了獲得最佳體驗，強烈建議使用電腦 (Chrome/Edge)。手機用戶請使用 Safari (iPhone) 或 Chrome (Android)。部分內地品牌手機的內置瀏覽器可能無法支援語音功能。</p>
+                    </div>
+                </div>
+
                 <textarea id="zd-script" class="w-full h-48 bg-white border border-gray-200 rounded-2xl p-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-400 resize-none shadow-sm mb-4" placeholder="Paste your script here..."></textarea>
 
                 <div class="bg-violet-50/50 border border-violet-100 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -1210,41 +1233,109 @@
         
         function skipZoneC() { renderZoneC(); }
 
+        let zcRecognition = null;
+        let isZCSpeaking = false;
+
         function checkZoneC() {
             const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SR) return showToast('⚠️ Voice recognition not supported on this browser.', false);
-            const rec = new SR();
-            rec.lang = getVoiceSettings().lang;
-            rec.interimResults = false;
-            showToast('🎤 Speak now...', true);
-            rec.start();
-            rec.onresult = (e) => {
-                const spoken = e.results[0][0].transcript.toLowerCase().trim();
+
+            if (isZCSpeaking && zcRecognition) {
+                zcRecognition.stop();
+                return;
+            }
+
+            zcRecognition = new SR();
+            zcRecognition.lang = getVoiceSettings().lang;
+            zcRecognition.continuous = true;
+            zcRecognition.interimResults = false;
+
+            let finalSpoken = '';
+
+            showToast('🎤 Listening... Click again to stop.', true);
+            isZCSpeaking = true;
+            document.querySelector('[onclick="checkZoneC()"]').innerHTML = '<i class="fa-solid fa-stop"></i> Stop & Grade';
+            document.querySelector('[onclick="checkZoneC()"]').classList.replace('bg-amber-500', 'bg-rose-500');
+
+            zcRecognition.start();
+
+            zcRecognition.onresult = (e) => {
+                for (let i = e.resultIndex; i < e.results.length; ++i) {
+                    if (e.results[i].isFinal) finalSpoken += e.results[i][0].transcript + ' ';
+                }
+            };
+
+            zcRecognition.onend = () => {
+                isZCSpeaking = false;
+                const btn = document.querySelector('[onclick="checkZoneC()"]');
+                if(btn) {
+                    btn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
+                    btn.classList.replace('bg-rose-500', 'bg-amber-500');
+                }
+
+                if (!finalSpoken.trim()) {
+                    showToast('⚠️ No speech detected.', false);
+                    return;
+                }
+
+                const spoken = finalSpoken.toLowerCase().trim();
                 const target = zcCurrentData.target.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
                 const spokenWords = spoken.split(/\s+/);
                 const targetWords = target.split(/\s+/);
+
                 let matched = 0;
-                targetWords.forEach(tw => { if (spokenWords.includes(tw)) matched++; });
+                let endingIssues = [];
+                let missed = [];
+
+                targetWords.forEach(tw => {
+                    if (spokenWords.includes(tw)) {
+                        matched++;
+                    } else {
+                        let foundStem = false;
+                        const endings = ['s', 'es', 'ed', 'ing', 'd'];
+                        for (let ext of endings) {
+                            if (tw.endsWith(ext) && tw.length > ext.length + 1) {
+                                const stem = tw.slice(0, -ext.length);
+                                if (spokenWords.includes(stem)) {
+                                    endingIssues.push(tw);
+                                    matched += 0.5;
+                                    foundStem = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!foundStem) missed.push(tw);
+                    }
+                });
+
                 const accuracy = Math.round((matched / targetWords.length) * 100);
                 let feedback, expGain;
-                if (accuracy >= 90) { feedback = '🌟 Excellent!'; expGain = 15; }
-                else if (accuracy >= 70) { feedback = '👍 Good try!'; expGain = 10; }
+                if (accuracy >= 80) { feedback = '🌟 Excellent!'; expGain = 15; }
+                else if (accuracy >= 50) { feedback = '👍 Good try!'; expGain = 10; }
                 else { feedback = '💪 Keep practising!'; expGain = 5; }
-                const missed = targetWords.filter(tw => !spokenWords.includes(tw));
-                const missedText = missed.length > 0 ? ' | Missed: ' + missed.join(', ') : '';
-                showToast(feedback + ' Accuracy: ' + accuracy + '%' + missedText, accuracy >= 70);
+
+                let detailText = '';
+                if (endingIssues.length > 0) detailText += ' | Check endings: ' + endingIssues.join(', ');
+                if (missed.length > 0) detailText += ' | Missed: ' + missed.join(', ');
+
+                showToast(feedback + ' Accuracy: ' + accuracy + '%' + detailText, accuracy >= 50);
                 addExp(expGain);
-                setTimeout(() => { renderZoneC(); }, 2800);
+                setTimeout(() => { renderZoneC(); }, 3500);
             };
-            rec.onerror = () => { showToast('⚠️ Could not hear you. Try again!', false); };
+
+            zcRecognition.onerror = (e) => { 
+                if (e.error === 'no-speech') return;
+                showToast('⚠️ Could not hear you. Try again!', false); 
+                isZCSpeaking = false;
+                const btn = document.querySelector('[onclick="checkZoneC()"]');
+                if(btn) {
+                    btn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
+                    btn.classList.replace('bg-rose-500', 'bg-amber-500');
+                }
+            };
         }
 
         // --- Zone D: Assessment Prep (TTS & Record) ---
-        let mediaRecorder;
-        let audioChunks = [];
-        let isRecording = false;
-        let currentAudioFile = null;
-
         function playTTS() {
             if (!window.speechSynthesis) return showToast("⚠️ TTS not supported.", false);
             const text = document.getElementById('zd-script').value;
@@ -1272,7 +1363,7 @@
             } else {
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    mediaRecorder = // Auto-detect format: iOS Safari needs mp4, others use webm
+                    // Auto-detect format: iOS Safari needs mp4, others use webm
                     const mimeType = MediaRecorder.isTypeSupported('audio/mp4') ? 'audio/mp4' :
                                      MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' :
                                      MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : '';
@@ -1305,59 +1396,125 @@
             }
         }
 
+        let zdRecognition = null;
+        let isZDSpeaking = false;
+
         function checkPronunciationZD() {
             const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SR) return showToast('⚠️ Voice recognition not supported on this browser.', false);
             const script = document.getElementById('zd-script').value.trim();
             if (!script) return showToast('⚠️ Please paste your script first!', false);
 
-            const rec = new SR();
-            rec.lang = getVoiceSettings().lang;
-            rec.interimResults = false;
-            showToast('🎤 Read your script aloud now...', true);
-            rec.start();
+            if (isZDSpeaking && zdRecognition) {
+                zdRecognition.stop();
+                return;
+            }
 
-            rec.onresult = (e) => {
-                const spoken = e.results[0][0].transcript.toLowerCase().trim();
+            zdRecognition = new SR();
+            zdRecognition.lang = getVoiceSettings().lang;
+            zdRecognition.continuous = true;
+            zdRecognition.interimResults = false;
+
+            let finalSpoken = '';
+
+            showToast('🎤 Listening... Click again to stop.', true);
+            isZDSpeaking = true;
+            document.querySelector('[onclick="checkPronunciationZD()"]').innerHTML = '<i class="fa-solid fa-stop"></i> Stop & Grade';
+            document.querySelector('[onclick="checkPronunciationZD()"]').classList.replace('bg-violet-500', 'bg-rose-500');
+
+            zdRecognition.start();
+
+            zdRecognition.onresult = (e) => {
+                for (let i = e.resultIndex; i < e.results.length; ++i) {
+                    if (e.results[i].isFinal) finalSpoken += e.results[i][0].transcript + ' ';
+                }
+            };
+
+            zdRecognition.onend = () => {
+                isZDSpeaking = false;
+                const btn = document.querySelector('[onclick="checkPronunciationZD()"]');
+                if(btn) {
+                    btn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Check My Pronunciation';
+                    btn.classList.replace('bg-rose-500', 'bg-violet-500');
+                }
+
+                if (!finalSpoken.trim()) {
+                    showToast('⚠️ No speech detected.', false);
+                    return;
+                }
+
+                const spoken = finalSpoken.toLowerCase().trim();
                 const target = script.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
                 const spokenWords = spoken.split(/\s+/);
                 const targetWords = target.split(/\s+/);
 
-                // Calculate accuracy
                 let matched = 0;
-                const missedWords = [];
-                targetWords.forEach(tw => {
-                    if (spokenWords.includes(tw)) { matched++; }
-                    else { missedWords.push(tw); }
-                });
-                const accuracy = Math.round((matched / targetWords.length) * 100);
+                let missedWords = [];
+                let endingIssues = [];
 
-                // Build highlighted result HTML
-                let emoji, feedbackMsg, bgColor;
-                if (accuracy >= 90) { emoji = '🌟'; feedbackMsg = 'Excellent pronunciation!'; bgColor = 'bg-green-50 border-green-200'; }
-                else if (accuracy >= 70) { emoji = '👍'; feedbackMsg = 'Good try! Keep practising.'; bgColor = 'bg-yellow-50 border-yellow-200'; }
-                else { emoji = '💪'; feedbackMsg = 'Keep practising!'; bgColor = 'bg-red-50 border-red-200'; }
-
-                // Word-by-word highlight
                 const highlightedHTML = targetWords.map(w => {
                     const clean = w.replace(/[^a-z0-9]/g, '');
-                    const correct = spokenWords.includes(clean);
-                    return correct
-                        ? '<span class="text-green-600 font-bold">' + w + '</span>'
-                        : '<span class="text-red-500 font-bold underline">' + w + '</span>';
+                    if (!clean) return w;
+
+                    if (spokenWords.includes(clean)) {
+                        matched++;
+                        return '<span class="text-green-600 font-bold">' + w + '</span>';
+                    }
+
+                    let foundStem = false;
+                    const endings = ['s', 'es', 'ed', 'ing', 'd'];
+                    for (let ext of endings) {
+                        if (clean.endsWith(ext) && clean.length > ext.length + 1) {
+                            const stem = clean.slice(0, -ext.length);
+                            if (spokenWords.includes(stem)) {
+                                endingIssues.push(clean);
+                                matched += 0.5;
+                                foundStem = true;
+                                return '<span class="text-amber-500 font-bold underline" title="Missing ending?">' + w + '</span>';
+                            }
+                        }
+                    }
+
+                    if (!foundStem) {
+                        missedWords.push(clean);
+                        return '<span class="text-red-500 font-bold underline">' + w + '</span>';
+                    }
                 }).join(' ');
 
+                const accuracy = Math.round((matched / targetWords.length) * 100);
+
+                let emoji, feedbackMsg, bgColor;
+                if (accuracy >= 80) { emoji = '🌟'; feedbackMsg = 'Excellent pronunciation!'; bgColor = 'bg-green-50 border-green-200'; }
+                else if (accuracy >= 50) { emoji = '👍'; feedbackMsg = 'Good try! Keep practising.'; bgColor = 'bg-yellow-50 border-yellow-200'; }
+                else { emoji = '💪'; feedbackMsg = 'Keep practising!'; bgColor = 'bg-red-50 border-red-200'; }
+
                 const resultDiv = document.getElementById('zd-accuracy-result');
-                resultDiv.className = 'w-full max-w-md rounded-2xl p-4 border shadow-sm text-sm ' + bgColor;
+                resultDiv.className = 'w-full max-w-md rounded-2xl p-4 border shadow-sm text-sm mt-4 ' + bgColor;
+
+                // Process arrays for display
+                const uniqueEndings = [...new Set(endingIssues)].slice(0, 8);
+                const uniqueMissed = [...new Set(missedWords)].slice(0, 8);
+
                 resultDiv.innerHTML =
                     '<div class="text-lg font-extrabold mb-1">' + emoji + ' Accuracy: ' + accuracy + '% — ' + feedbackMsg + '</div>' +
-                    '<div class="text-xs text-gray-500 mb-2">Green = correct &nbsp;|&nbsp; <span class="text-red-500 underline">Red underline</span> = missed/mispronounced</div>' +
-                    '<div class="leading-7 text-gray-700">' + highlightedHTML + '</div>' +
-                    (missedWords.length > 0 ? '<div class="mt-2 text-red-500 text-xs font-bold">❌ Missed words: ' + missedWords.slice(0, 10).join(', ') + (missedWords.length > 10 ? '...' : '') + '</div>' : '');
+                    '<div class="text-xs text-gray-500 mb-2">Green = correct &nbsp;|&nbsp; <span class="text-amber-500 underline">Amber</span> = missed ending &nbsp;|&nbsp; <span class="text-red-500 underline">Red</span> = missed/mispronounced</div>' +
+                    '<div class="leading-7 text-gray-700 bg-white p-3 rounded-xl border border-gray-100 my-2">' + highlightedHTML + '</div>' +
+                    (uniqueEndings.length > 0 ? '<div class="mt-2 text-amber-600 text-xs font-bold">⚠️ Check word endings (s, ed, ing): ' + uniqueEndings.join(', ') + '</div>' : '') +
+                    (uniqueMissed.length > 0 ? '<div class="mt-1 text-red-500 text-xs font-bold">❌ Missed/Mispronounced: ' + uniqueMissed.join(', ') + '</div>' : '');
                 resultDiv.classList.remove('hidden');
-                addExp(accuracy >= 90 ? 20 : accuracy >= 70 ? 10 : 5);
+                addExp(accuracy >= 80 ? 20 : accuracy >= 50 ? 10 : 5);
             };
-            rec.onerror = () => { showToast('⚠️ Could not hear you. Try again!', false); };
+
+            zdRecognition.onerror = (e) => { 
+                if (e.error === 'no-speech') return;
+                showToast('⚠️ Could not hear you. Try again!', false); 
+                isZDSpeaking = false;
+                const btn = document.querySelector('[onclick="checkPronunciationZD()"]');
+                if(btn) {
+                    btn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Check My Pronunciation';
+                    btn.classList.replace('bg-rose-500', 'bg-violet-500');
+                }
+            };
         }
 
         async function shareToWhatsApp() {
