@@ -135,7 +135,9 @@
                         <i class="fa-solid fa-headset text-5xl text-white"></i>
                     </div>
                     <h1 class="text-5xl md:text-6xl font-extrabold text-gray-800 mb-2 tracking-tight">HLA2110</h1>
-                    <h2 class="text-lg md:text-xl font-bold text-gray-500 mb-8 uppercase tracking-widest">Oral Communication (Event Operations)<br><span class="text-indigo-600">Service Hero Playbook</span></h2>
+                   <h2 class="text-lg md:text-xl font-bold text-gray-500 mb-8 uppercase tracking-widest">
+        Oral Communication <br>
+        (Event Operations)<br><span class="text-indigo-600">Service Hero Playbook</span></h2>
                     <button onclick="navTo('lobby')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xl py-4 px-8 rounded-2xl shadow-[0_10px_20px_rgba(79,70,229,0.3)] transform transition active:scale-95 flex items-center justify-center gap-3">
                         Start Journey <i class="fa-solid fa-rocket"></i>
                     </button>
@@ -596,14 +598,39 @@
         // --- Data: M1 Lingo Swipe (Units 1-13) ---
         const zoneAUnits = ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"];
         const zoneBUnits = ["Unit 7", "Unit 8", "Unit 9", "Unit 10", "Unit 11", "Unit 12", "Unit 13"];
+        
+        // 已經加齊 Unit 1 到 Unit 13 嘅所有生字
         const fullVocab = [
             { unit: "Unit 1", word: "operations", syllables: "op • er • a • tions", meaning: "營運 (n.)" },
+            { unit: "Unit 1", word: "briefing", syllables: "brief • ing", meaning: "簡報 (n.)" },
             { unit: "Unit 2", word: "venue", syllables: "ven • ue", meaning: "場地 (n.)" },
+            { unit: "Unit 2", word: "background", syllables: "back • ground", meaning: "背景 (n.)" },
+            { unit: "Unit 3", word: "security", syllables: "se • cu • ri • ty", meaning: "保安 (n.)" },
+            { unit: "Unit 3", word: "patrol", syllables: "pa • trol", meaning: "巡邏 (n./v.)" },
+            { unit: "Unit 4", word: "housekeeping", syllables: "house • keep • ing", meaning: "房務 (n.)" },
+            { unit: "Unit 4", word: "amenities", syllables: "a • men • i • ties", meaning: "設施 (n.)" },
+            { unit: "Unit 5", word: "invitation", syllables: "in • vi • ta • tion", meaning: "邀請 (n.)" },
+            { unit: "Unit 5", word: "inspection", syllables: "in • spec • tion", meaning: "檢查 (n.)" },
+            { unit: "Unit 6", word: "catering", syllables: "ca • ter • ing", meaning: "餐飲 (n.)" },
+            { unit: "Unit 6", word: "refreshments", syllables: "re • fresh • ments", meaning: "茶點 (n.)" },
             { unit: "Unit 7", word: "itinerary", syllables: "i • tin • er • ar • y", meaning: "行程 (n.)" },
-            { unit: "Unit 8", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" }
+            { unit: "Unit 7", word: "schedule", syllables: "sched • ule", meaning: "時間表 (n.)" },
+            { unit: "Unit 8", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" },
+            { unit: "Unit 8", word: "promotional", syllables: "pro • mo • tion • al", meaning: "推廣的 (adj.)" },
+            { unit: "Unit 9", word: "accommodate", syllables: "ac • com • mo • date", meaning: "容納 (v.)" },
+            { unit: "Unit 9", word: "reservation", syllables: "res • er • va • tion", meaning: "預訂 (n.)" },
+            { unit: "Unit 10", word: "enquiry", syllables: "en • qui • ry", meaning: "查詢 (n.)" },
+            { unit: "Unit 10", word: "assistance", syllables: "as • sis • tance", meaning: "協助 (n.)" },
+            { unit: "Unit 11", word: "coordinate", syllables: "co • or • di • nate", meaning: "協調 (v.)" },
+            { unit: "Unit 11", word: "package", syllables: "pack • age", meaning: "套票 (n.)" },
+            { unit: "Unit 12", word: "layout", syllables: "lay • out", meaning: "佈局 (n.)" },
+            { unit: "Unit 12", word: "ceiling", syllables: "ceil • ing", meaning: "天花板 (n.)" },
+            { unit: "Unit 13", word: "professional", syllables: "pro • fes • sion • al", meaning: "專業的 (adj.)" },
+            { unit: "Unit 13", word: "feedback", syllables: "feed • back", meaning: "回饋 (n.)" }
         ];
 
         // --- Data: M2 Vocab Quest (Word Master Style) ---
+        // 已經加齊對應嘅測驗題目
         const wordMasterBank = [
             { id: 1, word: "operations", meaning: "營運 (n.)", q: "The ________ team is responsible for managing the backstage.", options: ["operations", "venue", "itinerary"], ans: 0 },
             { id: 2, word: "venue", meaning: "場地 (n.)", q: "The event ________ will be set up in the Grand Ballroom.", options: ["operations", "venue", "itinerary"], ans: 1 },
@@ -616,7 +643,13 @@
             { id: 9, word: "reservation", meaning: "預訂 (n.)", q: "I would like to make a ________ for a double room.", options: ["operations", "reservation", "itinerary"], ans: 1 },
             { id: 10, word: "assistance", meaning: "協助 (n.)", q: "Please let us know if you need any further ________.", options: ["assistance", "venue", "promotional"], ans: 0 },
             { id: 11, word: "amenities", meaning: "設施 (n.)", q: "The hotel provides luxury ________ in every room.", options: ["amenities", "operations", "reservation"], ans: 0 },
-            { id: 12, word: "coordinate", meaning: "協調 (v.)", q: "We need to ________ with the catering team for the lunch arrangement.", options: ["coordinate", "venue", "accommodate"], ans: 0 }
+            { id: 12, word: "coordinate", meaning: "協調 (v.)", q: "We need to ________ with the catering team for the lunch arrangement.", options: ["coordinate", "venue", "accommodate"], ans: 0 },
+            { id: 13, word: "briefing", meaning: "簡報 (n.)", q: "The manager will give a short ________ before the event starts.", options: ["briefing", "ceiling", "feedback"], ans: 0 },
+            { id: 14, word: "security", meaning: "保安 (n.)", q: "The ________ team will patrol the area every hour.", options: ["catering", "security", "layout"], ans: 1 },
+            { id: 15, word: "housekeeping", meaning: "房務 (n.)", q: "Please call ________ if you need extra towels.", options: ["housekeeping", "inspection", "package"], ans: 0 },
+            { id: 16, word: "catering", meaning: "餐飲 (n.)", q: "The ________ service provided excellent food for the banquet.", options: ["catering", "patrol", "schedule"], ans: 0 },
+            { id: 17, word: "professional", meaning: "專業的 (adj.)", q: "Our staff are trained to provide ________ customer service.", options: ["professional", "complimentary", "promotional"], ans: 0 },
+            { id: 18, word: "feedback", meaning: "回饋 (n.)", q: "We would love to hear your ________ about your stay.", options: ["feedback", "background", "invitation"], ans: 0 }
         ];
         
         let m2Questions = []; 
