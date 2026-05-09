@@ -165,47 +165,56 @@
 
                     <!-- Zones Section -->
                     <div class="flex flex-col gap-4 overflow-y-auto pr-2 pb-10">
-                        <h3 class="text-xl font-bold text-gray-700 ml-2">🗺️ Select Your Zone</h3>
-                        
-                        <button onclick="navTo('zone-a')" class="w-full text-left bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent hover:border-indigo-400 transition group relative overflow-hidden active:scale-95">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="bg-indigo-100 text-indigo-700 text-xs font-black px-2 py-1 rounded mb-2 inline-block uppercase">Zone A</span>
+                        <h3 class="text-xl font-bold text-gray-700 ml-2 mb-2">🗺️ Select Your Zone</h3>
+                        <!-- Timeline Zones Section -->
+                        <div class="flex flex-col gap-6 relative ml-2 mt-2">
+                            <!-- Vertical line -->
+                            <div class="absolute left-8 top-8 bottom-8 w-1 bg-gray-200 rounded-full"></div>
+
+                            <!-- Zone A -->
+                            <div class="relative flex items-center group cursor-pointer" onclick="navTo('zone-a')">
+                                <div class="w-16 h-16 rounded-full bg-indigo-500 flex items-center justify-center text-white text-2xl z-10 shadow-[0_0_15px_rgba(99,102,241,0.4)] border-4 border-white transform transition group-hover:scale-110">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                </div>
+                                <div class="ml-6 flex-1 bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent group-hover:border-indigo-400 transition active:scale-95">
+                                    <span class="bg-indigo-100 text-indigo-700 text-xs font-black px-3 py-1 rounded-full mb-2 inline-block uppercase tracking-wider">Zone A</span>
                                     <h4 class="text-xl font-bold text-gray-800">Backstage Ops (CA)</h4>
                                 </div>
-                                <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-right"></i></div>
                             </div>
-                        </button>
 
-                        <button onclick="navTo('zone-b')" class="w-full text-left bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent hover:border-rose-400 transition group relative overflow-hidden active:scale-95">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="bg-rose-100 text-rose-700 text-xs font-black px-2 py-1 rounded mb-2 inline-block uppercase">Zone B</span>
+                            <!-- Zone B -->
+                            <div class="relative flex items-center group cursor-pointer" onclick="navTo('zone-b')">
+                                <div class="w-16 h-16 rounded-full bg-rose-500 flex items-center justify-center text-white text-2xl z-10 shadow-[0_0_15px_rgba(244,63,94,0.4)] border-4 border-white transform transition group-hover:scale-110">
+                                    <i class="fa-solid fa-headset"></i>
+                                </div>
+                                <div class="ml-6 flex-1 bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent group-hover:border-rose-400 transition active:scale-95">
+                                    <span class="bg-rose-100 text-rose-700 text-xs font-black px-3 py-1 rounded-full mb-2 inline-block uppercase tracking-wider">Zone B</span>
                                     <h4 class="text-xl font-bold text-gray-800">Frontline Command (EA)</h4>
                                 </div>
-                                <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500 group-hover:bg-rose-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-right"></i></div>
                             </div>
-                        </button>
 
-                        <button onclick="navTo('zone-c-menu')" class="w-full text-left bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent hover:border-amber-400 transition group relative overflow-hidden active:scale-95">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="bg-amber-100 text-amber-700 text-xs font-black px-2 py-1 rounded mb-2 inline-block uppercase">Zone C</span>
+                            <!-- Zone C -->
+                            <div class="relative flex items-center group cursor-pointer" onclick="navTo('zone-c-menu')">
+                                <div class="w-16 h-16 rounded-full bg-amber-500 flex items-center justify-center text-white text-2xl z-10 shadow-[0_0_15px_rgba(245,158,11,0.4)] border-4 border-white transform transition group-hover:scale-110">
+                                    <i class="fa-solid fa-calculator"></i>
+                                </div>
+                                <div class="ml-6 flex-1 bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent group-hover:border-amber-400 transition active:scale-95">
+                                    <span class="bg-amber-100 text-amber-700 text-xs font-black px-3 py-1 rounded-full mb-2 inline-block uppercase tracking-wider">Zone C</span>
                                     <h4 class="text-xl font-bold text-gray-800">Number & Date Drill</h4>
                                 </div>
-                                <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-right"></i></div>
                             </div>
-                        </button>
 
-                        <button onclick="navTo('zone-d')" class="w-full text-left bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent hover:border-violet-400 transition group relative overflow-hidden active:scale-95">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="bg-violet-100 text-violet-700 text-xs font-black px-2 py-1 rounded mb-2 inline-block uppercase">Zone D</span>
+                            <!-- Zone D -->
+                            <div class="relative flex items-center group cursor-pointer" onclick="navTo('zone-d')">
+                                <div class="w-16 h-16 rounded-full bg-violet-500 flex items-center justify-center text-white text-2xl z-10 shadow-[0_0_15px_rgba(139,92,246,0.4)] border-4 border-white transform transition group-hover:scale-110">
+                                    <i class="fa-solid fa-microphone-lines"></i>
+                                </div>
+                                <div class="ml-6 flex-1 bg-white rounded-2xl p-5 shadow-sm border-2 border-transparent group-hover:border-violet-400 transition active:scale-95">
+                                    <span class="bg-violet-100 text-violet-700 text-xs font-black px-3 py-1 rounded-full mb-2 inline-block uppercase tracking-wider">Zone D</span>
                                     <h4 class="text-xl font-bold text-gray-800">Assessment Prep (TTS)</h4>
                                 </div>
-                                <div class="w-10 h-10 rounded-full bg-violet-50 flex items-center justify-center text-violet-500 group-hover:bg-violet-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-right"></i></div>
                             </div>
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -310,48 +319,89 @@
             </div>
 
             <!-- ================= ZONE C MENU (NUMBER DRILL) ================= -->
+            <!-- ZONE C MAIN MENU -->
             <div id="view-zone-c-menu" class="view-section flex-col gap-6 h-full max-w-3xl mx-auto w-full p-6 md:p-0">
                 <button onclick="navTo('lobby')" class="self-start bg-white px-5 py-2.5 rounded-full text-sm font-bold text-gray-600 shadow-sm border border-gray-200 active:scale-95 hover:bg-gray-50"><i class="fa-solid fa-arrow-left mr-2"></i>Back</button>
                 <h2 class="text-3xl font-extrabold text-amber-900">Zone C: Number & Date Drill 🔢</h2>
-                <p class="text-gray-600 mb-2">Select a category to practice your pronunciation. All modes are endlessly generated!</p>
-                <!-- System Requirements Warning -->
-                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6 shadow-sm">
-                    <h3 class="text-amber-800 font-bold flex items-center gap-2 mb-2"><i class="fa-solid fa-bullhorn"></i> System Requirements (系統要求)</h3>
-                    <div class="text-sm text-amber-900 space-y-2">
-                        <p>💻 <strong>Computer (Recommended)</strong> Use Google Chrome or Microsoft Edge.</p>
-                        <p>📱 <strong>Mobile</strong> Use Safari for iPhone, and Google Chrome for Android.</p>
-                        <p class="text-amber-700 italic border-l-4 border-amber-300 pl-3 py-1 my-1">⚠️ Note: Built-in browsers on some phone brands may not support the voice feature.</p>
-                        <hr class="border-amber-200 my-2">
-                        <p class="text-xs text-amber-700">為了獲得最佳體驗，強烈建議使用電腦 (Chrome/Edge)。手機用戶請使用 Safari (iPhone) 或 Chrome (Android)。部分牌手機的內置瀏覽器可能無法支援語音功能。</p>
-                    </div>
-                </div>
+                <p class="text-gray-600">Select a category to practice your pronunciation. Endless mode!</p>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <button onclick="startZoneC('prices')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-green-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Endless</div>
-                        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-3xl text-green-600"><i class="fa-solid fa-dollar-sign"></i></div>
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <button onclick="navTo('zone-c-prices')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-green-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
+                        <div class="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center text-3xl text-green-600"><i class="fa-solid fa-dollar-sign"></i></div>
                         <h4 class="text-lg font-bold text-gray-800">Prices</h4>
                     </button>
-                    <button onclick="startZoneC('dates')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-blue-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Endless</div>
-                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl text-blue-600"><i class="fa-regular fa-calendar-days"></i></div>
+                    <button onclick="navTo('zone-c-dates')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-blue-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
+                        <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center text-3xl text-blue-600"><i class="fa-regular fa-calendar-days"></i></div>
                         <h4 class="text-lg font-bold text-gray-800">Dates</h4>
                     </button>
-                    <button onclick="startZoneC('times')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-purple-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-purple-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Endless</div>
-                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-3xl text-purple-600"><i class="fa-regular fa-clock"></i></div>
+                    <button onclick="startZoneCLevel('times', 1)" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-purple-400 flex flex-col items-center gap-3 active:scale-95 transition">
+                        <div class="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center text-3xl text-purple-600"><i class="fa-regular fa-clock"></i></div>
                         <h4 class="text-lg font-bold text-gray-800">Times</h4>
                     </button>
-                    <button onclick="startZoneC('measurements')" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-orange-400 flex flex-col items-center gap-3 active:scale-95 transition relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Endless</div>
-                        <div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center text-3xl text-orange-600"><i class="fa-solid fa-ruler-combined"></i></div>
+                    <button onclick="startZoneCLevel('measurements', 1)" class="bg-white rounded-3xl p-6 shadow-sm border-2 border-transparent hover:border-rose-400 flex flex-col items-center gap-3 active:scale-95 transition">
+                        <div class="w-16 h-16 rounded-full bg-rose-50 flex items-center justify-center text-3xl text-rose-600"><i class="fa-solid fa-ruler"></i></div>
                         <h4 class="text-lg font-bold text-gray-800">Measurements</h4>
                     </button>
                 </div>
             </div>
 
-            <!-- ================= ZONE C: DRILL UI ================= -->
-            <div id="view-zone-c-drill" class="view-section flex-col h-full relative max-w-2xl mx-auto w-full p-6 md:p-0">
+            <!-- ZONE C PRICES LEVELS -->
+            <div id="view-zone-c-prices" class="view-section flex-col gap-6 h-full max-w-3xl mx-auto w-full p-6 md:p-0">
+                <button onclick="navTo('zone-c-menu')" class="self-start bg-white px-5 py-2.5 rounded-full text-sm font-bold text-gray-600 shadow-sm border border-gray-200 active:scale-95 hover:bg-gray-50"><i class="fa-solid fa-arrow-left mr-2"></i>Back</button>
+                <h2 class="text-3xl font-extrabold text-green-900"><i class="fa-solid fa-dollar-sign text-green-500 mr-2"></i> Prices Levels</h2>
+                <p class="text-gray-600">Select a difficulty level to begin endless practice.</p>
+
+                <div class="grid grid-cols-2 gap-4 mt-2">
+                    <button onclick="startZoneCLevel('prices', 1)" class="bg-white rounded-2xl p-6 shadow-sm border-2 border-transparent hover:border-green-400 flex flex-col items-center gap-2 active:scale-95 transition">
+                        <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center text-2xl text-green-600 font-black text-sm">Level 1</div>
+                        <h4 class="text-lg font-bold text-gray-800">2-Digit</h4>
+                        <p class="text-xs text-gray-400">$10 - $99</p>
+                    </button>
+                    <button onclick="startZoneCLevel('prices', 2)" class="bg-white rounded-2xl p-6 shadow-sm border-2 border-transparent hover:border-green-400 flex flex-col items-center gap-2 active:scale-95 transition">
+                        <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center text-2xl text-green-600 font-black text-sm">Level 2</div>
+                        <h4 class="text-lg font-bold text-gray-800">3-Digit</h4>
+                        <p class="text-xs text-gray-400">$100 - $999</p>
+                    </button>
+                    <button onclick="startZoneCLevel('prices', 3)" class="bg-white rounded-2xl p-6 shadow-sm border-2 border-transparent hover:border-green-400 flex flex-col items-center gap-2 active:scale-95 transition">
+                        <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center text-2xl text-green-600 font-black text-sm">Level 3</div>
+                        <h4 class="text-lg font-bold text-gray-800">4-Digit</h4>
+                        <p class="text-xs text-gray-400">$1k - $9.9k</p>
+                    </button>
+                    <button onclick="startZoneCLevel('prices', 4)" class="bg-white rounded-2xl p-6 shadow-sm border-2 border-transparent hover:border-green-400 flex flex-col items-center gap-2 active:scale-95 transition">
+                        <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center text-2xl text-green-600 font-black text-sm">Level 4</div>
+                        <h4 class="text-lg font-bold text-gray-800">5-Digit</h4>
+                        <p class="text-xs text-gray-400">$10k - $99k</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ZONE C DATES LEVELS -->
+            <div id="view-zone-c-dates" class="view-section flex-col gap-6 h-full max-w-3xl mx-auto w-full p-6 md:p-0">
+                <button onclick="navTo('zone-c-menu')" class="self-start bg-white px-5 py-2.5 rounded-full text-sm font-bold text-gray-600 shadow-sm border border-gray-200 active:scale-95 hover:bg-gray-50"><i class="fa-solid fa-arrow-left mr-2"></i>Back</button>
+                <h2 class="text-3xl font-extrabold text-blue-900"><i class="fa-regular fa-calendar-days text-blue-500 mr-2"></i> Dates Levels</h2>
+                <p class="text-gray-600">Select a difficulty level to begin endless practice.</p>
+
+                <div class="grid grid-cols-2 gap-4 mt-2">
+                    <button onclick="startZoneCLevel('dates', 1)" class="bg-white rounded-2xl p-6 shadow-sm border-2 border-transparent hover:border-blue-400 flex flex-col items-center gap-2 active:scale-95 transition">
+                        <div class="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-2xl text-blue-600 font-black text-sm">Level 1</div>
+                        <h4 class="text-lg font-bold text-gray-800 text-center">Day<br><span class="text-xs text-gray-400 font-normal">Mon -> Monday</span></h4>
+                    </button>
+                    <button onclick="startZoneCLevel('dates', 2)" class="bg-white rounded-2xl p-6 shadow-sm border-2 border-transparent hover:border-blue-400 flex flex-col items-center gap-2 active:scale-95 transition">
+                        <div class="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-2xl text-blue-600 font-black text-sm">Level 2</div>
+                        <h4 class="text-lg font-bold text-gray-800 text-center">Month<br><span class="text-xs text-gray-400 font-normal">Jan -> January</span></h4>
+                    </button>
+                    <button onclick="startZoneCLevel('dates', 3)" class="bg-white rounded-2xl p-6 shadow-sm border-2 border-transparent hover:border-blue-400 flex flex-col items-center gap-2 active:scale-95 transition">
+                        <div class="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-2xl text-blue-600 font-black text-sm">Level 3</div>
+                        <h4 class="text-lg font-bold text-gray-800 text-center">Ordinal<br><span class="text-xs text-gray-400 font-normal">1st -> first</span></h4>
+                    </button>
+                    <button onclick="startZoneCLevel('dates', 4)" class="bg-white rounded-2xl p-6 shadow-sm border-2 border-transparent hover:border-blue-400 flex flex-col items-center gap-2 active:scale-95 transition relative overflow-hidden">
+                        <div class="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-2xl text-blue-600 font-black text-sm">Level 4</div>
+                        <h4 class="text-lg font-bold text-gray-800 text-center">Full Date<br><span class="text-xs text-gray-400 font-normal">21st Mar, Sat</span></h4>
+                    </button>
+                </div>
+            </div>
+
+            <div id="view-zone-c-drill"  class="view-section flex-col h-full relative max-w-2xl mx-auto w-full p-6 md:p-0">
                 <div class="w-full flex justify-between items-center mb-6">
                     <button onclick="navTo('zone-c-menu')" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-xmark text-xl"></i></button>
                     <span id="zc-badge" class="bg-amber-100 text-amber-700 text-sm font-bold px-4 py-2 rounded-full">Drill 🔢</span>
@@ -364,7 +414,7 @@
                         <h1 id="zc-target" class="text-3xl md:text-5xl font-extrabold text-gray-800 tracking-wider">$180,000</h1>
                     </div>
                     
-                    <button onclick="checkZoneC()" class="w-full max-w-md bg-amber-500 hover:bg-amber-600 text-white py-5 rounded-2xl font-bold text-xl shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
+                    <button onclick="toggleZoneCVoiceCheck(this)" class="w-full max-w-md bg-amber-500 hover:bg-amber-600 text-white py-5 rounded-2xl font-bold text-xl shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
                         <i class="fa-solid fa-microphone-lines"></i> Tap to Speak
                     </button>
                     
@@ -383,18 +433,7 @@
                 </div>
 
                 <p class="text-gray-600 mb-4 text-sm">Paste your own script below to practise text-to-speech and record your audio.</p>
-                <!-- System Requirements Warning -->
-                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6 shadow-sm">
-                    <h3 class="text-amber-800 font-bold flex items-center gap-2 mb-2"><i class="fa-solid fa-bullhorn"></i> System Requirements (系統要求)</h3>
-                    <div class="text-sm text-amber-900 space-y-2">
-                        <p>💻 <strong>Computer (Recommended)</strong> Use Google Chrome or Microsoft Edge.</p>
-                        <p>📱 <strong>Mobile</strong> Use Safari for iPhone, and Google Chrome for Android.</p>
-                        <p class="text-amber-700 italic border-l-4 border-amber-300 pl-3 py-1 my-1">⚠️ Note: Built-in browsers on some Chinese phone brands may not support the voice feature.</p>
-                        <hr class="border-amber-200 my-2">
-                        <p class="text-xs text-amber-700">為了獲得最佳體驗，強烈建議使用電腦 (Chrome/Edge)。手機用戶請使用 Safari (iPhone) 或 Chrome (Android)。部分品牌手機的內置瀏覽器可能無法支援語音功能。</p>
-                    </div>
-                </div>
-
+                
                 <textarea id="zd-script" class="w-full h-48 bg-white border border-gray-200 rounded-2xl p-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-400 resize-none shadow-sm mb-4" placeholder="Paste your script here..."></textarea>
 
                 <div class="bg-violet-50/50 border border-violet-100 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -418,8 +457,6 @@
                             <a id="zd-download-link" class="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2.5 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center"><i class="fa-solid fa-download mr-2"></i>Download</a>
                             <button onclick="shareToWhatsApp()" class="flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white py-2.5 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center"><i class="fa-brands fa-whatsapp mr-2"></i>Share File</button>
                         </div>
-                        <button onclick="checkPronunciationZD()" class="w-full max-w-md bg-violet-500 hover:bg-violet-600 text-white py-3 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center gap-2 mt-1"><i class="fa-solid fa-microphone-lines"></i> Check My Pronunciation</button>
-                        <div id="zd-accuracy-result" class="hidden w-full max-w-md bg-white rounded-2xl p-4 border border-violet-200 shadow-sm text-sm"></div>
                     </div>
                 </div>
             </div>
@@ -456,7 +493,7 @@
                                 <button onclick="event.stopPropagation(); playAudio(document.getElementById('card-word').innerText)" class="flex-1 bg-indigo-50 text-indigo-700 py-4 rounded-2xl font-bold active:scale-95 transition border border-indigo-100 hover:bg-indigo-100">
                                     <i class="fa-solid fa-volume-high mr-2"></i>Listen
                                 </button>
-                                <button onclick="event.stopPropagation(); startVoiceCheck(document.getElementById('card-word').innerText)" class="flex-1 bg-rose-50 text-rose-700 py-4 rounded-2xl font-bold active:scale-95 transition border border-rose-100 hover:bg-rose-100">
+                                <button onclick="toggleM1VoiceCheck(document.getElementById('card-word').innerText, this, event)" class="flex-1 bg-rose-50 text-rose-700 py-4 rounded-2xl font-bold active:scale-95 transition border border-rose-100 hover:bg-rose-100">
                                     <i class="fa-solid fa-microphone mr-2"></i>Speak
                                 </button>
                             </div>
@@ -519,16 +556,11 @@
                     <h3 class="text-xl font-bold text-gray-800 mb-4 px-2">Watch & Learn</h3>
                     
                     <!-- 真正嘅影片播放器 -->
+                    <!-- Panopto Video Player -->
                     <div class="w-full bg-black rounded-2xl aspect-video relative flex items-center justify-center overflow-hidden shadow-inner mb-4">
-                        <iframe
-                  src="https://vtc.ap.panopto.com/Panopto/Pages/Embed.aspx?id=af1396bc-da70-49c2-8b47-b3a100256b74&v=1"
-                  class="w-full h-full"
-                  frameborder="0"
-                  allow="autoplay; fullscreen"
-                  allowfullscreen>
-                </iframe>
+                        <iframe src="https://vtc.ap.panopto.com/Panopto/Pages/Embed.aspx?id=af1396bc-da70-49c2-8b47-b3a100256b74&autoplay=false&offerviewer=true&showtitle=false&showbrand=false&captions=false&interactivity=all" 
+                            width="100%" height="100%" style="border: none;" allowfullscreen allow="autoplay; fullscreen"></iframe>
                     </div>
-                    
                     <p class="text-sm text-gray-600 px-2">Observe how the speaker uses the non-verbal skills discussed previously. Once you are ready, proceed to record your own briefing.</p>
                 </div>
                 
@@ -559,9 +591,10 @@
                     <h3 id="m3a-sentence" class="text-lg md:text-xl font-bold text-gray-800 leading-relaxed mb-8">
                         "Good morning. I'm Carol Yeung from the Event Management & Operations Section. Today, I'm going to brief you on an event order."
                     </h3>
-                    <button onclick="checkM3ASentence()" class="mt-auto w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
+                    <button onclick="toggleM3AVoiceCheck(this)" class="mt-auto w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
                         <i class="fa-solid fa-microphone-lines"></i> Tap to Speak
                     </button>
+                    <button onclick="skipM3A()" class="mt-4 text-gray-400 font-bold text-sm underline w-full text-center hover:text-gray-600">Skip / Proceed</button>
                 </div>
             </div>
 
@@ -588,9 +621,10 @@
                         <h3 id="m3b-user-text" class="text-lg md:text-xl font-bold text-gray-800 leading-relaxed mb-6">
                             "Good morning. This is Rocky Poon from the International Hotel. We've received your enquiry about our event packages. May I know more about your event?"
                         </h3>
-                        <button onclick="checkM3BScript()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
-                            <i class="fa-solid fa-microphone"></i> Read Your Line
-                        </button>
+                        <button onclick="toggleM3BVoiceCheck(this)" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-microphone-lines"></i> Tap to Speak
+                    </button>
+                    <button onclick="skipM3B()" class="mt-4 text-gray-400 font-bold text-sm underline w-full text-center hover:text-gray-600">Skip / Proceed</button>
                     </div>
                 </div>
             </div>
@@ -629,297 +663,160 @@
         
         // 已經加齊 Unit 1 到 Unit 13 嘅所有生字
         const fullVocab = [
-            // Unit 1
-            { unit: "Unit 1", word: "operations", syllables: "op • er • a • tions", meaning: "營運 (n.)" },
-            { unit: "Unit 1", word: "retreat", syllables: "re • treat", meaning: "靜修/團建活動 (n.)" },
-            { unit: "Unit 1", word: "banquets", syllables: "ban • quets", meaning: "宴席 (n.)" },
-            { unit: "Unit 1", word: "logistics", syllables: "lo • gis • tics", meaning: "後勤安排 (n.)" },
-            { unit: "Unit 1", word: "coordinate", syllables: "co • or • di • nate", meaning: "協調 (v.)" },
-            { unit: "Unit 1", word: "execute", syllables: "ex • e • cute", meaning: "執行 (v.)" },
-            { unit: "Unit 1", word: "maintain", syllables: "main • tain", meaning: "維持 (v.)" },
-            { unit: "Unit 1", word: "inspect", syllables: "in • spect", meaning: "檢查 (v.)" },
             { unit: "Unit 1", word: "briefing", syllables: "brief • ing", meaning: "簡報 (n.)" },
-            { unit: "Unit 1", word: "setup", syllables: "set • up", meaning: "佈置/設置 (n.)" },
-            // Unit 2
-            { unit: "Unit 2", word: "background", syllables: "back • ground", meaning: "背景 (n.)" },
-            { unit: "Unit 2", word: "venue", syllables: "ven • ue", meaning: "場地 (n.)" },
-            { unit: "Unit 2", word: "conference", syllables: "con • fer • ence", meaning: "會議 (n.)" },
+            { unit: "Unit 1", word: "logistics", syllables: "lo • gis • tics", meaning: "統籌安排 (n.)" },
+            { unit: "Unit 1", word: "section", syllables: "sec • tion", meaning: "部門 (n.)" },
+            { unit: "Unit 1", word: "coordinate", syllables: "co • or • di • nate", meaning: "協調 (v.)" },
+            { unit: "Unit 1", word: "venue", syllables: "ven • ue", meaning: "場地 (n.)" },
+            { unit: "Unit 1", word: "itinerary", syllables: "i • tin • er • ar • y", meaning: "活動日程 (n.)" },
+            { unit: "Unit 1", word: "representative", syllables: "rep • re • sen • ta • tive", meaning: "代表 (n.)" },
+            { unit: "Unit 1", word: "Event Order", syllables: "E • vent Or • der", meaning: "活動指令 (n.)" },
+            { unit: "Unit 1", word: "amenities", syllables: "a • men • i • ties", meaning: "設施 (n.)" },
+            { unit: "Unit 1", word: "inspection", syllables: "in • spec • tion", meaning: "視察 (n.)" },
+            { unit: "Unit 2", word: "banquet", syllables: "ban • quet", meaning: "宴會 (n.)" },
             { unit: "Unit 2", word: "ballroom", syllables: "ball • room", meaning: "宴會廳 (n.)" },
-            { unit: "Unit 2", word: "pavilion", syllables: "pa • vil • ion", meaning: "涼亭/場館 (n.)" },
-            { unit: "Unit 2", word: "arrange", syllables: "ar • range", meaning: "安排 (v.)" },
-            { unit: "Unit 2", word: "ensure", syllables: "en • sure", meaning: "確保 (v.)" },
-            { unit: "Unit 2", word: "presence", syllables: "pres • ence", meaning: "出席/存在 (n.)" },
-            { unit: "Unit 2", word: "specific", syllables: "spe • cif • ic", meaning: "特定的 (adj.)" },
-            { unit: "Unit 2", word: "reception", syllables: "re • cep • tion", meaning: "歡迎接待 (n.)" },
-            // Unit 3
-            { unit: "Unit 3", word: "duties", syllables: "du • ties", meaning: "職責 (n.)" },
-            { unit: "Unit 3", word: "responsibilities", syllables: "re • spon • si • bil • i • ties", meaning: "責任 (n.)" },
-            { unit: "Unit 3", word: "promptly", syllables: "prompt • ly", meaning: "迅速地 (adv.)" },
-            { unit: "Unit 3", word: "efficiently", syllables: "ef • fi • cient • ly", meaning: "有效率地 (adv.)" },
-            { unit: "Unit 3", word: "courteously", syllables: "cour • te • ous • ly", meaning: "有禮貌地 (adv.)" },
-            { unit: "Unit 3", word: "imperative", syllables: "im • per • a • tive", meaning: "祈使的/命令式 (adj.)" },
-            { unit: "Unit 3", word: "unattended", syllables: "un • at • tend • ed", meaning: "無人看管的 (adj.)" },
-            { unit: "Unit 3", word: "itinerary", syllables: "i • tin • er • ar • y", meaning: "行程 (n.)" },
-            { unit: "Unit 3", word: "walkthrough", syllables: "walk • through", meaning: "實地考察/排練 (n.)" },
-            { unit: "Unit 3", word: "signpost", syllables: "sign • post", meaning: "路標/指示語 (n.)" },
-            // Unit 4
-            { unit: "Unit 4", word: "obligation", syllables: "ob • li • ga • tion", meaning: "責任/義務 (n.)" },
+            { unit: "Unit 2", word: "conference", syllables: "con • fer • ence", meaning: "會議 (n.)" },
+            { unit: "Unit 2", word: "retreat", syllables: "re • treat", meaning: "靜修活動 (n.)" },
+            { unit: "Unit 2", word: "gala", syllables: "ga • la", meaning: "慶典 (n.)" },
+            { unit: "Unit 2", word: "luncheon", syllables: "lunch • eon", meaning: "午宴 (n.)" },
+            { unit: "Unit 2", word: "reception", syllables: "re • cep • tion", meaning: "招待會 (n.)" },
+            { unit: "Unit 2", word: "capacity", syllables: "ca • pac • i • ty", meaning: "容量 (n.)" },
+            { unit: "Unit 2", word: "seating", syllables: "seat • ing", meaning: "座位安排 (n.)" },
+            { unit: "Unit 2", word: "seminar", syllables: "sem • i • nar", meaning: "研討會 (n.)" },
+            { unit: "Unit 3", word: "catering", syllables: "ca • ter • ing", meaning: "餐飲服務 (n.)" },
+            { unit: "Unit 3", word: "patrol", syllables: "pa • trol", meaning: "巡邏 (v.)" },
+            { unit: "Unit 3", word: "signage", syllables: "sign • age", meaning: "指示牌 (n.)" },
+            { unit: "Unit 3", word: "refreshments", syllables: "re • fresh • ments", meaning: "茶點 (n.)" },
+            { unit: "Unit 3", word: "promotional", syllables: "pro • mo • tion • al", meaning: "推廣的 (adj.)" },
+            { unit: "Unit 3", word: "walkthrough", syllables: "walk • through", meaning: "場地視察 (n.)" },
+            { unit: "Unit 3", word: "crowd control", syllables: "crowd con • trol", meaning: "人群管制 (n.)" },
+            { unit: "Unit 3", word: "utensils", syllables: "u • ten • sils", meaning: "用具 (n.)" },
+            { unit: "Unit 3", word: "abbreviation", syllables: "ab • bre • vi • a • tion", meaning: "縮寫 (n.)" },
+            { unit: "Unit 3", word: "obligation", syllables: "ob • li • ga • tion", meaning: "職責 (n.)" },
+            { unit: "Unit 4", word: "duty", syllables: "du • ty", meaning: "職責 (n.)" },
             { unit: "Unit 4", word: "oversee", syllables: "o • ver • see", meaning: "監督 (v.)" },
-            { unit: "Unit 4", word: "assigning", syllables: "as • sign • ing", meaning: "分配 (v.)" },
+            { unit: "Unit 4", word: "timely", syllables: "time • ly", meaning: "及時的 (adj.)" },
+            { unit: "Unit 4", word: "staffing", syllables: "staff • ing", meaning: "人手安排 (n.)" },
+            { unit: "Unit 4", word: "assign", syllables: "as • sign", meaning: "指派 (v.)" },
             { unit: "Unit 4", word: "assist", syllables: "as • sist", meaning: "協助 (v.)" },
-            { unit: "Unit 4", word: "arranging", syllables: "ar • rang • ing", meaning: "安排中 (v.)" },
-            { unit: "Unit 4", word: "ensure", syllables: "en • sure", meaning: "確保 (v.)" },
-            { unit: "Unit 4", word: "chunking", syllables: "chunk • ing", meaning: "分組停頓 (n.)" },
-            { unit: "Unit 4", word: "pausing", syllables: "paus • ing", meaning: "暫停 (n.)" },
-            { unit: "Unit 4", word: "stress", syllables: "stress", meaning: "強調 (v.)" },
-            { unit: "Unit 4", word: "fluency", syllables: "flu • en • cy", meaning: "流暢度 (n.)" },
-            // Unit 5
+            { unit: "Unit 4", word: "banquet hall", syllables: "ban • quet hall", meaning: "宴會廳 (n.)" },
+            { unit: "Unit 4", word: "tasting menu", syllables: "tast • ing men • u", meaning: "品嚐菜單 (n.)" },
+            { unit: "Unit 4", word: "marketing plan", syllables: "mar • ket • ing plan", meaning: "推廣計劃 (n.)" },
+            { unit: "Unit 4", word: "audio-visual", syllables: "au • di • o-vi • su • al", meaning: "視聽的 (adj.)" },
             { unit: "Unit 5", word: "invitation", syllables: "in • vi • ta • tion", meaning: "邀請 (n.)" },
-            { unit: "Unit 5", word: "formal", syllables: "for • mal", meaning: "正式的 (adj.)" },
-            { unit: "Unit 5", word: "appreciated", syllables: "ap • pre • ci • at • ed", meaning: "受到感激的 (adj.)" },
-            { unit: "Unit 5", word: "purpose", syllables: "pur • pose", meaning: "目的 (n.)" },
-            { unit: "Unit 5", word: "posture", syllables: "pos • ture", meaning: "姿勢 (n.)" },
-            { unit: "Unit 5", word: "gesture", syllables: "ges • ture", meaning: "手勢 (n.)" },
-            { unit: "Unit 5", word: "facial", syllables: "fa • cial", meaning: "面部的 (adj.)" },
-            { unit: "Unit 5", word: "renovated", syllables: "ren • o • vat • ed", meaning: "翻新了的 (adj.)" },
-            { unit: "Unit 5", word: "preparatory", syllables: "pre • par • a • to • ry", meaning: "籌備的 (adj.)" },
+            { unit: "Unit 5", word: "rehearsal", syllables: "re • hear • sal", meaning: "綵排 (n.)" },
             { unit: "Unit 5", word: "rundown", syllables: "run • down", meaning: "流程表 (n.)" },
-            // Unit 6
-            { unit: "Unit 6", word: "upcoming", syllables: "up • com • ing", meaning: "即將來臨的 (adj.)" },
-            { unit: "Unit 6", word: "arrangement", syllables: "ar • range • ment", meaning: "安排 (n.)" },
-            { unit: "Unit 6", word: "sponsoring", syllables: "spon • sor • ing", meaning: "贊助 (v.)" },
-            { unit: "Unit 6", word: "patrols", syllables: "pa • trols", meaning: "巡邏 (n.)" },
-            { unit: "Unit 6", word: "amenities", syllables: "a • men • i • ties", meaning: "設施/用品 (n.)" },
-            { unit: "Unit 6", word: "facilitate", syllables: "fa • cil • i • tate", meaning: "協助促進 (v.)" },
+            { unit: "Unit 5", word: "on-site", syllables: "on-site", meaning: "現場的 (adj.)" },
+            { unit: "Unit 5", word: "finalise", syllables: "fi • nal • ise", meaning: "敲定 (v.)" },
+            { unit: "Unit 5", word: "ceremony", syllables: "cer • e • mo • ny", meaning: "儀式 (n.)" },
+            { unit: "Unit 5", word: "attendant", syllables: "at • tend • ant", meaning: "服務員 (n.)" },
+            { unit: "Unit 5", word: "professionalism", syllables: "pro • fes • sion • al • ism", meaning: "專業態度 (n.)" },
+            { unit: "Unit 5", word: "non-verbal", syllables: "non-ver • bal", meaning: "非語言的 (adj.)" },
+            { unit: "Unit 5", word: "action plan", syllables: "ac • tion plan", meaning: "行動計劃 (n.)" },
+            { unit: "Unit 6", word: "press conference", syllables: "press con • fer • ence", meaning: "新聞發佈會 (n.)" },
+            { unit: "Unit 6", word: "live stream", syllables: "live stream", meaning: "直播 (v.)" },
             { unit: "Unit 6", word: "hygiene", syllables: "hy • giene", meaning: "衛生 (n.)" },
-            { unit: "Unit 6", word: "shuttle", syllables: "shut • tle", meaning: "穿梭接送 (n.)" },
-            { unit: "Unit 6", word: "highlights", syllables: "high • lights", meaning: "精彩片段 (n.)" },
-            { unit: "Unit 6", word: "emergency", syllables: "e • mer • gen • cy", meaning: "緊急情況 (n.)" },
-            // Unit 7
-            { unit: "Unit 7", word: "conversation", syllables: "con • ver • sa • tion", meaning: "對話 (n.)" },
+            { unit: "Unit 6", word: "media interview", syllables: "me • di • a in • ter • view", meaning: "媒體訪問 (n.)" },
+            { unit: "Unit 6", word: "emergency procedure", syllables: "e • mer • gen • cy pro • ce • dure", meaning: "緊急程序 (n.)" },
+            { unit: "Unit 6", word: "lighting", syllables: "light • ing", meaning: "燈光 (n.)" },
+            { unit: "Unit 6", word: "sound system", syllables: "sound sys • tem", meaning: "音響系統 (n.)" },
+            { unit: "Unit 6", word: "press kit", syllables: "press kit", meaning: "媒體資料袋 (n.)" },
+            { unit: "Unit 6", word: "guest list", syllables: "guest list", meaning: "賓客名單 (n.)" },
+            { unit: "Unit 6", word: "crowd control", syllables: "crowd con • trol", meaning: "人群管制 (n.)" },
             { unit: "Unit 7", word: "enquiry", syllables: "en • qui • ry", meaning: "查詢 (n.)" },
-            { unit: "Unit 7", word: "active", syllables: "ac • tive", meaning: "積極的 (adj.)" },
-            { unit: "Unit 7", word: "exceptional", syllables: "ex • cep • tion • al", meaning: "卓越的 (adj.)" },
-            { unit: "Unit 7", word: "comprehensive", syllables: "com • pre • hen • sive", meaning: "全面的 (adj.)" },
-            { unit: "Unit 7", word: "gatherings", syllables: "gath • er • ings", meaning: "聚會 (n.)" },
-            { unit: "Unit 7", word: "exceed", syllables: "ex • ceed", meaning: "超越 (v.)" },
-            { unit: "Unit 7", word: "confirm", syllables: "con • firm", meaning: "確認 (v.)" },
-            { unit: "Unit 7", word: "proposals", syllables: "pro • pos • als", meaning: "建議書 (n.)" },
+            { unit: "Unit 7", word: "proposal", syllables: "pro • pos • al", meaning: "建議書 (n.)" },
+            { unit: "Unit 7", word: "anniversary", syllables: "an • ni • ver • sa • ry", meaning: "週年紀念 (n.)" },
+            { unit: "Unit 7", word: "empathy", syllables: "em • pa • thy", meaning: "同理心 (n.)" },
             { unit: "Unit 7", word: "milestone", syllables: "mile • stone", meaning: "里程碑 (n.)" },
-            // Unit 8
-            { unit: "Unit 8", word: "venues", syllables: "ven • ues", meaning: "場地 (n.)" },
-            { unit: "Unit 8", word: "layout", syllables: "lay • out", meaning: "佈局 (n.)" },
-            { unit: "Unit 8", word: "capacity", syllables: "ca • pac • i • ty", meaning: "容納人數 (n.)" },
-            { unit: "Unit 8", word: "configuration", syllables: "con • fig • u • ra • tion", meaning: "座位排列 (n.)" },
-            { unit: "Unit 8", word: "platform", syllables: "plat • form", meaning: "台/平台 (n.)" },
-            { unit: "Unit 8", word: "decor", syllables: "de • cor", meaning: "裝飾/佈置 (n.)" },
-            { unit: "Unit 8", word: "expansive", syllables: "ex • pan • sive", meaning: "寬闊的 (adj.)" },
+            { unit: "Unit 7", word: "package", syllables: "pack • age", meaning: "套餐 (n.)" },
+            { unit: "Unit 7", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" },
+            { unit: "Unit 7", word: "deposit", syllables: "de • pos • it", meaning: "訂金 (n.)" },
+            { unit: "Unit 7", word: "promotion", syllables: "pro • mo • tion", meaning: "優惠推廣 (n.)" },
+            { unit: "Unit 7", word: "ballroom", syllables: "ball • room", meaning: "宴會廳 (n.)" },
+            { unit: "Unit 8", word: "pillarless", syllables: "pil • lar • less", meaning: "無柱的 (adj.)" },
             { unit: "Unit 8", word: "spacious", syllables: "spa • cious", meaning: "寬敞的 (adj.)" },
-            { unit: "Unit 8", word: "elegant", syllables: "el • e • gant", meaning: "優雅的 (adj.)" },
-            { unit: "Unit 8", word: "atmosphere", syllables: "at • mos • phere", meaning: "氣氛 (n.)" },
-            // Unit 9
-            { unit: "Unit 9", word: "facility", syllables: "fa • cil • i • ty", meaning: "設施 (n.)" },
-            { unit: "Unit 9", word: "seamless", syllables: "seam • less", meaning: "無縫的/流暢的 (adj.)" },
-            { unit: "Unit 9", word: "sturdy", syllables: "stur • dy", meaning: "堅固的 (adj.)" },
-            { unit: "Unit 9", word: "portable", syllables: "por • ta • ble", meaning: "可攜式的 (adj.)" },
-            { unit: "Unit 9", word: "compound", syllables: "com • pound", meaning: "複合的 (adj.)" },
-            { unit: "Unit 9", word: "resolution", syllables: "res • o • lu • tion", meaning: "解析度 (n.)" },
-            { unit: "Unit 9", word: "visibility", syllables: "vis • i • bil • i • ty", meaning: "能見度 (n.)" },
-            { unit: "Unit 9", word: "captivate", syllables: "cap • ti • vate", meaning: "吸引/迷住 (v.)" },
-            { unit: "Unit 9", word: "state-of-the-art", syllables: "state • of • the • art", meaning: "最先進的 (adj.)" },
-            { unit: "Unit 9", word: "equipped", syllables: "e • quipped", meaning: "配備了的 (adj.)" },
-            // Unit 10
-            { unit: "Unit 10", word: "option", syllables: "op • tion", meaning: "選擇 (n.)" },
-            { unit: "Unit 10", word: "hearty", syllables: "hear • ty", meaning: "豐盛的 (adj.)" },
-            { unit: "Unit 10", word: "fluffy", syllables: "fluf • fy", meaning: "鬆軟的 (adj.)" },
-            { unit: "Unit 10", word: "assortment", syllables: "as • sort • ment", meaning: "各式各樣 (n.)" },
-            { unit: "Unit 10", word: "signature", syllables: "sig • na • ture", meaning: "招牌的 (adj.)" },
-            { unit: "Unit 10", word: "authentic", syllables: "au • then • tic", meaning: "正宗的 (adj.)" },
-            { unit: "Unit 10", word: "texture", syllables: "tex • ture", meaning: "口感/質感 (n.)" },
-            { unit: "Unit 10", word: "accompany", syllables: "ac • com • pa • ny", meaning: "配搭/伴隨 (v.)" },
-            { unit: "Unit 10", word: "vegetarian", syllables: "veg • e • tar • i • an", meaning: "素食的 (adj.)" },
-            { unit: "Unit 10", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" },
-            // Unit 11
-            { unit: "Unit 11", word: "amenity", syllables: "a • men • i • ty", meaning: "便利設施 (n.)" },
-            { unit: "Unit 11", word: "valet", syllables: "val • et", meaning: "泊車服務 (n.)" },
-            { unit: "Unit 11", word: "refreshment", syllables: "re • fresh • ment", meaning: "茶點 (n.)" },
-            { unit: "Unit 11", word: "rate", syllables: "rate", meaning: "收費/價格 (n.)" },
-            { unit: "Unit 11", word: "additional", syllables: "ad • di • tion • al", meaning: "額外的 (adj.)" },
-            { unit: "Unit 11", word: "bespoke", syllables: "be • spoke", meaning: "度身訂造的 (adj.)" },
-            { unit: "Unit 11", word: "interactive", syllables: "in • ter • ac • tive", meaning: "互動的 (adj.)" },
-            { unit: "Unit 11", word: "unlimited", syllables: "un • lim • it • ed", meaning: "無限的 (adj.)" },
-            { unit: "Unit 11", word: "setup", syllables: "set • up", meaning: "佈置/設置 (n.)" },
-            { unit: "Unit 11", word: "streaming", syllables: "stream • ing", meaning: "直播/串流 (n.)" },
-            // Unit 12
-            { unit: "Unit 12", word: "conditional", syllables: "con • di • tion • al", meaning: "有條件的 (adj.)" },
-            { unit: "Unit 12", word: "promote", syllables: "pro • mote", meaning: "推廣 (v.)" },
-            { unit: "Unit 12", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" },
-            { unit: "Unit 12", word: "exclusive", syllables: "ex • clu • sive", meaning: "獨家的 (adj.)" },
-            { unit: "Unit 12", word: "coordination", syllables: "co • or • di • na • tion", meaning: "協調工作 (n.)" },
+            { unit: "Unit 8", word: "accommodate", syllables: "ac • com • mo • date", meaning: "容納 (v.)" },
+            { unit: "Unit 8", word: "layout", syllables: "lay • out", meaning: "佈置 (n.)" },
+            { unit: "Unit 8", word: "harbour view", syllables: "har • bour view", meaning: "海港景色 (n.)" },
+            { unit: "Unit 8", word: "décor", syllables: "dé • cor", meaning: "裝飾 (n.)" },
+            { unit: "Unit 8", word: "configuration", syllables: "con • fig • u • ra • tion", meaning: "佈局形式 (n.)" },
+            { unit: "Unit 8", word: "banquet style", syllables: "ban • quet style", meaning: "宴會式 (n.)" },
+            { unit: "Unit 8", word: "sophisticated", syllables: "so • phis • ti • cat • ed", meaning: "優雅精緻的 (adj.)" },
+            { unit: "Unit 8", word: "enquiry form", syllables: "en • qui • ry form", meaning: "查詢表格 (n.)" },
+            { unit: "Unit 9", word: "LED display wall", syllables: "LED dis • play wall", meaning: "LED 顯示屏 (n.)" },
+            { unit: "Unit 9", word: "projector", syllables: "pro • jec • tor", meaning: "投影機 (n.)" },
+            { unit: "Unit 9", word: "wireless microphone", syllables: "wire • less mi • cro • phone", meaning: "無線麥克風 (n.)" },
+            { unit: "Unit 9", word: "audio-visual system", syllables: "au • di • o-vi • su • al sys • tem", meaning: "視聽系統 (n.)" },
+            { unit: "Unit 9", word: "video conferencing", syllables: "vid • e • o con • fer • enc • ing", meaning: "視像會議 (n.)" },
+            { unit: "Unit 9", word: "Wi-Fi", syllables: "Wi-Fi", meaning: "無線網絡 (n.)" },
+            { unit: "Unit 9", word: "high-definition", syllables: "high-def • i • ni • tion", meaning: "高清的 (adj.)" },
+            { unit: "Unit 9", word: "stage", syllables: "stage", meaning: "舞台 (n.)" },
+            { unit: "Unit 9", word: "ceiling-mounted", syllables: "ceil • ing-mount • ed", meaning: "天花板安裝的 (adj.)" },
+            { unit: "Unit 9", word: "well-lit", syllables: "well-lit", meaning: "光線充足的 (adj.)" },
+            { unit: "Unit 10", word: "appetiser", syllables: "ap • pe • tis • er", meaning: "前菜 (n.)" },
+            { unit: "Unit 10", word: "buffet", syllables: "buf • fet", meaning: "自助餐 (n.)" },
+            { unit: "Unit 10", word: "cuisine", syllables: "cui • sine", meaning: "菜系 (n.)" },
+            { unit: "Unit 10", word: "vegetarian option", syllables: "veg • e • tar • i • an op • tion", meaning: "素食選擇 (n.)" },
+            { unit: "Unit 10", word: "roasted", syllables: "roast • ed", meaning: "烤製的 (adj.)" },
+            { unit: "Unit 10", word: "assortment", syllables: "as • sort • ment", meaning: "精選組合 (n.)" },
+            { unit: "Unit 10", word: "sashimi", syllables: "sa • shi • mi", meaning: "刺身 (n.)" },
+            { unit: "Unit 10", word: "dessert", syllables: "des • sert", meaning: "甜點 (n.)" },
+            { unit: "Unit 10", word: "main course", syllables: "main course", meaning: "主菜 (n.)" },
+            { unit: "Unit 10", word: "set dinner", syllables: "set din • ner", meaning: "套餐晚宴 (n.)" },
+            { unit: "Unit 11", word: "amenities", syllables: "a • men • i • ties", meaning: "增值設施 (n.)" },
+            { unit: "Unit 11", word: "valet parking", syllables: "val • et park • ing", meaning: "代客泊車 (n.)" },
+            { unit: "Unit 11", word: "add-on", syllables: "add-on", meaning: "附加項目 (n.)" },
+            { unit: "Unit 11", word: "live streaming", syllables: "live stream • ing", meaning: "直播服務 (n.)" },
+            { unit: "Unit 11", word: "floral arrangement", syllables: "flo • ral ar • range • ment", meaning: "花卉佈置 (n.)" },
+            { unit: "Unit 11", word: "per person", syllables: "per per • son", meaning: "每位 (phrase)" },
+            { unit: "Unit 11", word: "unlimited", syllables: "un • lim • it • ed", meaning: "無限量的 (adj.)" },
+            { unit: "Unit 11", word: "premium", syllables: "pre • mi • um", meaning: "優質的 (adj.)" },
+            { unit: "Unit 11", word: "package price", syllables: "pack • age price", meaning: "套餐價格 (n.)" },
+            { unit: "Unit 11", word: "complimentary service", syllables: "com • pli • men • ta • ry ser • vice", meaning: "免費服務 (n.)" },
+            { unit: "Unit 12", word: "conditional offer", syllables: "con • di • tion • al of • fer", meaning: "附條件優惠 (n.)" },
             { unit: "Unit 12", word: "discount", syllables: "dis • count", meaning: "折扣 (n.)" },
-            { unit: "Unit 12", word: "entire", syllables: "en • tire", meaning: "整個的 (adj.)" },
-            { unit: "Unit 12", word: "demanding", syllables: "de • mand • ing", meaning: "強硬的/要求高的 (adj.)" },
-            { unit: "Unit 12", word: "centrepiece", syllables: "cen • tre • piece", meaning: "中心裝飾/桌花 (n.)" },
-            { unit: "Unit 12", word: "advance", syllables: "ad • vance", meaning: "預先 (n.)" },
-            // Unit 13
-            { unit: "Unit 13", word: "consolidation", syllables: "con • sol • i • da • tion", meaning: "綜合/鞏固 (n.)" },
-            { unit: "Unit 13", word: "appropriate", syllables: "ap • pro • pri • ate", meaning: "適當的 (adj.)" },
-            { unit: "Unit 13", word: "suitable", syllables: "suit • a • ble", meaning: "合適的 (adj.)" },
-            { unit: "Unit 13", word: "backdrop", syllables: "back • drop", meaning: "背景佈幕 (n.)" },
-            { unit: "Unit 13", word: "connective", syllables: "con • nec • tive", meaning: "連接詞 (n.)" },
-            { unit: "Unit 13", word: "performance", syllables: "per • form • ance", meaning: "表演 (n.)" },
-            { unit: "Unit 13", word: "hygiene", syllables: "hy • giene", meaning: "衛生 (n.)" },
-            { unit: "Unit 13", word: "secure", syllables: "se • cure", meaning: "確定/保留 (v.)" },
-            { unit: "Unit 13", word: "proceed", syllables: "pro • ceed", meaning: "繼續進行 (v.)" },
-            { unit: "Unit 13", word: "reservation", syllables: "res • er • va • tion", meaning: "預訂 (n.)" }
+            { unit: "Unit 12", word: "deposit", syllables: "de • pos • it", meaning: "訂金 (n.)" },
+            { unit: "Unit 12", word: "bespoke", syllables: "be • spoke", meaning: "度身訂製的 (adj.)" },
+            { unit: "Unit 12", word: "runway", syllables: "run • way", meaning: "伸展台 (n.)" },
+            { unit: "Unit 12", word: "rehearsal", syllables: "re • hear • sal", meaning: "技術彩排 (n.)" },
+            { unit: "Unit 12", word: "loyalty", syllables: "loy • al • ty", meaning: "忠誠度 (n.)" },
+            { unit: "Unit 12", word: "advance booking", syllables: "ad • vance book • ing", meaning: "提前預訂 (n.)" },
+            { unit: "Unit 12", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" },
+            { unit: "Unit 12", word: "finalise", syllables: "fi • nal • ise", meaning: "確認 (v.)" },
+            { unit: "Unit 13", word: "poolside", syllables: "pool • side", meaning: "泳池旁的 (adj.)" },
+            { unit: "Unit 13", word: "portable PA system", syllables: "port • a • ble PA sys • tem", meaning: "手提廣播系統 (n.)" },
+            { unit: "Unit 13", word: "floor-to-ceiling", syllables: "floor-to-ceil • ing", meaning: "落地式的 (adj.)" },
+            { unit: "Unit 13", word: "follow up", syllables: "fol • low up", meaning: "跟進 (v.)" },
+            { unit: "Unit 13", word: "reservation", syllables: "res • er • va • tion", meaning: "預訂 (n.)" },
+            { unit: "Unit 13", word: "harbour view", syllables: "har • bour view", meaning: "海港景色 (n.)" },
+            { unit: "Unit 13", word: "backdrop", syllables: "back • drop", meaning: "背景板 (n.)" },
+            { unit: "Unit 13", word: "complimentary", syllables: "com • pli • men • ta • ry", meaning: "免費贈送的 (adj.)" },
+            { unit: "Unit 13", word: "live piano performance", syllables: "live pi • a • no per • for • mance", meaning: "現場鋼琴演奏 (n.)" },
+            { unit: "Unit 13", word: "advance booking", syllables: "ad • vance book • ing", meaning: "提前預訂 (n.)" },
         ];
+
 
         // --- Data: M2 Vocab Quest (Word Master Style) ---
         // 已經加齊對應嘅測驗題目
         const wordMasterBank = [
-            // Unit 1
-            { id: 1, word: "operations", meaning: "營運 (n.)", q: "The ________ team is responsible for managing the backstage.", options: ["operations", "retreat", "logistics"], ans: 0 },
-            { id: 2, word: "retreat", meaning: "靜修/團建活動 (n.)", q: "Excel Trading Company will be holding a team-building ________ at our hotel.", options: ["banquets", "retreat", "briefing"], ans: 1 },
-            { id: 3, word: "banquets", meaning: "宴席 (n.)", q: "We have common hotel events like Wedding ________ and Charity Galas.", options: ["logistics", "setup", "banquets"], ans: 2 },
-            { id: 4, word: "logistics", meaning: "後勤安排 (n.)", q: "The Facilities Management team will manage all aspects of event ________.", options: ["logistics", "briefing", "setup"], ans: 0 },
-            { id: 5, word: "coordinate", meaning: "協調 (v.)", q: "Our Assistant Event Manager will ________ with all related sections.", options: ["execute", "coordinate", "maintain"], ans: 1 },
-            { id: 6, word: "execute", meaning: "執行 (v.)", q: "The Food Preparation team will plan and ________ event menus.", options: ["inspect", "maintain", "execute"], ans: 2 },
-            { id: 7, word: "maintain", meaning: "維持 (v.)", q: "Housekeeping must clean and ________ event spaces.", options: ["maintain", "coordinate", "execute"], ans: 0 },
-            { id: 8, word: "inspect", meaning: "檢查 (v.)", q: "The team will prepare and ________ event venues before the guests arrive.", options: ["setup", "briefing", "inspect"], ans: 2 },
-            { id: 9, word: "briefing", meaning: "簡報 (n.)", q: "Today, I'm going to give you a ________ on an event order.", options: ["briefing", "retreat", "logistics"], ans: 0 },
-            { id: 10, word: "setup", meaning: "佈置/設置 (n.)", q: "The banquet team will handle the room ________ before the guests arrive.", options: ["operations", "setup", "inspect"], ans: 1 },
-            // Unit 2
-            { id: 11, word: "background", meaning: "背景 (n.)", q: "Let's start with the ________ information of the event.", options: ["background", "venue", "conference"], ans: 0 },
-            { id: 12, word: "venue", meaning: "場地 (n.)", q: "Which ________ in hotels do we usually hold the above events?", options: ["ballroom", "venue", "reception"], ans: 1 },
-            { id: 13, word: "conference", meaning: "會議 (n.)", q: "Excel Trading Company will hold a business ________.", options: ["pavilion", "background", "conference"], ans: 2 },
-            { id: 14, word: "ballroom", meaning: "宴會廳 (n.)", q: "The awards dinner will be held in the Grand ________.", options: ["ballroom", "venue", "reception"], ans: 0 },
-            { id: 15, word: "pavilion", meaning: "涼亭/場館 (n.)", q: "Asia Bank will be holding a retreat at our garden ________.", options: ["conference", "pavilion", "presence"], ans: 1 },
-            { id: 16, word: "arrange", meaning: "安排 (v.)", q: "The concierge will ________ transportation for the city tour.", options: ["ensure", "arrange", "specific"], ans: 1 },
-            { id: 17, word: "ensure", meaning: "確保 (v.)", q: "Work together to ________ the guests enjoy their visit.", options: ["ensure", "arrange", "presence"], ans: 0 },
-            { id: 18, word: "presence", meaning: "出席/存在 (n.)", q: "We use 'there-structure' to describe the existence or ________ of something.", options: ["reception", "specific", "presence"], ans: 2 },
-            { id: 19, word: "specific", meaning: "特定的 (adj.)", q: "What tense should you use for a future activity at a ________ time?", options: ["specific", "ballroom", "arrange"], ans: 0 },
-            { id: 20, word: "reception", meaning: "歡迎接待 (n.)", q: "The welcome ________ will be held on the rooftop terrace tonight.", options: ["conference", "reception", "venue"], ans: 1 },
-            // Unit 3
-            { id: 21, word: "duties", meaning: "職責 (n.)", q: "Let's talk about the major ________ of different job positions in a hotel.", options: ["duties", "responsibilities", "signpost"], ans: 0 },
-            { id: 22, word: "responsibilities", meaning: "責任 (n.)", q: "Key ________: Prepare alcoholic & non-alcoholic beverages.", options: ["itinerary", "responsibilities", "walkthrough"], ans: 1 },
-            { id: 23, word: "promptly", meaning: "迅速地 (adv.)", q: "Respond ________ to guest concerns related to facility issues.", options: ["courteously", "efficiently", "promptly"], ans: 2 },
-            { id: 24, word: "efficiently", meaning: "有效率地 (adv.)", q: "Provide quality service by responding to requests ________.", options: ["efficiently", "promptly", "courteously"], ans: 0 },
-            { id: 25, word: "courteously", meaning: "有禮貌地 (adv.)", q: "Ensure all guests are treated ________ at all times.", options: ["promptly", "courteously", "efficiently"], ans: 1 },
-            { id: 26, word: "imperative", meaning: "祈使的/命令式 (adj.)", q: "We use the ________ form to give instructions or tell someone to do something.", options: ["signpost", "unattended", "imperative"], ans: 2 },
-            { id: 27, word: "unattended", meaning: "無人看管的 (adj.)", q: "Never leave guests' luggage ________.", options: ["unattended", "imperative", "signpost"], ans: 0 },
-            { id: 28, word: "itinerary", meaning: "行程 (n.)", q: "Please check today's event ________ and any last-minute change.", options: ["walkthrough", "itinerary", "duties"], ans: 1 },
-            { id: 29, word: "walkthrough", meaning: "實地考察/排練 (n.)", q: "Conduct a pre-event ________ of the event venue with the client.", options: ["signpost", "responsibilities", "walkthrough"], ans: 2 },
-            { id: 30, word: "signpost", meaning: "路標/指示語 (n.)", q: "An effective use of ________ language can make your presentation more organised.", options: ["signpost", "imperative", "duties"], ans: 0 },
-            // Unit 4
-            { id: 31, word: "obligation", meaning: "責任/義務 (n.)", q: "We use the modal verb 'should' to indicate an ________ or a duty.", options: ["fluency", "obligation", "stress"], ans: 1 },
-            { id: 32, word: "oversee", meaning: "監督 (v.)", q: "The Event Management Team should ________ the overall event logistics.", options: ["assist", "assigning", "oversee"], ans: 2 },
-            { id: 33, word: "assigning", meaning: "分配 (v.)", q: "The Facilities Management Team should take up the duty of ________ cameramen.", options: ["assigning", "oversee", "ensure"], ans: 0 },
-            { id: 34, word: "assist", meaning: "協助 (v.)", q: "Can the Marketing Team ________ with the logistics planning?", options: ["oversee", "assist", "arranging"], ans: 1 },
-            { id: 35, word: "arranging", meaning: "安排中 (v.)", q: "The F&B Team should be responsible for ________ staffing for the dining service.", options: ["chunking", "pausing", "arranging"], ans: 2 },
-            { id: 36, word: "ensure", meaning: "確保 (v.)", q: "The Food Preparation Team should ________ timely food delivery.", options: ["ensure", "assist", "oversee"], ans: 0 },
-            { id: 37, word: "chunking", meaning: "分組停頓 (n.)", q: "Speaking naturally involves ________ and pausing.", options: ["pausing", "chunking", "fluency"], ans: 1 },
-            { id: 38, word: "pausing", meaning: "暫停 (n.)", q: "Take a short ________ after important points or new ideas.", options: ["stress", "obligation", "pausing"], ans: 2 },
-            { id: 39, word: "stress", meaning: "強調 (v.)", q: "Slightly ________ on the key information to show importance.", options: ["stress", "chunking", "fluency"], ans: 0 },
-            { id: 40, word: "fluency", meaning: "流暢度 (n.)", q: "Such skills not only help enhance speaker's ________, but also allow listeners to understand better.", options: ["pausing", "fluency", "stress"], ans: 1 },
-            // Unit 5
-            { id: 41, word: "invitation", meaning: "邀請 (n.)", q: "When making an ________, we need to consider the language, tone and the audience.", options: ["invitation", "purpose", "posture"], ans: 0 },
-            { id: 42, word: "formal", meaning: "正式的 (adj.)", q: "What tone should be used: ________ or informal?", options: ["facial", "renovated", "formal"], ans: 2 },
-            { id: 43, word: "appreciated", meaning: "受到感激的 (adj.)", q: "Your presence would be greatly ________.", options: ["appreciated", "preparatory", "formal"], ans: 0 },
-            { id: 44, word: "purpose", meaning: "目的 (n.)", q: "State the ________ of the briefing at the beginning.", options: ["gesture", "purpose", "rundown"], ans: 1 },
-            { id: 45, word: "posture", meaning: "姿勢 (n.)", q: "________ refers to the way you position your body when sitting or standing.", options: ["gesture", "facial", "posture"], ans: 2 },
-            { id: 46, word: "gesture", meaning: "手勢 (n.)", q: "________ refers to the movement of part of your body, especially your hands.", options: ["gesture", "posture", "purpose"], ans: 0 },
-            { id: 47, word: "facial", meaning: "面部的 (adj.)", q: "________ expressions refer to how your face shows your feelings without words.", options: ["formal", "facial", "preparatory"], ans: 1 },
-            { id: 48, word: "renovated", meaning: "翻新了的 (adj.)", q: "I would like to invite you to the newly ________ conference room.", options: ["appreciated", "preparatory", "renovated"], ans: 2 },
-            { id: 49, word: "preparatory", meaning: "籌備的 (adj.)", q: "Would you like to join us for a ________ meeting at 3 pm tomorrow?", options: ["preparatory", "formal", "facial"], ans: 0 },
-            { id: 50, word: "rundown", meaning: "流程表 (n.)", q: "We will have a meeting with the client to go through the event ________.", options: ["invitation", "rundown", "purpose"], ans: 1 },
-            // Unit 6
-            { id: 51, word: "upcoming", meaning: "即將來臨的 (adj.)", q: "Conduct briefings with colleagues on the arrangements for ________ hotel events.", options: ["upcoming", "arrangement", "shuttle"], ans: 0 },
-            { id: 52, word: "arrangement", meaning: "安排 (n.)", q: "Give a briefing on the ________ of the event hosted by your client.", options: ["sponsoring", "arrangement", "emergency"], ans: 1 },
-            { id: 53, word: "sponsoring", meaning: "贊助 (v.)", q: "Provide information of the brand ________ the event.", options: ["facilitate", "hygiene", "sponsoring"], ans: 2 },
-            { id: 54, word: "patrols", meaning: "巡邏 (n.)", q: "Security should schedule regular ________ including the event venue.", options: ["patrols", "amenities", "highlights"], ans: 0 },
-            { id: 55, word: "amenities", meaning: "設施/用品 (n.)", q: "Housekeeping must ensure supplies of ________ in the restrooms.", options: ["shuttle", "amenities", "hygiene"], ans: 1 },
-            { id: 56, word: "facilitate", meaning: "協助促進 (v.)", q: "The Marketing Team will ________ media interviews.", options: ["emergency", "sponsoring", "facilitate"], ans: 2 },
-            { id: 57, word: "hygiene", meaning: "衛生 (n.)", q: "Maintain ________ standards during the restroom checks.", options: ["hygiene", "patrols", "arrangement"], ans: 0 },
-            { id: 58, word: "shuttle", meaning: "穿梭接送 (n.)", q: "Front Office will coordinate ________ service for VIP guests.", options: ["highlights", "shuttle", "upcoming"], ans: 1 },
-            { id: 59, word: "highlights", meaning: "精彩片段 (n.)", q: "Event Management will shoot video ________ for the event.", options: ["amenities", "emergency", "highlights"], ans: 2 },
-            { id: 60, word: "emergency", meaning: "緊急情況 (n.)", q: "Invite teams to a safety briefing to discuss ________ procedures.", options: ["emergency", "shuttle", "sponsoring"], ans: 0 },
-            // Unit 7
-            { id: 61, word: "conversation", meaning: "對話 (n.)", q: "Start and end telephone ________ appropriately.", options: ["conversation", "enquiry", "proposals"], ans: 0 },
-            { id: 62, word: "enquiry", meaning: "查詢 (n.)", q: "Understand the purpose of event ________ forms.", options: ["milestone", "enquiry", "confirm"], ans: 1 },
-            { id: 63, word: "active", meaning: "積極的 (adj.)", q: "Show ________ listening in conversation to show you are listening positively.", options: ["exceptional", "comprehensive", "active"], ans: 2 },
-            { id: 64, word: "exceptional", meaning: "卓越的 (adj.)", q: "Creating unforgettable moments with our ________ event packages.", options: ["exceptional", "comprehensive", "active"], ans: 0 },
-            { id: 65, word: "comprehensive", meaning: "全面的 (adj.)", q: "We offer ________ packages to exceed your expectations.", options: ["active", "comprehensive", "exceptional"], ans: 1 },
-            { id: 66, word: "gatherings", meaning: "聚會 (n.)", q: "From warm ________ to grand celebrations, we have packages for you.", options: ["proposals", "milestone", "gatherings"], ans: 2 },
-            { id: 67, word: "exceed", meaning: "超越 (v.)", q: "We offer packages to ________ your expectations.", options: ["exceed", "confirm", "gatherings"], ans: 0 },
-            { id: 68, word: "confirm", meaning: "確認 (v.)", q: "I'd like to ________ the operation of the coming corporate event.", options: ["proposals", "confirm", "exceed"], ans: 1 },
-            { id: 69, word: "proposals", meaning: "建議書 (n.)", q: "I'd like to ask the process for requesting event ________.", options: ["conversation", "enquiry", "proposals"], ans: 2 },
-            { id: 70, word: "milestone", meaning: "里程碑 (n.)", q: "Congratulations on 15 years! That's a fantastic ________!", options: ["milestone", "gatherings", "confirm"], ans: 0 },
-            // Unit 8
-            { id: 71, word: "venues", meaning: "場地 (n.)", q: "We will describe hotel ________ with adjectives.", options: ["venues", "layout", "atmosphere"], ans: 0 },
-            { id: 72, word: "layout", meaning: "佈局 (n.)", q: "Describe the details, e.g. ________, sizes, capacities.", options: ["capacity", "layout", "decor"], ans: 1 },
-            { id: 73, word: "capacity", meaning: "容納人數 (n.)", q: "The ________ of the Grand Dining Hall is up to 240 guests.", options: ["platform", "atmosphere", "capacity"], ans: 2 },
-            { id: 74, word: "configuration", meaning: "座位排列 (n.)", q: "The room holds 180 guests for high table ________.", options: ["configuration", "decor", "layout"], ans: 0 },
-            { id: 75, word: "platform", meaning: "台/平台 (n.)", q: "There is an elevated ________ for distinguished guest seating.", options: ["atmosphere", "platform", "capacity"], ans: 1 },
-            { id: 76, word: "decor", meaning: "裝飾/佈置 (n.)", q: "The hall features classic ________ reflecting timeless style.", options: ["venues", "expansive", "decor"], ans: 2 },
-            { id: 77, word: "expansive", meaning: "寬闊的 (adj.)", q: "The ballroom has ________ windows offering city views.", options: ["expansive", "spacious", "elegant"], ans: 0 },
-            { id: 78, word: "spacious", meaning: "寬敞的 (adj.)", q: "The venue offers ________ areas for various event setups.", options: ["elegant", "spacious", "expansive"], ans: 1 },
-            { id: 79, word: "elegant", meaning: "優雅的 (adj.)", q: "The venue is ________ and modern.", options: ["spacious", "atmosphere", "elegant"], ans: 2 },
-            { id: 80, word: "atmosphere", meaning: "氣氛 (n.)", q: "The view provides a natural and relaxing ________ for your celebration.", options: ["atmosphere", "configuration", "platform"], ans: 0 },
-            // Unit 9
-            { id: 81, word: "facility", meaning: "設施 (n.)", q: "Name common ________ in different hotel venues.", options: ["facility", "resolution", "visibility"], ans: 0 },
-            { id: 82, word: "seamless", meaning: "無縫的/流暢的 (adj.)", q: "The advanced video conferencing equipment connects participants ________ly.", options: ["sturdy", "seamless", "portable"], ans: 1 },
-            { id: 83, word: "sturdy", meaning: "堅固的 (adj.)", q: "Adjectives to describe facilities: ________, fast, well-lit.", options: ["portable", "equipped", "sturdy"], ans: 2 },
-            { id: 84, word: "portable", meaning: "可攜式的 (adj.)", q: "Adjectives to describe facilities: ________, ultra-thin, wireless.", options: ["portable", "compound", "seamless"], ans: 0 },
-            { id: 85, word: "compound", meaning: "複合的 (adj.)", q: "Words like 'well-lit' are called ________ adjectives, usually joined with a hyphen.", options: ["resolution", "compound", "visibility"], ans: 1 },
-            { id: 86, word: "resolution", meaning: "解析度 (n.)", q: "The ballroom is equipped with a high-________ LED display wall.", options: ["visibility", "facility", "resolution"], ans: 2 },
-            { id: 87, word: "visibility", meaning: "能見度 (n.)", q: "The well-lit stage provides excellent ________ for all presentations.", options: ["visibility", "captivate", "sturdy"], ans: 0 },
-            { id: 88, word: "captivate", meaning: "吸引/迷住 (v.)", q: "Our LED display wall creates visual presentations that can ________ the audience.", options: ["equipped", "captivate", "seamless"], ans: 1 },
-            { id: 89, word: "state-of-the-art", meaning: "最先進的 (adj.)", q: "Our venue is equipped with ________ technology to ensure your event runs smoothly.", options: ["portable", "compound", "state-of-the-art"], ans: 2 },
-            { id: 90, word: "equipped", meaning: "配備了的 (adj.)", q: "The venue is ________ with a high-end AV system.", options: ["equipped", "facility", "resolution"], ans: 0 },
-            // Unit 10
-            { id: 91, word: "option", meaning: "選擇 (n.)", q: "We will describe menu ________ in event packages.", options: ["option", "hearty", "assortment"], ans: 0 },
-            { id: 92, word: "hearty", meaning: "豐盛的 (adj.)", q: "There is a selection of ________ American breakfast favourites to start your day.", options: ["fluffy", "hearty", "authentic"], ans: 1 },
-            { id: 93, word: "fluffy", meaning: "鬆軟的 (adj.)", q: "Our breakfast features ________ scrambled eggs with crispy bacon.", options: ["vegetarian", "signature", "fluffy"], ans: 2 },
-            { id: 94, word: "assortment", meaning: "各式各樣 (n.)", q: "In the evening, there is an ________ of signature dishes for you to enjoy.", options: ["assortment", "texture", "option"], ans: 0 },
-            { id: 95, word: "signature", meaning: "招牌的 (adj.)", q: "There are a variety of desserts available, such as our ________ chocolate mousse.", options: ["authentic", "signature", "hearty"], ans: 1 },
-            { id: 96, word: "authentic", meaning: "正宗的 (adj.)", q: "Each dish is carefully prepared to highlight ________ tastes and textures.", options: ["complimentary", "fluffy", "authentic"], ans: 2 },
-            { id: 97, word: "texture", meaning: "口感/質感 (n.)", q: "Each dish is carefully prepared to highlight authentic tastes and ________.", options: ["texture", "assortment", "option"], ans: 0 },
-            { id: 98, word: "accompany", meaning: "配搭/伴隨 (v.)", q: "You can enjoy juicy roasted beef ________ied by creamy mashed potatoes.", options: ["vegetarian", "accompany", "signature"], ans: 1 },
-            { id: 99, word: "vegetarian", meaning: "素食的 (adj.)", q: "You can enjoy a range of fresh salads and excellent Thai and Italian ________ mains.", options: ["hearty", "fluffy", "vegetarian"], ans: 2 },
-            { id: 100, word: "complimentary", meaning: "免費贈送的 (adj.)", q: "There are also ________ beverages throughout the event.", options: ["complimentary", "authentic", "texture"], ans: 0 },
-            // Unit 11
-            { id: 101, word: "amenity", meaning: "便利設施 (n.)", q: "Name common services and ________ in event packages.", options: ["amenity", "valet", "streaming"], ans: 0 },
-            { id: 102, word: "valet", meaning: "泊車服務 (n.)", q: "As part of the package, we provide complimentary ________ parking service.", options: ["unlimited", "valet", "bespoke"], ans: 1 },
-            { id: 103, word: "refreshment", meaning: "茶點 (n.)", q: "We provide dim-sum ________ for an extra HK$200 per person.", options: ["rate", "setup", "refreshment"], ans: 2 },
-            { id: 104, word: "rate", meaning: "收費/價格 (n.)", q: "The per-person ________ for this package is HK$1,000.", options: ["rate", "additional", "streaming"], ans: 0 },
-            { id: 105, word: "additional", meaning: "額外的 (adj.)", q: "For alcoholic beverages, we offer a premium wine package for an ________ HK$300 per person.", options: ["interactive", "additional", "bespoke"], ans: 1 },
-            { id: 106, word: "bespoke", meaning: "度身訂造的 (adj.)", q: "We offer ________ runway packages for your collection with professional staging.", options: ["unlimited", "amenity", "bespoke"], ans: 2 },
-            { id: 107, word: "interactive", meaning: "互動的 (adj.)", q: "The event features different facilities, including an ________ projection system.", options: ["interactive", "valet", "rate"], ans: 0 },
-            { id: 108, word: "unlimited", meaning: "無限的 (adj.)", q: "The package includes ________ soft drinks, premium tea and coffee.", options: ["setup", "unlimited", "refreshment"], ans: 1 },
-            { id: 109, word: "setup", meaning: "佈置/設置 (n.)", q: "The package includes professional graduation ceremony ________.", options: ["streaming", "additional", "setup"], ans: 2 },
-            { id: 110, word: "streaming", meaning: "直播/串流 (n.)", q: "You can add our live ________ service for HK$3,000.", options: ["streaming", "bespoke", "interactive"], ans: 0 },
-            // Unit 12
-            { id: 111, word: "conditional", meaning: "有條件的 (adj.)", q: "We are promoting our hotel's ________ offers.", options: ["conditional", "exclusive", "entire"], ans: 0 },
-            { id: 112, word: "promote", meaning: "推廣 (v.)", q: "________ your hotel's conditional offers on event packages.", options: ["discount", "promote", "coordination"], ans: 1 },
-            { id: 113, word: "complimentary", meaning: "免費贈送的 (adj.)", q: "When your guest list reaches 120 people, you can enjoy our ________ premium coat check service.", options: ["demanding", "advance", "complimentary"], ans: 2 },
-            { id: 114, word: "exclusive", meaning: "獨家的 (adj.)", q: "Book between January and March to unlock our ________ Winter Special pricing!", options: ["exclusive", "conditional", "entire"], ans: 0 },
-            { id: 115, word: "coordination", meaning: "協調工作 (n.)", q: "Book through our certified wedding planner and enjoy 30% OFF all ________ fees!", options: ["centrepiece", "coordination", "advance"], ans: 1 },
-            { id: 116, word: "discount", meaning: "折扣 (n.)", q: "If you can confirm your booking with a deposit, we'll offer you a 10% ________.", options: ["entire", "demanding", "discount"], ans: 2 },
-            { id: 117, word: "entire", meaning: "整個的 (adj.)", q: "We'll offer you a 10% discount on the ________ package.", options: ["entire", "exclusive", "conditional"], ans: 0 },
-            { id: 118, word: "demanding", meaning: "強硬的/要求高的 (adj.)", q: "Sometimes we use 'can' in the condition to make us sound less ________.", options: ["advance", "demanding", "centrepiece"], ans: 1 },
-            { id: 119, word: "centrepiece", meaning: "中心裝飾/桌花 (n.)", q: "For events of 75 or more guests, we'll offer complimentary floral ________s for all tables.", options: ["coordination", "promote", "centrepiece"], ans: 2 },
-            { id: 120, word: "advance", meaning: "預先 (n.)", q: "If you can pay the full amount 30 days in ________, we'll upgrade your table linens.", options: ["advance", "discount", "exclusive"], ans: 0 },
-            // Unit 13
-            { id: 121, word: "consolidation", meaning: "綜合/鞏固 (n.)", q: "Unit 13 is a ________ task for the previous units.", options: ["consolidation", "appropriate", "connective"], ans: 0 },
-            { id: 122, word: "appropriate", meaning: "適當的 (adj.)", q: "Make sure you use the ________ connective, 'if' or 'for', to introduce the condition.", options: ["suitable", "appropriate", "performance"], ans: 1 },
-            { id: 123, word: "suitable", meaning: "合適的 (adj.)", q: "We'd like to know if there are any ________ packages for our event.", options: ["secure", "proceed", "suitable"], ans: 2 },
-            { id: 124, word: "backdrop", meaning: "背景佈幕 (n.)", q: "A photography ________ is available at $4,000.", options: ["backdrop", "connective", "reservation"], ans: 0 },
-            { id: 125, word: "connective", meaning: "連接詞 (n.)", q: "Make sure you use the appropriate ________, 'if' or 'for', to introduce the condition.", options: ["hygiene", "connective", "performance"], ans: 1 },
-            { id: 126, word: "performance", meaning: "表演 (n.)", q: "Our venue features an elegant setting, including live piano ________.", options: ["reservation", "appropriate", "performance"], ans: 2 },
-            { id: 127, word: "hygiene", meaning: "衛生 (n.)", q: "Maintain ________ standards during the restroom checks.", options: ["hygiene", "backdrop", "suitable"], ans: 0 },
-            { id: 128, word: "secure", meaning: "確定/保留 (v.)", q: "Would you like me to ________ this booking for you?", options: ["proceed", "secure", "consolidation"], ans: 1 },
-            { id: 129, word: "proceed", meaning: "繼續進行 (v.)", q: "Shall we ________ with the booking today?", options: ["connective", "appropriate", "proceed"], ans: 2 },
-            { id: 130, word: "reservation", meaning: "預訂 (n.)", q: "Feel free to call us if you want to make a ________.", options: ["reservation", "secure", "backdrop"], ans: 0 }
+            { id: 1, word: "operations", meaning: "營運 (n.)", q: "The ________ team is responsible for managing the backstage.", options: ["operations", "venue", "itinerary"], ans: 0 },
+            { id: 2, word: "venue", meaning: "場地 (n.)", q: "The event ________ will be set up in the Grand Ballroom.", options: ["operations", "venue", "itinerary"], ans: 1 },
+            { id: 3, word: "itinerary", meaning: "行程 (n.)", q: "Please check the ________ for tomorrow's city tour schedule.", options: ["complimentary", "operations", "itinerary"], ans: 2 },
+            { id: 4, word: "complimentary", meaning: "免費贈送的 (adj.)", q: "We offer ________ Wi-Fi for all hotel guests.", options: ["complimentary", "venue", "itinerary"], ans: 0 },
+            { id: 5, word: "promotional", meaning: "推廣的 (adj.)", q: "Our new event ________ package includes free parking.", options: ["venue", "promotional", "operations"], ans: 1 },
+            { id: 6, word: "accommodate", meaning: "容納 (v.)", q: "The ballroom can ________ up to 300 guests.", options: ["accommodate", "operations", "venue"], ans: 0 },
+            { id: 7, word: "refreshments", meaning: "茶點 (n.)", q: "We will serve light ________ during the break.", options: ["itinerary", "refreshments", "operations"], ans: 1 },
+            { id: 8, word: "enquiry", meaning: "查詢 (n.)", q: "Thank you for your ________ regarding our hotel services.", options: ["enquiry", "venue", "complimentary"], ans: 0 },
+            { id: 9, word: "reservation", meaning: "預訂 (n.)", q: "I would like to make a ________ for a double room.", options: ["operations", "reservation", "itinerary"], ans: 1 },
+            { id: 10, word: "assistance", meaning: "協助 (n.)", q: "Please let us know if you need any further ________.", options: ["assistance", "venue", "promotional"], ans: 0 },
+            { id: 11, word: "amenities", meaning: "設施 (n.)", q: "The hotel provides luxury ________ in every room.", options: ["amenities", "operations", "reservation"], ans: 0 },
+            { id: 12, word: "coordinate", meaning: "協調 (v.)", q: "We need to ________ with the catering team for the lunch arrangement.", options: ["coordinate", "venue", "accommodate"], ans: 0 },
+            { id: 13, word: "briefing", meaning: "簡報 (n.)", q: "The manager will give a short ________ before the event starts.", options: ["briefing", "ceiling", "feedback"], ans: 0 },
+            { id: 14, word: "security", meaning: "保安 (n.)", q: "The ________ team will patrol the area every hour.", options: ["catering", "security", "layout"], ans: 1 },
+            { id: 15, word: "housekeeping", meaning: "房務 (n.)", q: "Please call ________ if you need extra towels.", options: ["housekeeping", "inspection", "package"], ans: 0 },
+            { id: 16, word: "catering", meaning: "餐飲 (n.)", q: "The ________ service provided excellent food for the banquet.", options: ["catering", "patrol", "schedule"], ans: 0 },
+            { id: 17, word: "professional", meaning: "專業的 (adj.)", q: "Our staff are trained to provide ________ customer service.", options: ["professional", "complimentary", "promotional"], ans: 0 },
+            { id: 18, word: "feedback", meaning: "回饋 (n.)", q: "We would love to hear your ________ about your stay.", options: ["feedback", "background", "invitation"], ans: 0 }
         ];
         
         let m2Questions = []; 
@@ -965,20 +862,44 @@
         function generateRandomTime() {
             const hrs = Math.floor(Math.random() * 12) + 1;
             const mins = ["00", "15", "30", "45"][Math.floor(Math.random() * 4)];
-            const ampm = Math.random() > 0.5 ? "am" : "pm";
-            return { target: `${hrs}:${mins} ${ampm}`, matchStr: hrs.toString() }; 
-        }
+            const ampm = Math.random() > 0.5 ? "a.m." : "p.m.";
+
+            return { 
+                target: `${hrs}:${mins} ${ampm}`, 
+                matchFunc: (spoken) => {
+                    const cleanSpoken = spoken.toLowerCase().replace(/[^a-z0-9]/g, '');
+                    const targetAmPm = ampm === "a.m." ? "am" : "pm";
+                    const hasTimeNumber = cleanSpoken.includes(hrs.toString());
+                    const hasAmPm = cleanSpoken.includes(targetAmPm);
+                    return hasTimeNumber && hasAmPm;
+                }
+            }; 
+        } 
         function generateRandomMeasurement() {
-            const units = ["sq ft", "sq m", "metres high"];
-            const unit = units[Math.floor(Math.random() * units.length)];
+            const units = [
+                { display: "sq ft", spokenMatch: ["square feet", "sq ft", "square foot"] },
+                { display: "sq m", spokenMatch: ["square meters", "square metres", "sq m", "square meter", "square metre"] },
+                { display: "metres high", spokenMatch: ["meters high", "metres high", "meter high", "metre high"] }
+            ];
+            const unitObj = units[Math.floor(Math.random() * units.length)];
             const val = Math.floor(Math.random() * 900) + 100;
-            return { target: `${val.toLocaleString()} ${unit}`, matchStr: val.toString() };
+
+            return { 
+                target: `${val.toLocaleString()} ${unitObj.display}`, 
+                matchFunc: (spoken) => {
+                    const cleanSpoken = spoken.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+                    const hasNumber = cleanSpoken.includes(val.toString());
+                    const hasUnit = unitObj.spokenMatch.some(u => cleanSpoken.includes(u.replace(/[^a-z0-9\s]/g, '')));
+                    return hasNumber && hasUnit;
+                }
+            };
+        };
         }
 
         // --- State Variables ---
         let currentVocabList = []; let m1Index = 0;
         let m3aIndex = 0; let m3bIndex = 0; 
-        let zcCategory = ''; let zcCurrentData = null;
+        
 
         // --- Core Functions ---
         function navTo(viewId) {
@@ -1004,7 +925,7 @@
         function showToast(msg, isSuccess) {
             const fb = document.getElementById('toast-feedback');
             const text = document.getElementById('toast-text');
-            text.innerText = msg;
+            text.innerHTML = msg;
             text.className = isSuccess ? 'bg-emerald-500 text-white text-center py-4 px-6 rounded-2xl shadow-2xl text-base font-bold w-full' : 'bg-rose-500 text-white text-center py-4 px-6 rounded-2xl shadow-2xl text-base font-bold w-full';
             fb.style.opacity = '1';
             setTimeout(() => { fb.style.opacity = '0'; }, 3000);
@@ -1057,9 +978,6 @@
         }
 
         // --- M2: Vocab Quest (Word Master Style) ---
-        // Fisher-Yates global shuffle
-        const fy = arr => { for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr; };
-
         function startM2(zone) {
             m2Questions = [];
             
@@ -1068,15 +986,16 @@
             // 2. Fill the rest with random words
             let remainingPool = wordMasterBank.filter(w => !mistakeIds.has(w.id));
             
-            fy(mistakePool);
-            fy(remainingPool);
+            // Shuffle pools
+            mistakePool.sort(() => 0.5 - Math.random());
+            remainingPool.sort(() => 0.5 - Math.random());
             
             // Combine to get 10 questions
             let combined = [...mistakePool, ...remainingPool];
             m2Questions = combined.slice(0, 10);
             
             // Shuffle the final 10 questions so mistakes aren't always first
-            fy(m2Questions);
+            m2Questions.sort(() => 0.5 - Math.random());
 
             m2Index = 0; m2Score = 0;
             
@@ -1101,6 +1020,9 @@
         }
 
         function startM2Quiz() {
+            // Shuffle questions again so quiz order differs from review list order
+            m2Questions.sort(() => 0.5 - Math.random());
+
             document.getElementById('m2-quiz-container').classList.remove('hidden');
             document.getElementById('m2-result-container').classList.add('hidden');
             renderM2(); 
@@ -1115,12 +1037,11 @@
             
             const container = document.getElementById('m2-options-container');
             container.innerHTML = '';
-            const shuffledOpts = [...q.options]; fy(shuffledOpts);
-            shuffledOpts.forEach((opt, idx) => {
+            q.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
                 btn.className = "w-full text-left bg-gray-50 hover:bg-emerald-50 border-2 border-gray-200 hover:border-emerald-400 rounded-2xl p-4 font-bold text-gray-700 transition active:scale-95";
                 btn.innerText = opt;
-                btn.onclick = () => checkM2Answer(opt, q.options[q.ans], q.id);
+                btn.onclick = () => checkM2Answer(idx, q.ans, q.id);
                 container.appendChild(btn);
             });
         }
@@ -1150,192 +1071,399 @@
 
         // --- M3A: Briefing Simulator ---
         function startM3AIntro() { navTo('m3-a-intro'); }
-        function startM3A() { m3aIndex = 0; renderM3A(); navTo('m3-a'); }
+        
+        function skipM3A() {
+            if(m3aIndex < m3aData.length - 1) { m3aIndex++; renderM3A(); }
+            else { addExp(50); navTo('zone-a'); } // 畀少少 Exp 鼓勵下完成
+        }
+        function skipM3B() {
+            if(m3bIndex < m3bScriptData.length - 1) { m3bIndex++; renderM3B(); }
+            else { addExp(50); navTo('zone-b'); }
+        }
+function startM3A() { m3aIndex = 0; renderM3A(); navTo('m3-a'); }
         function renderM3A() {
             const data = m3aData[m3aIndex];
             document.getElementById('m3a-progress').innerText = `${m3aIndex + 1}/${m3aData.length}`;
             document.getElementById('m3a-section-title').innerText = data.section;
             document.getElementById('m3a-hint').innerText = data.hint;
-            document.getElementById('m3a-sentence').innerText = `"${data.text}"`;
+            document.getElementById('m3a-sentence').innerHTML = `"${wrapWords(data.text)}"`;
         }
-        function checkM3ASentence() {
-            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
-            
-            let targetText = m3aData[m3aIndex].text.replace(/[.,"]/g, '').toLowerCase();
-            let keyWords = targetText.split(' ').filter(w => w.length > 3); 
-            
-            const rec = new SR(); rec.lang = getVoiceSettings().lang;
-            showToast("🎤 Reading aloud...", true); rec.start();
-            rec.onresult = (e) => {
-                const spoken = e.results[0][0].transcript.toLowerCase();
+        
+// --- Feature: Word-level Feedback ---
+function generateFeedbackHTML(targetText, spokenText) {
+    const spokenWords = spokenText.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
+    return targetText.split(' ').map(token => {
+        let cleanWord = token.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (!cleanWord) return token;
+
+        let isCorrect = spokenWords.includes(cleanWord);
+        let colorClass = isCorrect ? 'text-emerald-500 font-extrabold' : 'text-rose-500 font-extrabold underline decoration-rose-300 decoration-2 underline-offset-4';
+
+        let playClean = token.replace(/[^a-zA-Z\-]/g, '');
+        return `<span class="cursor-pointer transition-colors ${colorClass}" onclick="playWord('${playClean}')">${token}</span>`;
+    }).join(' ');
+}
+
+let m3aRec = null; let m3aIsRecording = false;
+let m3bRec = null; let m3bIsRecording = false;
+
+function toggleM3AVoiceCheck(btnElement) {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
+
+    if (m3aIsRecording && m3aRec) {
+        m3aRec.stop();
+        m3aIsRecording = false;
+
+        btnElement.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
+        btnElement.classList.remove('bg-rose-500', 'hover:bg-rose-600', 'animate-pulse');
+        btnElement.classList.add('bg-purple-600', 'hover:bg-purple-700');
+        showToast("⏳ Grading...", true);
+    } else {
+        m3aRec = new SR();
+        m3aRec.lang = getVoiceSettings().lang;
+        m3aRec.continuous = true;
+        m3aRec.interimResults = false;
+
+        let finalTranscript = '';
+        m3aRec.onresult = (event) => {
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                finalTranscript += event.results[i][0].transcript;
+            }
+        };
+
+        m3aRec.onend = () => {
+            if (!m3aIsRecording) {
+                const spoken = finalTranscript.toLowerCase().trim();
+                const originalText = m3aData[m3aIndex].text;
+                let targetText = originalText.replace(/[.,"]/g, '').toLowerCase();
+                let keyWords = targetText.split(' ').filter(w => w.length > 3); 
+
                 let matchCount = 0;
-                keyWords.forEach(kw => { if(spoken.includes(kw)) matchCount++; });
-                
-                if (matchCount >= keyWords.length * 0.3 || spoken.length > 15) {
+                if (spoken) keyWords.forEach(kw => { if(spoken.includes(kw)) matchCount++; });
+
+                document.getElementById('m3a-sentence').innerHTML = `"${generateFeedbackHTML(originalText, spoken)}"`;
+
+                if (!spoken) {
+                    showToast(`❌ No speech detected.`, false);
+                } else if (matchCount >= keyWords.length * 0.6) {
                     showToast(`🌟 Excellent Delivery!`, true);
                     setTimeout(() => {
                         if(m3aIndex < m3aData.length - 1) { m3aIndex++; renderM3A(); }
                         else { addExp(200); navTo('zone-a'); }
-                    }, 1500);
-                } else { showToast(`❌ Please speak louder and clearer!`, false); }
-            };
+                    }, 2500);
+                } else {
+                    showToast(`❌ Try again! Check the red words.`, false);
+                }
+            }
+        };
+
+        btnElement.innerHTML = '<i class="fa-solid fa-stop"></i> Stop & Grade';
+        btnElement.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+        btnElement.classList.add('bg-rose-500', 'hover:bg-rose-600', 'animate-pulse');
+        showToast("🎤 Recording... Tap Stop when done.", true);
+
+        try {
+            m3aRec.start();
+            m3aIsRecording = true;
+        } catch (err) {
+            showToast("⚠️ Error starting recognition.", false);
+            m3aIsRecording = false;
+            btnElement.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
+            btnElement.classList.remove('bg-rose-500', 'hover:bg-rose-600', 'animate-pulse');
+            btnElement.classList.add('bg-purple-600', 'hover:bg-purple-700');
         }
+    }
+}
 
         // --- M3B: Telephone Script Reader ---
         function startM3B() { m3bIndex = 0; renderM3B(); navTo('m3-b'); }
         function renderM3B() {
             const data = m3bScriptData[m3bIndex];
             document.getElementById('m3b-progress').innerText = `${m3bIndex + 1}/${m3bScriptData.length}`;
-            document.getElementById('m3b-client-text').innerText = `"${data.client}"`;
+            document.getElementById('m3b-client-text').innerHTML = `"${wrapWords(data.client)}"`;
             document.getElementById('m3b-user-hint').innerText = data.hint;
-            document.getElementById('m3b-user-text').innerText = `"${data.you}"`;
+            document.getElementById('m3b-user-text').innerHTML = `"${wrapWords(data.you)}"`;
         }
-        function checkM3BScript() {
-            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
-            
-            let targetText = m3bScriptData[m3bIndex].you.replace(/[.,"$]/g, '').toLowerCase();
-            let keyWords = targetText.split(' ').filter(w => w.length > 4); 
-            
-            const rec = new SR(); rec.lang = getVoiceSettings().lang;
-            showToast("🎤 Reading your line...", true); rec.start();
-            rec.onresult = (e) => {
-                const spoken = e.results[0][0].transcript.toLowerCase();
+        function toggleM3BVoiceCheck(btnElement) {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
+
+    if (m3bIsRecording && m3bRec) {
+        m3bRec.stop();
+        m3bIsRecording = false;
+
+        btnElement.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
+        btnElement.classList.remove('bg-rose-500', 'hover:bg-rose-600', 'animate-pulse');
+        btnElement.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+        showToast("⏳ Grading...", true);
+    } else {
+        m3bRec = new SR();
+        m3bRec.lang = getVoiceSettings().lang;
+        m3bRec.continuous = true;
+        m3bRec.interimResults = false;
+
+        let finalTranscript = '';
+        m3bRec.onresult = (event) => {
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                finalTranscript += event.results[i][0].transcript;
+            }
+        };
+
+        m3bRec.onend = () => {
+            if (!m3bIsRecording) {
+                const spoken = finalTranscript.toLowerCase().trim();
+                const originalText = m3bScriptData[m3bIndex].you;
+                let targetText = originalText.replace(/[.,"$]/g, '').toLowerCase();
+                let keyWords = targetText.split(' ').filter(w => w.length > 4);
+
                 let matchCount = 0;
-                keyWords.forEach(kw => { if(spoken.includes(kw)) matchCount++; });
-                
-                if (matchCount >= keyWords.length * 0.3 || spoken.length > 15) {
-                    showToast(`🌟 Great Job!`, true);
+                if (spoken) keyWords.forEach(kw => { if(spoken.includes(kw)) matchCount++; });
+
+                document.getElementById('m3b-user-text').innerHTML = `"${generateFeedbackHTML(originalText, spoken)}"`;
+
+                if (!spoken) {
+                    showToast(`❌ No speech detected.`, false);
+                } else if (matchCount >= keyWords.length * 0.6) {
+                    showToast(`🌟 Excellent Delivery!`, true);
                     setTimeout(() => {
                         if(m3bIndex < m3bScriptData.length - 1) { m3bIndex++; renderM3B(); }
-                        else { addExp(250); navTo('zone-b'); }
-                    }, 1500);
-                } else { showToast(`❌ Please try again!`, false); }
-            };
+                        else { addExp(300); navTo('zone-b'); }
+                    }, 2500);
+                } else {
+                    showToast(`❌ Try again! Check the red words.`, false);
+                }
+            }
+        };
+
+        btnElement.innerHTML = '<i class="fa-solid fa-stop"></i> Stop & Grade';
+        btnElement.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+        btnElement.classList.add('bg-rose-500', 'hover:bg-rose-600', 'animate-pulse');
+        showToast("🎤 Recording... Tap Stop when done.", true);
+
+        try {
+            m3bRec.start();
+            m3bIsRecording = true;
+        } catch (err) {
+            showToast("⚠️ Error starting recognition.", false);
+            m3bIsRecording = false;
+            btnElement.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
+            btnElement.classList.remove('bg-rose-500', 'hover:bg-rose-600', 'animate-pulse');
+            btnElement.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
         }
+    }
+}
 
         // --- Zone C: Endless Number & Date Drill ---
-        function startZoneC(category) {
-            zcCategory = category;
-            renderZoneC(); navTo('zone-c-drill');
-        }
         
-        function renderZoneC() {
-            if(zcCategory === 'dates') zcCurrentData = generateRandomDate();
-            else if(zcCategory === 'prices') zcCurrentData = generateRandomPrice();
-            else if(zcCategory === 'times') zcCurrentData = generateRandomTime();
-            else if(zcCategory === 'measurements') zcCurrentData = generateRandomMeasurement();
-            
-            document.getElementById('zc-type').innerText = `Read the ${zcCategory.slice(0,-1)}`;
-            document.getElementById('zc-target').innerText = zcCurrentData.target;
+// --- Zone C Leveled Logic ---
+
+// --- Zone C Leveled Logic ---
+let zcCategory = '';
+let zcCurrentData = null;
+let zcLevel = 1;
+
+function startZoneCLevel(category, level) {
+    zcCategory = category;
+    zcLevel = level;
+    renderZoneC(); 
+    navTo('zone-c-drill');
+}
+
+function renderZoneC() {
+    let isLeveled = (zcCategory === 'dates' || zcCategory === 'prices');
+
+    if(zcCategory === 'dates') zcCurrentData = generateRandomDateV28(zcLevel);
+    else if(zcCategory === 'prices') zcCurrentData = generateRandomPriceV28(zcLevel);
+    else if(zcCategory === 'times') zcCurrentData = generateRandomTime();
+    else if(zcCategory === 'measurements') zcCurrentData = generateRandomMeasurement();
+
+    let typeText = `Read the ${zcCategory.slice(0,-1)}`;
+    if (isLeveled) {
+        document.getElementById('zc-counter-box').innerHTML = `<span class="text-blue-500 font-bold"><i class="fa-solid fa-infinity"></i> Level ${zcLevel} Endless</span>`;
+        if(zcCategory === 'dates') {
+            if(zcLevel === 1) typeText = "Read the full day";
+            else if(zcLevel === 2) typeText = "Read the full month";
+            else if(zcLevel === 3) typeText = "Read the full ordinal number";
+            else if(zcLevel === 4) typeText = "Read the full date";
+        } else {
+            typeText += ` (Level ${zcLevel})`;
         }
-        
-        function skipZoneC() { renderZoneC(); }
+    } else {
+        document.getElementById('zc-counter-box').innerHTML = `<span class="text-blue-500"><i class="fa-solid fa-infinity"></i> Endless</span>`;
+    }
 
-        let zcRecognition = null;
-        let isZCSpeaking = false;
+    document.getElementById('zc-type').innerText = typeText;
+    document.getElementById('zc-target').innerText = zcCurrentData.target;
+}
 
-        function checkZoneC() {
-            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SR) return showToast('⚠️ Voice recognition not supported on this browser.', false);
+function generateRandomPriceV28(level) {
+    let val;
+    if (level === 1) val = Math.floor(Math.random() * 90) + 10;
+    else if (level === 2) val = Math.floor(Math.random() * 900) + 100;
+    else if (level === 3) val = Math.floor(Math.random() * 9000) + 1000;
+    else val = Math.floor(Math.random() * 90000) + 10000;
 
-            if (isZCSpeaking && zcRecognition) {
-                zcRecognition.stop();
-                return;
+    const currency = Math.random() > 0.5 ? "$" : "HK$";
+    return { 
+        target: `${currency}${val.toLocaleString()}`,
+        matchFunc: (spoken) => {
+            const clean = spoken.toLowerCase().replace(/,/g, '').replace(/\$/g, '');
+            const spokenNums = clean.match(/\d+/g);
+            if (spokenNums && spokenNums.includes(val.toString())) return true;
+
+            // Also strict check if the exact string matches
+            return clean === val.toString();
+        }
+    };
+}
+
+function generateRandomDateV28(level) {
+    const days = [
+        {abbr: 'Mon', full: 'monday'}, {abbr: 'Tue', full: 'tuesday'}, 
+        {abbr: 'Wed', full: 'wednesday'}, {abbr: 'Thu', full: 'thursday'}, 
+        {abbr: 'Fri', full: 'friday'}, {abbr: 'Sat', full: 'saturday'}, {abbr: 'Sun', full: 'sunday'}
+    ];
+    const months = [
+        {abbr: 'Jan', full: 'january'}, {abbr: 'Feb', full: 'february'}, {abbr: 'Mar', full: 'march'},
+        {abbr: 'Apr', full: 'april'}, {abbr: 'May', full: 'may'}, {abbr: 'Jun', full: 'june'},
+        {abbr: 'Jul', full: 'july'}, {abbr: 'Aug', full: 'august'}, {abbr: 'Sep', full: 'september'},
+        {abbr: 'Oct', full: 'october'}, {abbr: 'Nov', full: 'november'}, {abbr: 'Dec', full: 'december'}
+    ];
+    const ordinals = [];
+    const words = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth", "twenty-first", "twenty-second", "twenty-third", "twenty-fourth", "twenty-fifth", "twenty-sixth", "twenty-seventh", "twenty-eighth", "twenty-ninth", "thirtieth", "thirty-first"];
+    for(let i=1; i<=31; i++) {
+        let suf = "th";
+        if(i%10===1 && i!==11) suf="st";
+        if(i%10===2 && i!==12) suf="nd";
+        if(i%10===3 && i!==13) suf="rd";
+        ordinals.push({abbr: i+suf, num: i.toString(), word: words[i-1]});
+    }
+
+    if (level === 1) {
+        let d = days[Math.floor(Math.random() * days.length)];
+        return { target: d.abbr, matchFunc: (s) => s.includes(d.full) };
+    } else if (level === 2) {
+        let m = months[Math.floor(Math.random() * months.length)];
+        return { target: m.abbr, matchFunc: (s) => s.includes(m.full) };
+    } else if (level === 3) {
+        let o = ordinals[Math.floor(Math.random() * ordinals.length)];
+        return { target: o.abbr, matchFunc: (s) => s.includes(o.word.replace('-', ' ')) || s.includes(o.word) || s.includes(o.num) };
+    } else {
+        let d = days[Math.floor(Math.random() * days.length)];
+        let m = months[Math.floor(Math.random() * months.length)];
+        let o = ordinals[Math.floor(Math.random() * ordinals.length)];
+        let target = `${o.abbr} ${m.abbr}, ${d.abbr}`; // 21st Mar, Sat
+        return { 
+            target: target, 
+            matchFunc: (s) => {
+                const hasDay = s.includes(d.full);
+                const hasMonth = s.includes(m.full);
+                const hasOrd = s.includes(o.num) || s.includes(o.word.replace('-', ' ')) || s.includes(o.word);
+                return hasDay && hasMonth && hasOrd;
             }
+        };
+    }
+}
 
-            zcRecognition = new SR();
-            zcRecognition.lang = getVoiceSettings().lang;
-            zcRecognition.continuous = true;
-            zcRecognition.interimResults = false;
 
-            let finalSpoken = '';
+let zcRec = null;
+let zcIsRecording = false;
 
-            showToast('🎤 Listening... Click again to stop.', true);
-            isZCSpeaking = true;
-            document.querySelector('[onclick="checkZoneC()"]').innerHTML = '<i class="fa-solid fa-stop"></i> Stop & Grade';
-            document.querySelector('[onclick="checkZoneC()"]').classList.replace('bg-amber-500', 'bg-rose-500');
+function toggleZoneCVoiceCheck(btnElement) {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
 
-            zcRecognition.start();
+    if (zcIsRecording && zcRec) {
+        zcRec.stop();
+        zcIsRecording = false;
 
-            zcRecognition.onresult = (e) => {
-                for (let i = e.resultIndex; i < e.results.length; ++i) {
-                    if (e.results[i].isFinal) finalSpoken += e.results[i][0].transcript + ' ';
-                }
-            };
+        btnElement.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
+        btnElement.classList.remove('bg-rose-500', 'hover:bg-rose-600', 'animate-pulse');
+        btnElement.classList.add('bg-amber-500', 'hover:bg-amber-600');
+        showToast("⏳ Grading...", true);
+    } else {
+        zcRec = new SR();
+        zcRec.lang = getVoiceSettings().lang;
+        zcRec.continuous = true;
+        zcRec.interimResults = false;
 
-            zcRecognition.onend = () => {
-                isZCSpeaking = false;
-                const btn = document.querySelector('[onclick="checkZoneC()"]');
-                if(btn) {
-                    btn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
-                    btn.classList.replace('bg-rose-500', 'bg-amber-500');
-                }
+        let finalTranscript = '';
+        zcRec.onresult = (event) => {
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                finalTranscript += event.results[i][0].transcript;
+            }
+        };
 
-                if (!finalSpoken.trim()) {
-                    showToast('⚠️ No speech detected.', false);
+        zcRec.onend = () => {
+            if (!zcIsRecording) {
+                const spoken = finalTranscript.toLowerCase().trim();
+                let isCorrect = false;
+
+                if (!spoken) {
+                    showToast(`❌ No speech detected.`, false);
                     return;
                 }
 
-                const spoken = finalSpoken.toLowerCase().trim();
-                const target = zcCurrentData.target.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
-                const spokenWords = spoken.split(/\s+/);
-                const targetWords = target.split(/\s+/);
-
-                let matched = 0;
-                let endingIssues = [];
-                let missed = [];
-
-                targetWords.forEach(tw => {
-                    if (spokenWords.includes(tw)) {
-                        matched++;
-                    } else {
-                        let foundStem = false;
-                        const endings = ['s', 'es', 'ed', 'ing', 'd'];
-                        for (let ext of endings) {
-                            if (tw.endsWith(ext) && tw.length > ext.length + 1) {
-                                const stem = tw.slice(0, -ext.length);
-                                if (spokenWords.includes(stem)) {
-                                    endingIssues.push(tw);
-                                    matched += 0.5;
-                                    foundStem = true;
-                                    break;
-                                }
-                            }
-                        }
-                        if (!foundStem) missed.push(tw);
-                    }
-                });
-
-                const accuracy = Math.round((matched / targetWords.length) * 100);
-                let feedback, expGain;
-                if (accuracy >= 80) { feedback = '🌟 Excellent!'; expGain = 15; }
-                else if (accuracy >= 50) { feedback = '👍 Good try!'; expGain = 10; }
-                else { feedback = '💪 Keep practising!'; expGain = 5; }
-
-                let detailText = '';
-                if (endingIssues.length > 0) detailText += ' | Check endings: ' + endingIssues.join(', ');
-                if (missed.length > 0) detailText += ' | Missed: ' + missed.join(', ');
-
-                showToast(feedback + ' Accuracy: ' + accuracy + '%' + detailText, accuracy >= 50);
-                addExp(expGain);
-                setTimeout(() => { renderZoneC(); }, 3500);
-            };
-
-            zcRecognition.onerror = (e) => { 
-                if (e.error === 'no-speech') return;
-                showToast('⚠️ Could not hear you. Try again!', false); 
-                isZCSpeaking = false;
-                const btn = document.querySelector('[onclick="checkZoneC()"]');
-                if(btn) {
-                    btn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
-                    btn.classList.replace('bg-rose-500', 'bg-amber-500');
+                if (zcCurrentData.matchFunc) {
+                    isCorrect = zcCurrentData.matchFunc(spoken);
+                } else {
+                    isCorrect = spoken.includes(zcCurrentData.matchStr);
                 }
-            };
+
+                let feedbackDiv = document.getElementById('zc-feedback');
+                if (!feedbackDiv) {
+                    feedbackDiv = document.createElement('div');
+                    feedbackDiv.id = 'zc-feedback';
+                    feedbackDiv.className = 'mt-4 text-sm font-bold w-full text-center px-4 py-2 rounded-xl';
+                    document.getElementById('zc-target').parentNode.insertBefore(feedbackDiv, document.getElementById('zc-target').nextSibling);
+                }
+
+                if (isCorrect) {
+                    feedbackDiv.className = 'mt-4 text-sm font-bold w-full text-center px-4 py-2 rounded-xl bg-emerald-50 text-emerald-600';
+                    feedbackDiv.innerHTML = `✅ You said: "${spoken}"`;
+                    showToast(`🌟 Correct!`, true);
+                    addExp(10);
+                    setTimeout(() => { 
+                        if(feedbackDiv) feedbackDiv.remove();
+                        renderZoneC(); 
+                    }, 1500);
+                } else {
+                    feedbackDiv.className = 'mt-4 text-sm font-bold w-full text-center px-4 py-2 rounded-xl bg-rose-50 text-rose-600 border border-rose-200';
+                    feedbackDiv.innerHTML = `❌ You said: "${spoken}"<br><span class="text-xs font-normal text-rose-500">Listen to the correct pronunciation and try again.</span>`;
+                    showToast(`❌ Try again!`, false);
+                }
+            }
+        };
+
+        btnElement.innerHTML = '<i class="fa-solid fa-stop"></i> Stop & Grade';
+        btnElement.classList.remove('bg-amber-500', 'hover:bg-amber-600');
+        btnElement.classList.add('bg-rose-500', 'hover:bg-rose-600', 'animate-pulse');
+
+        let feedbackDiv = document.getElementById('zc-feedback');
+        if (feedbackDiv) feedbackDiv.remove();
+
+        showToast("🎤 Recording... Tap Stop when done.", true);
+
+        try {
+            zcRec.start();
+            zcIsRecording = true;
+        } catch (err) {
+            showToast("⚠️ Error starting recognition.", false);
+            zcIsRecording = false;
+            btnElement.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Tap to Speak';
+            btnElement.classList.remove('bg-rose-500', 'hover:bg-rose-600', 'animate-pulse');
+            btnElement.classList.add('bg-amber-500', 'hover:bg-amber-600');
         }
+    }
+}
 
         // --- Zone D: Assessment Prep (TTS & Record) ---
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+        let currentAudioFile = null;
+
         function playTTS() {
             if (!window.speechSynthesis) return showToast("⚠️ TTS not supported.", false);
             const text = document.getElementById('zd-script').value;
@@ -1363,29 +1491,23 @@
             } else {
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    // Auto-detect format: iOS Safari needs mp4, others use webm
-                    const mimeType = MediaRecorder.isTypeSupported('audio/mp4') ? 'audio/mp4' :
-                                     MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' :
-                                     MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : '';
-                    const recOpts = mimeType ? { mimeType } : {};
-                    mediaRecorder = new MediaRecorder(stream, recOpts);
+                    mediaRecorder = new MediaRecorder(stream);
                     audioChunks = [];
                     currentAudioFile = null;
-
+                    
                     mediaRecorder.ondataavailable = e => { if(e.data.size > 0) audioChunks.push(e.data); };
                     mediaRecorder.onstop = () => {
-                        const ext = mimeType.includes('mp4') ? 'mp4' : 'webm';
-                        const finalType = mimeType || 'audio/webm';
-                        const audioBlob = new Blob(audioChunks, { type: finalType });
-                        currentAudioFile = new File([audioBlob], `My_Oral_Recording.${ext}`, { type: finalType });
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        currentAudioFile = new File([audioBlob], 'My_Oral_Recording.webm', { type: 'audio/webm' });
+                        
                         const audioUrl = URL.createObjectURL(audioBlob);
                         document.getElementById('zd-audio-player').src = audioUrl;
                         document.getElementById('zd-download-link').href = audioUrl;
-                        document.getElementById('zd-download-link').download = `My_Oral_Recording.${ext}`;
+                        document.getElementById('zd-download-link').download = 'My_Oral_Recording.webm';
                         document.getElementById('zd-audio-container').classList.remove('hidden');
                         document.getElementById('zd-audio-container').classList.add('flex');
-                        showToast('✅ Recording saved! Ready to share.', true);
                     };
+                    
                     mediaRecorder.start();
                     isRecording = true;
                     btn.innerHTML = '<i class="fa-solid fa-stop"></i> Stop Recording';
@@ -1394,127 +1516,6 @@
                     showToast("⚠️ Microphone access denied.", false);
                 }
             }
-        }
-
-        let zdRecognition = null;
-        let isZDSpeaking = false;
-
-        function checkPronunciationZD() {
-            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SR) return showToast('⚠️ Voice recognition not supported on this browser.', false);
-            const script = document.getElementById('zd-script').value.trim();
-            if (!script) return showToast('⚠️ Please paste your script first!', false);
-
-            if (isZDSpeaking && zdRecognition) {
-                zdRecognition.stop();
-                return;
-            }
-
-            zdRecognition = new SR();
-            zdRecognition.lang = getVoiceSettings().lang;
-            zdRecognition.continuous = true;
-            zdRecognition.interimResults = false;
-
-            let finalSpoken = '';
-
-            showToast('🎤 Listening... Click again to stop.', true);
-            isZDSpeaking = true;
-            document.querySelector('[onclick="checkPronunciationZD()"]').innerHTML = '<i class="fa-solid fa-stop"></i> Stop & Grade';
-            document.querySelector('[onclick="checkPronunciationZD()"]').classList.replace('bg-violet-500', 'bg-rose-500');
-
-            zdRecognition.start();
-
-            zdRecognition.onresult = (e) => {
-                for (let i = e.resultIndex; i < e.results.length; ++i) {
-                    if (e.results[i].isFinal) finalSpoken += e.results[i][0].transcript + ' ';
-                }
-            };
-
-            zdRecognition.onend = () => {
-                isZDSpeaking = false;
-                const btn = document.querySelector('[onclick="checkPronunciationZD()"]');
-                if(btn) {
-                    btn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Check My Pronunciation';
-                    btn.classList.replace('bg-rose-500', 'bg-violet-500');
-                }
-
-                if (!finalSpoken.trim()) {
-                    showToast('⚠️ No speech detected.', false);
-                    return;
-                }
-
-                const spoken = finalSpoken.toLowerCase().trim();
-                const target = script.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
-                const spokenWords = spoken.split(/\s+/);
-                const targetWords = target.split(/\s+/);
-
-                let matched = 0;
-                let missedWords = [];
-                let endingIssues = [];
-
-                const highlightedHTML = targetWords.map(w => {
-                    const clean = w.replace(/[^a-z0-9]/g, '');
-                    if (!clean) return w;
-
-                    if (spokenWords.includes(clean)) {
-                        matched++;
-                        return '<span class="text-green-600 font-bold">' + w + '</span>';
-                    }
-
-                    let foundStem = false;
-                    const endings = ['s', 'es', 'ed', 'ing', 'd'];
-                    for (let ext of endings) {
-                        if (clean.endsWith(ext) && clean.length > ext.length + 1) {
-                            const stem = clean.slice(0, -ext.length);
-                            if (spokenWords.includes(stem)) {
-                                endingIssues.push(clean);
-                                matched += 0.5;
-                                foundStem = true;
-                                return '<span class="text-amber-500 font-bold underline" title="Missing ending?">' + w + '</span>';
-                            }
-                        }
-                    }
-
-                    if (!foundStem) {
-                        missedWords.push(clean);
-                        return '<span class="text-red-500 font-bold underline">' + w + '</span>';
-                    }
-                }).join(' ');
-
-                const accuracy = Math.round((matched / targetWords.length) * 100);
-
-                let emoji, feedbackMsg, bgColor;
-                if (accuracy >= 80) { emoji = '🌟'; feedbackMsg = 'Excellent pronunciation!'; bgColor = 'bg-green-50 border-green-200'; }
-                else if (accuracy >= 50) { emoji = '👍'; feedbackMsg = 'Good try! Keep practising.'; bgColor = 'bg-yellow-50 border-yellow-200'; }
-                else { emoji = '💪'; feedbackMsg = 'Keep practising!'; bgColor = 'bg-red-50 border-red-200'; }
-
-                const resultDiv = document.getElementById('zd-accuracy-result');
-                resultDiv.className = 'w-full max-w-md rounded-2xl p-4 border shadow-sm text-sm mt-4 ' + bgColor;
-
-                // Process arrays for display
-                const uniqueEndings = [...new Set(endingIssues)].slice(0, 8);
-                const uniqueMissed = [...new Set(missedWords)].slice(0, 8);
-
-                resultDiv.innerHTML =
-                    '<div class="text-lg font-extrabold mb-1">' + emoji + ' Accuracy: ' + accuracy + '% — ' + feedbackMsg + '</div>' +
-                    '<div class="text-xs text-gray-500 mb-2">Green = correct &nbsp;|&nbsp; <span class="text-amber-500 underline">Amber</span> = missed ending &nbsp;|&nbsp; <span class="text-red-500 underline">Red</span> = missed/mispronounced</div>' +
-                    '<div class="leading-7 text-gray-700 bg-white p-3 rounded-xl border border-gray-100 my-2">' + highlightedHTML + '</div>' +
-                    (uniqueEndings.length > 0 ? '<div class="mt-2 text-amber-600 text-xs font-bold">⚠️ Check word endings (s, ed, ing): ' + uniqueEndings.join(', ') + '</div>' : '') +
-                    (uniqueMissed.length > 0 ? '<div class="mt-1 text-red-500 text-xs font-bold">❌ Missed/Mispronounced: ' + uniqueMissed.join(', ') + '</div>' : '');
-                resultDiv.classList.remove('hidden');
-                addExp(accuracy >= 80 ? 20 : accuracy >= 50 ? 10 : 5);
-            };
-
-            zdRecognition.onerror = (e) => { 
-                if (e.error === 'no-speech') return;
-                showToast('⚠️ Could not hear you. Try again!', false); 
-                isZDSpeaking = false;
-                const btn = document.querySelector('[onclick="checkPronunciationZD()"]');
-                if(btn) {
-                    btn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> Check My Pronunciation';
-                    btn.classList.replace('bg-rose-500', 'bg-violet-500');
-                }
-            };
         }
 
         async function shareToWhatsApp() {
@@ -1560,6 +1561,154 @@
                 else showToast(`❌ Try again! You said: "${spoken}"`, false);
             };
         }
-    </script>
+    
+
+// --- Feature 1: Clickable Words in Mission 3 ---
+function wrapWords(text) {
+    if(!text) return "";
+    // We split by space and wrap words, keeping punctuation outside if possible, but simplest is just wrapping the whole token
+    return text.split(' ').map(token => {
+        let cleanWord = token.replace(/[^a-zA-Z\-]/g, ''); // keep hyphens
+        return `<span class="cursor-pointer hover:text-indigo-600 hover:underline transition-colors" onclick="playWord('${cleanWord}')">${token}</span>`;
+    }).join(' ');
+}
+
+function autoSyllables(word) {
+    let w = word.toLowerCase().replace(/[^a-z]/g, '');
+    if(w.length <= 3) return w;
+    let syls = w.match(/[^aeiouy]*[aeiouy]+(?:[^aeiouy]*$|[^aeiouy](?=[^aeiouy]))?/gi);
+    return syls ? syls.join('‧') : w;
+}
+
+function playWord(word) {
+    if(!word) return;
+    playAudio(word);
+
+    let v = fullVocab.find(v => v.word.toLowerCase() === word.toLowerCase());
+    if(v) {
+        showToast(`📖 <b>${v.word}</b><br><span class="text-xs text-indigo-200 uppercase tracking-widest mt-1 block">Syllables:</span> ${v.syllables}`, true);
+    } else {
+        let autoSyl = autoSyllables(word);
+        showToast(`📖 <b>${word}</b><br><span class="text-xs text-indigo-200 uppercase tracking-widest mt-1 block">Syllables:</span> ${autoSyl}`, true);
+    }
+}
+
+
+// --- Feature 2: M1 Lingo Swipe Stop and Grade ---
+let m1Rec = null;
+let m1IsRecording = false;
+
+function toggleM1VoiceCheck(targetWord, btnElement, e) {
+    if (e) e.stopPropagation();
+
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return showToast("⚠️ Voice recognition not supported.", false);
+
+    const resetM1Button = () => {
+        btnElement.innerHTML = '<i class="fa-solid fa-microphone mr-2"></i>Speak';
+        btnElement.classList.remove('bg-rose-500', 'text-white', 'border-rose-600', 'animate-pulse');
+        btnElement.classList.add('bg-rose-50', 'text-rose-700', 'border-rose-100');
+    };
+
+    const finalizeM1Result = (spokenRaw) => {
+        let spoken = (spokenRaw || '').toLowerCase().trim().replace(/[.,!?;:]/g, '');
+        let targetWords = targetWord.toLowerCase().trim().replace(/[.,!?;:]/g, '').split(/\s+/);
+
+        document.getElementById('card-word').innerText = targetWord;
+
+        const syllablesEl = document.getElementById('card-syllables');
+        const rawSyllables = syllablesEl.innerText || syllablesEl.textContent || '';
+        const syllableParts = rawSyllables.split(' • ');
+        const spokenClean = spoken.replace(/[^a-z0-9\s]/g, '');
+
+        const syllableHTML = syllableParts.map(syl => {
+            const sylClean = syl.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const isPresent = sylClean && spokenClean.includes(sylClean);
+            return isPresent
+                ? `<span class="text-emerald-500 font-extrabold">${syl}</span>`
+                : `<span class="text-rose-500 font-extrabold underline decoration-rose-300 decoration-2 underline-offset-4">${syl}</span>`;
+        }).join(' <span class="text-indigo-400">•</span> ');
+
+        syllablesEl.innerHTML = syllableHTML;
+
+        if (!spoken) {
+            showToast(`❌ No speech detected.`, false);
+            return;
+        }
+
+        let matchCount = 0;
+        targetWords.forEach(kw => { if (spoken.includes(kw)) matchCount++; });
+
+        if (matchCount >= targetWords.length * 0.6 || spoken === targetWords.join(' ')) {
+            showToast(`🌟 Perfect!`, true);
+            addExp(50);
+        } else {
+            showToast(`❌ Incorrect! Check the red syllables.`, false);
+        }
+    };
+
+    if (m1IsRecording && m1Rec) {
+        m1IsRecording = false;
+        showToast("⏳ Grading...", true);
+        try {
+            m1Rec.stop();
+        } catch(err) {
+            resetM1Button();
+        }
+        // Let the onend handler call finalizeM1Result so that we process the final results.
+    } else {
+        m1Rec = new SR();
+        m1Rec.lang = getVoiceSettings().lang;
+        m1Rec.continuous = true; // Use continuous so that it gathers the full phrase before stopping manually.
+        m1Rec.interimResults = false;
+
+        let finalTranscript = '';
+        let resultHandled = false;
+
+        m1Rec.onresult = (event) => {
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                finalTranscript += event.results[i][0].transcript + ' ';
+            }
+        };
+
+        m1Rec.onerror = (event) => {
+            console.error("SpeechRecognition error:", event.error);
+            if (event.error === 'no-speech') {
+                showToast("❌ No speech detected. Please try again.", false);
+            } else {
+                showToast("⚠️ Error during recognition.", false);
+            }
+            if (m1IsRecording) {
+                m1IsRecording = false;
+                resetM1Button();
+            }
+        };
+
+        m1Rec.onend = () => {
+            if (!resultHandled) {
+                resultHandled = true;
+                m1IsRecording = false;
+                resetM1Button();
+                finalizeM1Result(finalTranscript);
+            }
+        };
+
+        btnElement.innerHTML = '<i class="fa-solid fa-stop mr-2"></i>Stop';
+        btnElement.classList.remove('bg-rose-50', 'text-rose-700', 'border-rose-100');
+        btnElement.classList.add('bg-rose-500', 'text-white', 'border-rose-600', 'animate-pulse');
+        showToast("🎤 Recording... Tap Stop when done.", true);
+
+        try {
+            m1Rec.start();
+            m1IsRecording = true;
+        } catch(err) {
+            showToast("⚠️ Error starting recognition.", false);
+            m1IsRecording = false;
+            resetM1Button();
+        }
+    }
+}
+
+</script>
 </body>
 </html>
