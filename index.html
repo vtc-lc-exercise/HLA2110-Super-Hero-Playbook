@@ -1542,6 +1542,7 @@ function toggleZoneCVoiceCheck(btnElement) {
             const btn = document.getElementById('zd-btn-record');
             if (isRecording) {
                 mediaRecorder.stop();
+                mediaRecorder.stream.getTracks().forEach(track => track.stop());
                 isRecording = false;
                 btn.innerHTML = '<i class="fa-solid fa-microphone"></i> Start Recording';
                 btn.className = "bg-rose-500 hover:bg-rose-600 text-white px-8 py-3 rounded-full font-bold shadow-md transition flex items-center gap-2 w-full max-w-xs justify-center";
@@ -1554,13 +1555,13 @@ function toggleZoneCVoiceCheck(btnElement) {
                     
                     mediaRecorder.ondataavailable = e => { if(e.data.size > 0) audioChunks.push(e.data); };
                     mediaRecorder.onstop = () => {
-                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-                        currentAudioFile = new File([audioBlob], 'My_Oral_Recording.webm', { type: 'audio/webm' });
+                        const currentBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+                        currentAudioFile = new File([currentBlob], 'My_Oral_Recording.mp3', { type: 'audio/mp3' });
                         
-                        const audioUrl = URL.createObjectURL(audioBlob);
+                        const audioUrl = URL.createObjectURL(currentBlob);
                         document.getElementById('zd-audio-player').src = audioUrl;
                         document.getElementById('zd-download-link').href = audioUrl;
-                        document.getElementById('zd-download-link').download = 'My_Oral_Recording.webm';
+                        document.getElementById('zd-download-link').download = 'My_Oral_Recording.mp3';
                         document.getElementById('zd-audio-container').classList.remove('hidden');
                         document.getElementById('zd-audio-container').classList.add('flex');
                     };
