@@ -872,6 +872,16 @@
                     const hasTimeNumber = cleanSpoken.includes(hrs.toString());
                     const hasAmPm = cleanSpoken.includes(targetAmPm);
                     return hasTimeNumber && hasAmPm;
+                },
+                feedbackFunc: (spoken) => {
+                    const cleanSpoken = spoken.toLowerCase().replace(/[^a-z0-9]/g, '');
+                    const targetAmPm = ampm === "a.m." ? "am" : "pm";
+                    const hasTimeNumber = cleanSpoken.includes(hrs.toString());
+                    const hasAmPm = cleanSpoken.includes(targetAmPm);
+                    if (!hasTimeNumber && !hasAmPm) return `You said: "${spoken}" — missing both the time and ${ampm}.`;
+                    if (!hasTimeNumber) return `You said: "${spoken}" — time not recognised. Expected: ${hrs}.`;
+                    if (!hasAmPm) return `You said: "${spoken}" — missing ${ampm}. Remember to say a.m. or p.m.`;
+                    return `You said: "${spoken}"`;
                 }
             }; 
         } 
@@ -891,9 +901,17 @@
                     const hasNumber = cleanSpoken.includes(val.toString());
                     const hasUnit = unitObj.spokenMatch.some(u => cleanSpoken.includes(u.replace(/[^a-z0-9\s]/g, '')));
                     return hasNumber && hasUnit;
+                },
+                feedbackFunc: (spoken) => {
+                    const cleanSpoken = spoken.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+                    const hasNumber = cleanSpoken.includes(val.toString());
+                    const hasUnit = unitObj.spokenMatch.some(u => cleanSpoken.includes(u.replace(/[^a-z0-9\s]/g, '')));
+                    if (!hasNumber && !hasUnit) return `You said: "${spoken}" — missing both the number and the unit (${unitObj.display}).`;
+                    if (!hasNumber) return `You said: "${spoken}" — number not recognised. Expected: ${val}.`;
+                    if (!hasUnit) return `You said: "${spoken}" — missing the unit. Expected: ${unitObj.display}.`;
+                    return `You said: "${spoken}"`;
                 }
             };
-        };
         }
 
         // --- State Variables ---
@@ -1311,9 +1329,14 @@ function generateRandomPriceV28(level) {
             const clean = spoken.toLowerCase().replace(/,/g, '').replace(/\$/g, '');
             const spokenNums = clean.match(/\d+/g);
             if (spokenNums && spokenNums.includes(val.toString())) return true;
-
-            // Also strict check if the exact string matches
             return clean === val.toString();
+        },
+        feedbackFunc: (spoken) => {
+            const clean = spoken.toLowerCase().replace(/,/g, '').replace(/\$/g, '');
+            const spokenNums = clean.match(/\d+/g);
+            const hasNumber = spokenNums && spokenNums.includes(val.toString());
+            if (!hasNumber) return `You said: "${spoken}" — number not recognised. Expected: ${val.toLocaleString()}.`;
+            return `You said: "${spoken}"`;
         }
     };
 }
@@ -1342,13 +1365,35 @@ function generateRandomDateV28(level) {
 
     if (level === 1) {
         let d = days[Math.floor(Math.random() * days.length)];
-        return { target: d.abbr, matchFunc: (s) => s.includes(d.full) };
+        return { 
+            target: d.abbr, 
+            matchFunc: (s) => s.includes(d.full),
+            feedbackFunc: (spoken) => {
+                if (!spoken.includes(d.full)) return `You said: "${spoken}" — day not recognised. Expected: "${d.full}".`;
+                return `You said: "${spoken}"`;
+            }
+        };
     } else if (level === 2) {
         let m = months[Math.floor(Math.random() * months.length)];
-        return { target: m.abbr, matchFunc: (s) => s.includes(m.full) };
+        return { 
+            target: m.abbr, 
+            matchFunc: (s) => s.includes(m.full),
+            feedbackFunc: (spoken) => {
+                if (!spoken.includes(m.full)) return `You said: "${spoken}" — month not recognised. Expected: "${m.full}".`;
+                return `You said: "${spoken}"`;
+            }
+        };
     } else if (level === 3) {
         let o = ordinals[Math.floor(Math.random() * ordinals.length)];
-        return { target: o.abbr, matchFunc: (s) => s.includes(o.word.replace('-', ' ')) || s.includes(o.word) || s.includes(o.num) };
+        return { 
+            target: o.abbr, 
+            matchFunc: (s) => s.includes(o.word.replace('-', ' ')) || s.includes(o.word) || s.includes(o.num),
+            feedbackFunc: (spoken) => {
+                const ok = spoken.includes(o.word.replace('-', ' ')) || spoken.includes(o.word) || spoken.includes(o.num);
+                if (!ok) return `You said: "${spoken}" — ordinal not recognised. Expected: "${o.word}".`;
+                return `You said: "${spoken}"`;
+            }
+        };
     } else {
         let d = days[Math.floor(Math.random() * days.length)];
         let m = months[Math.floor(Math.random() * months.length)];
@@ -1361,6 +1406,17 @@ function generateRandomDateV28(level) {
                 const hasMonth = s.includes(m.full);
                 const hasOrd = s.includes(o.num) || s.includes(o.word.replace('-', ' ')) || s.includes(o.word);
                 return hasDay && hasMonth && hasOrd;
+            },
+            feedbackFunc: (spoken) => {
+                const hasDay = spoken.includes(d.full);
+                const hasMonth = spoken.includes(m.full);
+                const hasOrd = spoken.includes(o.num) || spoken.includes(o.word.replace('-', ' ')) || spoken.includes(o.word);
+                const missing = [];
+                if (!hasDay) missing.push(`day ("${d.full}")`);
+                if (!hasMonth) missing.push(`month ("${m.full}")`);
+                if (!hasOrd) missing.push(`date ("${o.word}")`);
+                if (missing.length) return `You said: "${spoken}" — missing ${missing.join(' and ')}.`;
+                return `You said: "${spoken}"`;
             }
         };
     }
@@ -1430,7 +1486,8 @@ function toggleZoneCVoiceCheck(btnElement) {
                     }, 1500);
                 } else {
                     feedbackDiv.className = 'mt-4 text-sm font-bold w-full text-center px-4 py-2 rounded-xl bg-rose-50 text-rose-600 border border-rose-200';
-                    feedbackDiv.innerHTML = `❌ You said: "${spoken}"<br><span class="text-xs font-normal text-rose-500">Listen to the correct pronunciation and try again.</span>`;
+                    const feedbackMsg = zcCurrentData.feedbackFunc ? zcCurrentData.feedbackFunc(spoken) : `You said: "${spoken}"`;
+                    feedbackDiv.innerHTML = `❌ ${feedbackMsg}<br><span class="text-xs font-normal text-rose-500">Listen to the correct pronunciation and try again.</span>`;
                     showToast(`❌ Try again!`, false);
                 }
             }
