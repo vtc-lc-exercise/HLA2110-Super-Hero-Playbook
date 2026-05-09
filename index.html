@@ -594,7 +594,10 @@
                     <button onclick="toggleM3AVoiceCheck(this)" class="mt-auto w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
                         <i class="fa-solid fa-microphone-lines"></i> Tap to Speak
                     </button>
-                    <button onclick="skipM3A()" class="mt-4 text-gray-400 font-bold text-sm underline w-full text-center hover:text-gray-600">Skip / Proceed</button>
+                    <div class="mt-4 w-full flex justify-between items-center">
+                        <button id="m3a-prev-btn" onclick="prevM3A()" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button id="m3a-next-btn" onclick="skipM3A()" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
                 </div>
             </div>
 
@@ -624,7 +627,10 @@
                         <button onclick="toggleM3BVoiceCheck(this)" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
                         <i class="fa-solid fa-microphone-lines"></i> Tap to Speak
                     </button>
-                    <button onclick="skipM3B()" class="mt-4 text-gray-400 font-bold text-sm underline w-full text-center hover:text-gray-600">Skip / Proceed</button>
+                    <div class="mt-4 w-full flex justify-between items-center">
+                        <button id="m3b-prev-btn" onclick="prevM3B()" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button id="m3b-next-btn" onclick="skipM3B()" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -1135,9 +1141,15 @@
         // --- M3A: Briefing Simulator ---
         function startM3AIntro() { navTo('m3-a-intro'); }
         
+        function prevM3A() {
+            if(m3aIndex > 0) { m3aIndex--; renderM3A(); }
+        }
         function skipM3A() {
             if(m3aIndex < m3aData.length - 1) { m3aIndex++; renderM3A(); }
             else { addExp(50); navTo('zone-a'); } // 畀少少 Exp 鼓勵下完成
+        }
+        function prevM3B() {
+            if(m3bIndex > 0) { m3bIndex--; renderM3B(); }
         }
         function skipM3B() {
             if(m3bIndex < m3bScriptData.length - 1) { m3bIndex++; renderM3B(); }
@@ -1150,6 +1162,8 @@ function startM3A() { m3aIndex = 0; renderM3A(); navTo('m3-a'); }
             document.getElementById('m3a-section-title').innerText = data.section;
             document.getElementById('m3a-hint').innerText = data.hint;
             document.getElementById('m3a-sentence').innerHTML = `"${wrapWords(data.text)}"`;
+            const prevBtn = document.getElementById('m3a-prev-btn');
+            if (prevBtn) prevBtn.style.visibility = m3aIndex === 0 ? 'hidden' : 'visible';
         }
         
 // --- Feature: Word-level Feedback ---
