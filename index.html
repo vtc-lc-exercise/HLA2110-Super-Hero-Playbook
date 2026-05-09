@@ -308,7 +308,7 @@
                     <p class="text-lg text-gray-600 mb-8">You scored <span id="m2-final-score" class="font-bold text-emerald-600 text-2xl">0</span> out of 10.</p>
                     
                     <div class="flex flex-col gap-4 w-full max-w-xs">
-                        <button onclick="startM2('A')" class="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-2xl font-bold shadow-md active:scale-95 transition flex items-center justify-center gap-2">
+                        <button onclick="startM2(currentM2Zone)" class="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-2xl font-bold shadow-md active:scale-95 transition flex items-center justify-center gap-2">
                             <i class="fa-solid fa-rotate-right"></i> Play Again (Reshuffle)
                         </button>
                         <button onclick="navTo('lobby')" class="bg-white border-2 border-gray-200 hover:bg-gray-50 text-gray-700 py-3 px-6 rounded-2xl font-bold shadow-sm active:scale-95 transition">
@@ -594,10 +594,7 @@
                     <button onclick="toggleM3AVoiceCheck(this)" class="mt-auto w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
                         <i class="fa-solid fa-microphone-lines"></i> Tap to Speak
                     </button>
-                    <div class="mt-4 w-full flex justify-between items-center">
-                        <button id="m3a-prev-btn" onclick="prevM3A()" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-left"></i></button>
-                        <button id="m3a-next-btn" onclick="skipM3A()" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
+                    <button onclick="skipM3A()" class="mt-4 text-gray-400 font-bold text-sm underline w-full text-center hover:text-gray-600">Skip / Proceed</button>
                 </div>
             </div>
 
@@ -627,10 +624,7 @@
                         <button onclick="toggleM3BVoiceCheck(this)" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition flex items-center justify-center gap-3">
                         <i class="fa-solid fa-microphone-lines"></i> Tap to Speak
                     </button>
-                    <div class="mt-4 w-full flex justify-between items-center">
-                        <button id="m3b-prev-btn" onclick="prevM3B()" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-left"></i></button>
-                        <button id="m3b-next-btn" onclick="skipM3B()" class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center text-gray-500 hover:bg-gray-50"><i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
+                    <button onclick="skipM3B()" class="mt-4 text-gray-400 font-bold text-sm underline w-full text-center hover:text-gray-600">Skip / Proceed</button>
                     </div>
                 </div>
             </div>
@@ -805,29 +799,143 @@
         // --- Data: M2 Vocab Quest (Word Master Style) ---
         // 已經加齊對應嘅測驗題目
         const wordMasterBank = [
-            { id: 1, word: "operations", meaning: "營運 (n.)", q: "The ________ team is responsible for managing the backstage.", options: ["operations", "venue", "itinerary"], ans: 0 },
-            { id: 2, word: "venue", meaning: "場地 (n.)", q: "The event ________ will be set up in the Grand Ballroom.", options: ["operations", "venue", "itinerary"], ans: 1 },
-            { id: 3, word: "itinerary", meaning: "行程 (n.)", q: "Please check the ________ for tomorrow's city tour schedule.", options: ["complimentary", "operations", "itinerary"], ans: 2 },
-            { id: 4, word: "complimentary", meaning: "免費贈送的 (adj.)", q: "We offer ________ Wi-Fi for all hotel guests.", options: ["complimentary", "venue", "itinerary"], ans: 0 },
-            { id: 5, word: "promotional", meaning: "推廣的 (adj.)", q: "Our new event ________ package includes free parking.", options: ["venue", "promotional", "operations"], ans: 1 },
-            { id: 6, word: "accommodate", meaning: "容納 (v.)", q: "The ballroom can ________ up to 300 guests.", options: ["accommodate", "operations", "venue"], ans: 0 },
-            { id: 7, word: "refreshments", meaning: "茶點 (n.)", q: "We will serve light ________ during the break.", options: ["itinerary", "refreshments", "operations"], ans: 1 },
-            { id: 8, word: "enquiry", meaning: "查詢 (n.)", q: "Thank you for your ________ regarding our hotel services.", options: ["enquiry", "venue", "complimentary"], ans: 0 },
-            { id: 9, word: "reservation", meaning: "預訂 (n.)", q: "I would like to make a ________ for a double room.", options: ["operations", "reservation", "itinerary"], ans: 1 },
-            { id: 10, word: "assistance", meaning: "協助 (n.)", q: "Please let us know if you need any further ________.", options: ["assistance", "venue", "promotional"], ans: 0 },
-            { id: 11, word: "amenities", meaning: "設施 (n.)", q: "The hotel provides luxury ________ in every room.", options: ["amenities", "operations", "reservation"], ans: 0 },
-            { id: 12, word: "coordinate", meaning: "協調 (v.)", q: "We need to ________ with the catering team for the lunch arrangement.", options: ["coordinate", "venue", "accommodate"], ans: 0 },
-            { id: 13, word: "briefing", meaning: "簡報 (n.)", q: "The manager will give a short ________ before the event starts.", options: ["briefing", "ceiling", "feedback"], ans: 0 },
-            { id: 14, word: "security", meaning: "保安 (n.)", q: "The ________ team will patrol the area every hour.", options: ["catering", "security", "layout"], ans: 1 },
-            { id: 15, word: "housekeeping", meaning: "房務 (n.)", q: "Please call ________ if you need extra towels.", options: ["housekeeping", "inspection", "package"], ans: 0 },
-            { id: 16, word: "catering", meaning: "餐飲 (n.)", q: "The ________ service provided excellent food for the banquet.", options: ["catering", "patrol", "schedule"], ans: 0 },
-            { id: 17, word: "professional", meaning: "專業的 (adj.)", q: "Our staff are trained to provide ________ customer service.", options: ["professional", "complimentary", "promotional"], ans: 0 },
-            { id: 18, word: "feedback", meaning: "回饋 (n.)", q: "We would love to hear your ________ about your stay.", options: ["feedback", "background", "invitation"], ans: 0 }
+            { id: 1, zone: "A", unit: "Unit 1", word: "briefing", meaning: "簡報 (n.)", q: "The event manager gave a ________ to all section representatives before the charity gala.", options: ["crowd control", "briefing", "itinerary"], ans: 1 },
+            { id: 2, zone: "A", unit: "Unit 1", word: "logistics", meaning: "統籌安排 (n.)", q: "The Event Management and Operations Team should oversee the overall event ________.", options: ["retreat", "signage", "logistics"], ans: 2 },
+            { id: 3, zone: "A", unit: "Unit 1", word: "section", meaning: "部門 (n.)", q: "The Housekeeping ________ is responsible for cleaning and maintaining event spaces.", options: ["finalise", "audio-visual", "section"], ans: 2 },
+            { id: 4, zone: "A", unit: "Unit 1", word: "coordinate", meaning: "協調 (v.)", q: "The Front Office Team will ________ guest check-in for the corporate dinner.", options: ["coordinate", "utensils", "hygiene"], ans: 0 },
+            { id: 5, zone: "A", unit: "Unit 1", word: "venue", meaning: "場地 (n.)", q: "The event coordinator should confirm the ________ and its capacity before the briefing.", options: ["ballroom", "venue", "crowd control"], ans: 1 },
+            { id: 6, zone: "A", unit: "Unit 1", word: "itinerary", meaning: "活動日程 (n.)", q: "The event coordinator should check today\'s event ________ for any last-minute changes.", options: ["finalise", "lighting", "itinerary"], ans: 2 },
+            { id: 7, zone: "A", unit: "Unit 1", word: "representative", meaning: "代表 (n.)", q: "Each team should send a ________ to attend the pre-event briefing.", options: ["promotional", "invitation", "representative"], ans: 2 },
+            { id: 8, zone: "A", unit: "Unit 1", word: "Event Order", meaning: "活動指令 (n.)", q: "The Event Manager issued an ________ to all sections before the product launch.", options: ["Event Order", "press kit", "ballroom"], ans: 0 },
+            { id: 9, zone: "A", unit: "Unit 1", word: "amenities", meaning: "設施 (n.)", q: "The Housekeeping Team should ensure the supplies of ________ in the restrooms.", options: ["promotional", "amenities", "refreshments"], ans: 1 },
+            { id: 10, zone: "A", unit: "Unit 1", word: "inspection", meaning: "視察 (n.)", q: "We will conduct a final venue ________ before the gala dinner begins.", options: ["inspection", "rehearsal", "professionalism"], ans: 0 },
+            { id: 11, zone: "A", unit: "Unit 2", word: "banquet", meaning: "宴會 (n.)", q: "The hotel will be hosting a wedding ________ for over 200 guests this Saturday.", options: ["banquet", "press kit", "inspection"], ans: 0 },
+            { id: 12, zone: "A", unit: "Unit 2", word: "ballroom", meaning: "宴會廳 (n.)", q: "The awards ceremony will be held at our Grand ________ on the 1st floor.", options: ["ballroom", "timely", "crowd control"], ans: 0 },
+            { id: 13, zone: "A", unit: "Unit 2", word: "conference", meaning: "會議 (n.)", q: "The Operations Team will hold a ________ to brief all sections before the event.", options: ["ceremony", "invitation", "conference"], ans: 2 },
+            { id: 14, zone: "A", unit: "Unit 2", word: "retreat", meaning: "靜修活動 (n.)", q: "Excel Trading Company will be holding a team-building ________ at our hotel on 16th January.", options: ["retreat", "luncheon", "on-site"], ans: 0 },
+            { id: 15, zone: "A", unit: "Unit 2", word: "gala", meaning: "慶典 (n.)", q: "There will be 350 people joining the charity ________ on 23rd December.", options: ["duty", "gala", "itinerary"], ans: 1 },
+            { id: 16, zone: "A", unit: "Unit 2", word: "luncheon", meaning: "午宴 (n.)", q: "The company will host a ________ at our hotel to celebrate its 10th anniversary.", options: ["attendant", "lighting", "luncheon"], ans: 2 },
+            { id: 17, zone: "A", unit: "Unit 2", word: "reception", meaning: "招待會 (n.)", q: "The Crystal Hall can accommodate up to 600 guests for cocktail ________s.", options: ["reception", "banquet hall", "attendant"], ans: 0 },
+            { id: 18, zone: "A", unit: "Unit 2", word: "capacity", meaning: "容量 (n.)", q: "The Function Room has a ________ of up to 200 guests for banquet-style events.", options: ["capacity", "briefing", "marketing plan"], ans: 0 },
+            { id: 19, zone: "A", unit: "Unit 2", word: "seating", meaning: "座位安排 (n.)", q: "The Facilities Management Team should check all ________ arrangements before the event.", options: ["retreat", "seating", "promotional"], ans: 1 },
+            { id: 20, zone: "A", unit: "Unit 2", word: "seminar", meaning: "研討會 (n.)", q: "A corporate ________ will be held at our hotel Ballroom from 9 am to 4 pm on 15th August.", options: ["emergency procedure", "seminar", "lighting"], ans: 1 },
+            { id: 21, zone: "A", unit: "Unit 3", word: "catering", meaning: "餐飲服務 (n.)", q: "The Food and Beverages Team should coordinate ________ services during the gala dinner.", options: ["signage", "emergency procedure", "catering"], ans: 2 },
+            { id: 22, zone: "A", unit: "Unit 3", word: "patrol", meaning: "巡邏 (v.)", q: "The Security Team should schedule regular ________s of the event venue and hotel entrances.", options: ["refreshments", "assign", "patrol"], ans: 2 },
+            { id: 23, zone: "A", unit: "Unit 3", word: "signage", meaning: "指示牌 (n.)", q: "The Front Office Team should prepare ________ at the entrance of the event venue.", options: ["abbreviation", "signage", "gala"], ans: 1 },
+            { id: 24, zone: "A", unit: "Unit 3", word: "refreshments", meaning: "茶點 (n.)", q: "I would appreciate it if the Food Preparation Team could prepare ________ for the guests.", options: ["attendant", "duty", "refreshments"], ans: 2 },
+            { id: 25, zone: "A", unit: "Unit 3", word: "promotional", meaning: "推廣的 (adj.)", q: "The Marketing Team should prepare ________ materials including brochures and banners.", options: ["amenities", "promotional", "reception"], ans: 1 },
+            { id: 26, zone: "A", unit: "Unit 3", word: "walkthrough", meaning: "場地視察 (n.)", q: "The event coordinator will perform a pre-event ________ of the venue with the client.", options: ["reception", "walkthrough", "conference"], ans: 1 },
+            { id: 27, zone: "A", unit: "Unit 3", word: "crowd control", meaning: "人群管制 (n.)", q: "The Security Team should take up the duty of managing ________ during the event.", options: ["crowd control", "invitation", "abbreviation"], ans: 0 },
+            { id: 28, zone: "A", unit: "Unit 3", word: "utensils", meaning: "用具 (n.)", q: "The Food Preparation Team should prepare ingredients and ________ for the cooking demonstration.", options: ["utensils", "attendant", "inspection"], ans: 0 },
+            { id: 29, zone: "A", unit: "Unit 3", word: "abbreviation", meaning: "縮寫 (n.)", q: "The Event Order uses ________s such as HSKP for the Housekeeping Team.", options: ["hygiene", "abbreviation", "promotional"], ans: 1 },
+            { id: 30, zone: "A", unit: "Unit 3", word: "obligation", meaning: "職責 (n.)", q: "Each section representative should be aware of their ________s before the event begins.", options: ["on-site", "obligation", "assign"], ans: 1 },
+            { id: 31, zone: "A", unit: "Unit 4", word: "duty", meaning: "職責 (n.)", q: "The Facilities Management Team should take up the ________ of checking the audio-visual equipment.", options: ["duty", "inspection", "media interview"], ans: 0 },
+            { id: 32, zone: "A", unit: "Unit 4", word: "oversee", meaning: "監督 (v.)", q: "The Event Management and Operations Team should ________ the overall event logistics.", options: ["action plan", "walkthrough", "oversee"], ans: 2 },
+            { id: 33, zone: "A", unit: "Unit 4", word: "timely", meaning: "及時的 (adj.)", q: "The Food Preparation Team should ensure ________ food delivery during the event.", options: ["section", "retreat", "timely"], ans: 2 },
+            { id: 34, zone: "A", unit: "Unit 4", word: "staffing", meaning: "人手安排 (n.)", q: "The Food and Beverages Team should arrange ________ for the event\'s dining service.", options: ["oversee", "staffing", "signage"], ans: 1 },
+            { id: 35, zone: "A", unit: "Unit 4", word: "assign", meaning: "指派 (v.)", q: "The Facilities Management Team should ________ cameramen to record the spring dinner.", options: ["hygiene", "luncheon", "assign"], ans: 2 },
+            { id: 36, zone: "A", unit: "Unit 4", word: "assist", meaning: "協助 (v.)", q: "The Marketing Team should ________ with logistics planning for the spring dinner.", options: ["assist", "hygiene", "attendant"], ans: 0 },
+            { id: 37, zone: "A", unit: "Unit 4", word: "banquet hall", meaning: "宴會廳 (n.)", q: "The Housekeeping Team should clean the ________ before the wedding reception begins.", options: ["retreat", "banquet hall", "media interview"], ans: 1 },
+            { id: 38, zone: "A", unit: "Unit 4", word: "tasting menu", meaning: "品嚐菜單 (n.)", q: "The Food Preparation Team should design a ________ of winning dishes for the competition.", options: ["oversee", "media interview", "tasting menu"], ans: 2 },
+            { id: 39, zone: "A", unit: "Unit 4", word: "marketing plan", meaning: "推廣計劃 (n.)", q: "The Marketing Team should prepare a ________ and organise promotional activities.", options: ["marketing plan", "tasting menu", "utensils"], ans: 0 },
+            { id: 40, zone: "A", unit: "Unit 4", word: "audio-visual", meaning: "視聽的 (adj.)", q: "The Facilities Management Team should check the ________ equipment before the seminar.", options: ["audio-visual", "promotional", "seminar"], ans: 0 },
+            { id: 41, zone: "A", unit: "Unit 5", word: "invitation", meaning: "邀請 (n.)", q: "The manager extended an ________ to all section heads to attend the pre-event briefing.", options: ["attendant", "banquet hall", "invitation"], ans: 2 },
+            { id: 42, zone: "A", unit: "Unit 5", word: "rehearsal", meaning: "綵排 (n.)", q: "It would be great if you could attend the ________ for the fashion show this Thursday.", options: ["finalise", "rehearsal", "walkthrough"], ans: 1 },
+            { id: 43, zone: "A", unit: "Unit 5", word: "rundown", meaning: "流程表 (n.)", q: "We will meet with the client next Friday to confirm the event ________.", options: ["retreat", "gala", "rundown"], ans: 2 },
+            { id: 44, zone: "A", unit: "Unit 5", word: "on-site", meaning: "現場的 (adj.)", q: "Our team should take up the duty of providing ________ support during the event.", options: ["amenities", "on-site", "marketing plan"], ans: 1 },
+            { id: 45, zone: "A", unit: "Unit 5", word: "finalise", meaning: "敲定 (v.)", q: "I would like to invite you to a pre-event meeting to ________ the action plan.", options: ["gala", "finalise", "attendant"], ans: 1 },
+            { id: 46, zone: "A", unit: "Unit 5", word: "ceremony", meaning: "儀式 (n.)", q: "AGI Hong Kong will be holding an awards ________ at our Grand Ballroom on 30th August.", options: ["ceremony", "amenities", "capacity"], ans: 0 },
+            { id: 47, zone: "A", unit: "Unit 5", word: "attendant", meaning: "服務員 (n.)", q: "The Housekeeping Team should arrange ________s to clean the venues after the event.", options: ["attendant", "assist", "seating"], ans: 0 },
+            { id: 48, zone: "A", unit: "Unit 5", word: "professionalism", meaning: "專業態度 (n.)", q: "Making requests politely in a briefing upholds ________ and fosters teamwork.", options: ["professionalism", "ceremony", "gala"], ans: 0 },
+            { id: 49, zone: "A", unit: "Unit 5", word: "non-verbal", meaning: "非語言的 (adj.)", q: "The trainer evaluated ________ communication including eye contact and posture.", options: ["section", "non-verbal", "signage"], ans: 1 },
+            { id: 50, zone: "A", unit: "Unit 5", word: "action plan", meaning: "行動計劃 (n.)", q: "We will meet with the client before the event to review and finalise the ________.", options: ["action plan", "amenities", "gala"], ans: 0 },
+            { id: 51, zone: "A", unit: "Unit 6", word: "press conference", meaning: "新聞發佈會 (n.)", q: "Football Stars will be holding a ________ at our Rooftop Garden on 21st July.", options: ["professionalism", "press conference", "reception"], ans: 1 },
+            { id: 52, zone: "A", unit: "Unit 6", word: "live stream", meaning: "直播 (v.)", q: "The Marketing Team should manage the social media ________ during the press conference.", options: ["live stream", "utensils", "abbreviation"], ans: 0 },
+            { id: 53, zone: "A", unit: "Unit 6", word: "hygiene", meaning: "衛生 (n.)", q: "The Housekeeping Team should perform restroom checks to maintain ________ standards.", options: ["hygiene", "crowd control", "catering"], ans: 0 },
+            { id: 54, zone: "A", unit: "Unit 6", word: "media interview", meaning: "媒體訪問 (n.)", q: "The Marketing Team should facilitate ________s during the press conference.", options: ["patrol", "attendant", "media interview"], ans: 2 },
+            { id: 55, zone: "A", unit: "Unit 6", word: "emergency procedure", meaning: "緊急程序 (n.)", q: "The team should discuss ________s at the safety briefing on the event day.", options: ["staffing", "banquet", "emergency procedure"], ans: 2 },
+            { id: 56, zone: "A", unit: "Unit 6", word: "lighting", meaning: "燈光 (n.)", q: "The Facilities Management Team should set up the stage ________ for the press conference.", options: ["sound system", "inspection", "lighting"], ans: 2 },
+            { id: 57, zone: "A", unit: "Unit 6", word: "sound system", meaning: "音響系統 (n.)", q: "The Facilities Management Team should arrange the ________ for the press conference.", options: ["hygiene", "sound system", "rehearsal"], ans: 1 },
+            { id: 58, zone: "A", unit: "Unit 6", word: "press kit", meaning: "媒體資料袋 (n.)", q: "The Marketing Team should distribute ________s to media at the product launch event.", options: ["press kit", "action plan", "timely"], ans: 0 },
+            { id: 59, zone: "A", unit: "Unit 6", word: "guest list", meaning: "賓客名單 (n.)", q: "The team should confirm the ________ at the final event briefing on Tuesday at 4 pm.", options: ["assist", "guest list", "logistics"], ans: 1 },
+            { id: 60, zone: "A", unit: "Unit 6", word: "crowd control", meaning: "人群管制 (n.)", q: "The Security Team should take up the duty of managing ________ during the event.", options: ["crowd control", "patrol", "amenities"], ans: 0 },
+            { id: 61, zone: "B", unit: "Unit 7", word: "enquiry", meaning: "查詢 (n.)", q: "A potential client submitted an ________ to ask about our hotel\'s event packages.", options: ["enquiry", "live streaming", "milestone"], ans: 0 },
+            { id: 62, zone: "B", unit: "Unit 7", word: "proposal", meaning: "建議書 (n.)", q: "The client called to ask about the process for submitting an event ________.", options: ["set dinner", "proposal", "conditional offer"], ans: 1 },
+            { id: 63, zone: "B", unit: "Unit 7", word: "anniversary", meaning: "週年紀念 (n.)", q: "Top One Trading Ltd. would like to organise a celebration dinner for their 20th ________.", options: ["portable PA system", "anniversary", "dessert"], ans: 1 },
+            { id: 64, zone: "B", unit: "Unit 7", word: "empathy", meaning: "同理心 (n.)", q: "________ is a key skill in hospitality that helps staff connect with potential clients.", options: ["harbour view", "proposal", "empathy"], ans: 2 },
+            { id: 65, zone: "B", unit: "Unit 7", word: "milestone", meaning: "里程碑 (n.)", q: "Congratulations on your company\'s 15th anniversary — that\'s a fantastic ________!", options: ["milestone", "portable PA system", "stage"], ans: 0 },
+            { id: 66, zone: "B", unit: "Unit 7", word: "package", meaning: "套餐 (n.)", q: "I\'d recommend our Corporate Celebration ________ for your company anniversary dinner.", options: ["package", "accommodate", "assortment"], ans: 0 },
+            { id: 67, zone: "B", unit: "Unit 7", word: "complimentary", meaning: "免費贈送的 (adj.)", q: "We also offer ________ parking for up to five vehicles with the package.", options: ["ballroom", "complimentary", "accommodate"], ans: 1 },
+            { id: 68, zone: "B", unit: "Unit 7", word: "deposit", meaning: "訂金 (n.)", q: "The client needs to confirm the booking with a ________ by the end of this week.", options: ["complimentary", "deposit", "well-lit"], ans: 1 },
+            { id: 69, zone: "B", unit: "Unit 7", word: "promotion", meaning: "優惠推廣 (n.)", q: "The hotel is currently offering a special ________ for bookings made this month.", options: ["promotion", "accommodate", "follow up"], ans: 0 },
+            { id: 70, zone: "B", unit: "Unit 7", word: "ballroom", meaning: "宴會廳 (n.)", q: "The awards ceremony will be held at our Grand ________ on the 1st floor.", options: ["promotion", "ballroom", "portable PA system"], ans: 1 },
+            { id: 71, zone: "B", unit: "Unit 8", word: "pillarless", meaning: "無柱的 (adj.)", q: "The Heritage Gala Package features a ________ design with elegant and grand décor.", options: ["loyalty", "advance booking", "pillarless"], ans: 2 },
+            { id: 72, zone: "B", unit: "Unit 8", word: "spacious", meaning: "寬敞的 (adj.)", q: "Our Grand Ballroom is a ________ modern space perfect for your special events.", options: ["spacious", "configuration", "projector"], ans: 0 },
+            { id: 73, zone: "B", unit: "Unit 8", word: "accommodate", meaning: "容納 (v.)", q: "The Crystal Hall can ________ up to 600 guests for cocktail receptions.", options: ["harbour view", "ballroom", "accommodate"], ans: 2 },
+            { id: 74, zone: "B", unit: "Unit 8", word: "layout", meaning: "佈置 (n.)", q: "The Grand Dining Hall offers a spacious ________ for formal dining experiences.", options: ["layout", "complimentary", "floor-to-ceiling"], ans: 0 },
+            { id: 75, zone: "B", unit: "Unit 8", word: "harbour view", meaning: "海港景色 (n.)", q: "The Crystal Hall features stunning ________s that create a memorable backdrop.", options: ["set dinner", "harbour view", "runway"], ans: 1 },
+            { id: 76, zone: "B", unit: "Unit 8", word: "décor", meaning: "裝飾 (n.)", q: "The venue features classic ________ reflecting timeless style and an elegant atmosphere.", options: ["décor", "projector", "live streaming"], ans: 0 },
+            { id: 77, zone: "B", unit: "Unit 8", word: "configuration", meaning: "佈局形式 (n.)", q: "The Grand Dining Hall can seat 180 guests in a high table ________.", options: ["accommodate", "sashimi", "configuration"], ans: 2 },
+            { id: 78, zone: "B", unit: "Unit 8", word: "banquet style", meaning: "宴會式 (n.)", q: "The Grand Dining Hall can accommodate 240 guests in ________.", options: ["floor-to-ceiling", "décor", "banquet style"], ans: 2 },
+            { id: 79, zone: "B", unit: "Unit 8", word: "sophisticated", meaning: "優雅精緻的 (adj.)", q: "The Windsor Suite is described as ________ and quiet, ideal for executive meetings.", options: ["roasted", "sophisticated", "reservation"], ans: 1 },
+            { id: 80, zone: "B", unit: "Unit 8", word: "enquiry form", meaning: "查詢表格 (n.)", q: "The hotel received an online ________ from King\'s Charity Association about their event.", options: ["main course", "accommodate", "enquiry form"], ans: 2 },
+            { id: 81, zone: "B", unit: "Unit 9", word: "LED display wall", meaning: "LED 顯示屏 (n.)", q: "The venue features an ultra-modern ________ and a high-quality audio-visual system.", options: ["proposal", "LED display wall", "package price"], ans: 1 },
+            { id: 82, zone: "B", unit: "Unit 9", word: "projector", meaning: "投影機 (n.)", q: "Each meeting room includes a high-resolution ________ for crystal-clear presentations.", options: ["portable PA system", "projector", "amenities"], ans: 1 },
+            { id: 83, zone: "B", unit: "Unit 9", word: "wireless microphone", meaning: "無線麥克風 (n.)", q: "Our ________s allow speakers to move freely around the event venue.", options: ["advance booking", "wireless microphone", "accommodate"], ans: 1 },
+            { id: 84, zone: "B", unit: "Unit 9", word: "audio-visual system", meaning: "視聽系統 (n.)", q: "The ballroom is equipped with a high-quality ________ for all presentations.", options: ["roasted", "per person", "audio-visual system"], ans: 2 },
+            { id: 85, zone: "B", unit: "Unit 9", word: "video conferencing", meaning: "視像會議 (n.)", q: "The venue is equipped with ________ equipment to connect remote participants.", options: ["video conferencing", "conditional offer", "sophisticated"], ans: 0 },
+            { id: 86, zone: "B", unit: "Unit 9", word: "Wi-Fi", meaning: "無線網絡 (n.)", q: "The stable ________ network supports all your guests\' connectivity needs during the event.", options: ["appetiser", "layout", "Wi-Fi"], ans: 2 },
+            { id: 87, zone: "B", unit: "Unit 9", word: "high-definition", meaning: "高清的 (adj.)", q: "The ________ LCD projector ensures crystal-clear visuals for the corporate presentation.", options: ["high-definition", "complimentary", "Wi-Fi"], ans: 0 },
+            { id: 88, zone: "B", unit: "Unit 9", word: "stage", meaning: "舞台 (n.)", q: "The well-lit ________ provides excellent visibility for all presentations and performances.", options: ["package price", "well-lit", "stage"], ans: 2 },
+            { id: 89, zone: "B", unit: "Unit 9", word: "ceiling-mounted", meaning: "天花板安裝的 (adj.)", q: "The Grand Ballroom features ________ projectors for large-scale event presentations.", options: ["ceiling-mounted", "roasted", "cuisine"], ans: 0 },
+            { id: 90, zone: "B", unit: "Unit 9", word: "well-lit", meaning: "光線充足的 (adj.)", q: "The ________ stage ensures all guests have excellent visibility throughout the performance.", options: ["well-lit", "complimentary", "complimentary"], ans: 0 },
+            { id: 91, zone: "B", unit: "Unit 10", word: "appetiser", meaning: "前菜 (n.)", q: "The wedding package includes ________s such as smoked salmon and cheese platters.", options: ["appetiser", "buffet", "main course"], ans: 0 },
+            { id: 92, zone: "B", unit: "Unit 10", word: "buffet", meaning: "自助餐 (n.)", q: "The package includes an international ________ dinner with dishes from various cuisines.", options: ["add-on", "buffet", "discount"], ans: 1 },
+            { id: 93, zone: "B", unit: "Unit 10", word: "cuisine", meaning: "菜系 (n.)", q: "The hotel celebrates global flavours with dishes from various international ________s.", options: ["spacious", "cuisine", "live streaming"], ans: 1 },
+            { id: 94, zone: "B", unit: "Unit 10", word: "vegetarian option", meaning: "素食選擇 (n.)", q: "The client requested a ________ to be included in the event dinner menu.", options: ["vegetarian option", "discount", "conditional offer"], ans: 0 },
+            { id: 95, zone: "B", unit: "Unit 10", word: "roasted", meaning: "烤製的 (adj.)", q: "Guests can enjoy ________ beef accompanied by creamy mashed potatoes at the dinner event.", options: ["roasted", "set dinner", "main course"], ans: 0 },
+            { id: 96, zone: "B", unit: "Unit 10", word: "assortment", meaning: "精選組合 (n.)", q: "In the evening, there is an ________ of signature dishes for guests to enjoy.", options: ["assortment", "unlimited", "empathy"], ans: 0 },
+            { id: 97, zone: "B", unit: "Unit 10", word: "sashimi", meaning: "刺身 (n.)", q: "The international buffet dinner includes a fresh sushi and ________ bar for guests.", options: ["sashimi", "layout", "banquet style"], ans: 0 },
+            { id: 98, zone: "B", unit: "Unit 10", word: "dessert", meaning: "甜點 (n.)", q: "There are a wide range of ________s available, including chocolate mousse and lemon tart.", options: ["dessert", "cuisine", "floral arrangement"], ans: 0 },
+            { id: 99, zone: "B", unit: "Unit 10", word: "main course", meaning: "主菜 (n.)", q: "For the ________, you can enjoy roasted beef served with mashed potatoes.", options: ["main course", "layout", "wireless microphone"], ans: 0 },
+            { id: 100, zone: "B", unit: "Unit 10", word: "set dinner", meaning: "套餐晚宴 (n.)", q: "The Glasshouse Skyline Package includes a western ________ at HK$750 per person.", options: ["pillarless", "milestone", "set dinner"], ans: 2 },
+            { id: 101, zone: "B", unit: "Unit 11", word: "amenities", meaning: "增值設施 (n.)", q: "The Housekeeping Team should ensure the supplies of ________ in the restrooms.", options: ["deposit", "portable PA system", "amenities"], ans: 2 },
+            { id: 102, zone: "B", unit: "Unit 11", word: "valet parking", meaning: "代客泊車 (n.)", q: "As part of the Golden Conference Package, we provide complimentary ________ service.", options: ["appetiser", "valet parking", "runway"], ans: 1 },
+            { id: 103, zone: "B", unit: "Unit 11", word: "add-on", meaning: "附加項目 (n.)", q: "The client chose a floral arrangement as an ________ to their event package.", options: ["video conferencing", "add-on", "promotion"], ans: 1 },
+            { id: 104, zone: "B", unit: "Unit 11", word: "live streaming", meaning: "直播服務 (n.)", q: "You can add our ________ service for HK$3,000 to reach a wider audience.", options: ["runway", "complimentary", "live streaming"], ans: 2 },
+            { id: 105, zone: "B", unit: "Unit 11", word: "floral arrangement", meaning: "花卉佈置 (n.)", q: "We offer decorative ________s for an additional HK$800 per event.", options: ["stage", "floral arrangement", "video conferencing"], ans: 1 },
+            { id: 106, zone: "B", unit: "Unit 11", word: "per person", meaning: "每位 (phrase)", q: "The Corporate Celebration Dinner Package is priced at HK$1,000 ________.", options: ["bespoke", "deposit", "per person"], ans: 2 },
+            { id: 107, zone: "B", unit: "Unit 11", word: "unlimited", meaning: "無限量的 (adj.)", q: "The package includes ________ soft drinks, premium tea and coffee throughout the event.", options: ["décor", "main course", "unlimited"], ans: 2 },
+            { id: 108, zone: "B", unit: "Unit 11", word: "premium", meaning: "優質的 (adj.)", q: "You can upgrade to our ________ wine package for an additional charge per table.", options: ["premium", "anniversary", "audio-visual system"], ans: 0 },
+            { id: 109, zone: "B", unit: "Unit 11", word: "package price", meaning: "套餐價格 (n.)", q: "The ________ is HK$1,800 per person, inclusive of the venue and dining services.", options: ["buffet", "live piano performance", "package price"], ans: 2 },
+            { id: 110, zone: "B", unit: "Unit 11", word: "complimentary service", meaning: "免費服務 (n.)", q: "The hotel offered a ________ to thank the client for their loyalty.", options: ["proposal", "banquet style", "complimentary service"], ans: 2 },
+            { id: 111, zone: "B", unit: "Unit 12", word: "conditional offer", meaning: "附條件優惠 (n.)", q: "The sales executive explained the ________ to the client during the call.", options: ["conditional offer", "per person", "Wi-Fi"], ans: 0 },
+            { id: 112, zone: "B", unit: "Unit 12", word: "discount", meaning: "折扣 (n.)", q: "For groups of 50 or more guests, we\'ll offer a 5% ________ on the package price.", options: ["rehearsal", "discount", "live streaming"], ans: 1 },
+            { id: 113, zone: "B", unit: "Unit 12", word: "deposit", meaning: "訂金 (n.)", q: "The client needs to confirm the booking with a ________ by the end of this week.", options: ["main course", "projector", "deposit"], ans: 2 },
+            { id: 114, zone: "B", unit: "Unit 12", word: "bespoke", meaning: "度身訂製的 (adj.)", q: "We offer ________ runway packages for fashion shows with professional staging and VIP experience.", options: ["unlimited", "bespoke", "floral arrangement"], ans: 1 },
+            { id: 115, zone: "B", unit: "Unit 12", word: "runway", meaning: "伸展台 (n.)", q: "The Grand Ballroom features a built-in ________ for exclusive fashion show events.", options: ["runway", "enquiry", "proposal"], ans: 0 },
+            { id: 116, zone: "B", unit: "Unit 12", word: "rehearsal", meaning: "技術彩排 (n.)", q: "It would be great if you could attend the ________ for the fashion show this Thursday.", options: ["pillarless", "wireless microphone", "rehearsal"], ans: 2 },
+            { id: 117, zone: "B", unit: "Unit 12", word: "loyalty", meaning: "忠誠度 (n.)", q: "Hotels give conditional offers to encourage repeat bookings and build client ________.", options: ["loyalty", "main course", "ballroom"], ans: 0 },
+            { id: 118, zone: "B", unit: "Unit 12", word: "advance booking", meaning: "提前預訂 (n.)", q: "Clients who make an ________ more than 30 days before the event can enjoy discounts.", options: ["advance booking", "complimentary", "audio-visual system"], ans: 0 },
+            { id: 119, zone: "B", unit: "Unit 12", word: "complimentary", meaning: "免費贈送的 (adj.)", q: "We also offer ________ parking for up to five vehicles with the package.", options: ["complimentary", "milestone", "layout"], ans: 0 },
+            { id: 120, zone: "B", unit: "Unit 12", word: "finalise", meaning: "確認 (v.)", q: "I would like to invite you to a pre-event meeting to ________ the action plan.", options: ["empathy", "floral arrangement", "finalise"], ans: 2 },
+            { id: 121, zone: "B", unit: "Unit 13", word: "poolside", meaning: "泳池旁的 (adj.)", q: "The ________ Grill & Chill Package includes 4 hours\' use of our Poolside Terrace.", options: ["amenities", "assortment", "poolside"], ans: 2 },
+            { id: 122, zone: "B", unit: "Unit 13", word: "portable PA system", meaning: "手提廣播系統 (n.)", q: "The Poolside package features a high-quality audio setup, including a ________.", options: ["portable PA system", "buffet", "well-lit"], ans: 0 },
+            { id: 123, zone: "B", unit: "Unit 13", word: "floor-to-ceiling", meaning: "落地式的 (adj.)", q: "The Glasshouse Skyline Package features an elegant setting with ________ glass windows.", options: ["cuisine", "floor-to-ceiling", "pillarless"], ans: 1 },
+            { id: 124, zone: "B", unit: "Unit 13", word: "follow up", meaning: "跟進 (v.)", q: "The hotel trainee called the potential client to ________ on their online event enquiry.", options: ["harbour view", "follow up", "appetiser"], ans: 1 },
+            { id: 125, zone: "B", unit: "Unit 13", word: "reservation", meaning: "預訂 (n.)", q: "Please feel free to call us when you are ready to make a ________ for the event.", options: ["amenities", "reservation", "package"], ans: 1 },
+            { id: 126, zone: "B", unit: "Unit 13", word: "harbour view", meaning: "海港景色 (n.)", q: "The Crystal Hall features stunning ________s that create a memorable backdrop.", options: ["harbour view", "projector", "accommodate"], ans: 0 },
+            { id: 127, zone: "B", unit: "Unit 13", word: "backdrop", meaning: "背景板 (n.)", q: "A ________ for photos is available as an add-on item at HK$4,000 per event.", options: ["deposit", "backdrop", "roasted"], ans: 1 },
+            { id: 128, zone: "B", unit: "Unit 13", word: "complimentary", meaning: "免費贈送的 (adj.)", q: "We also offer ________ parking for up to five vehicles with the package.", options: ["deposit", "wireless microphone", "complimentary"], ans: 2 },
+            { id: 129, zone: "B", unit: "Unit 13", word: "live piano performance", meaning: "現場鋼琴演奏 (n.)", q: "The Glasshouse Skyline Package features a ________ as part of its elegant setting.", options: ["portable PA system", "live piano performance", "ballroom"], ans: 1 },
+            { id: 130, zone: "B", unit: "Unit 13", word: "advance booking", meaning: "提前預訂 (n.)", q: "Clients who make an ________ more than 30 days before the event can enjoy discounts.", options: ["advance booking", "roasted", "per person"], ans: 0 }
         ];
         
         let m2Questions = []; 
         let m2Index = 0; 
         let m2Score = 0;
+        let currentM2Zone = 'A';
+        let lastM2QuestionIdsByZone = { A: [], B: [] };
         let mistakeIds = new Set(); // Stores IDs of words the user got wrong
 
         // --- Data: M3A & M3B ---
@@ -1047,28 +1155,58 @@
         }
 
         // --- M2: Vocab Quest (Word Master Style) ---
-        function startM2(zone) {
-            m2Questions = [];
-            
-            // 1. Prioritize mistakes from previous rounds
-            let mistakePool = wordMasterBank.filter(w => mistakeIds.has(w.id));
-            // 2. Fill the rest with random words
-            let remainingPool = wordMasterBank.filter(w => !mistakeIds.has(w.id));
-            
-            // Shuffle pools
-            mistakePool.sort(() => 0.5 - Math.random());
-            remainingPool.sort(() => 0.5 - Math.random());
-            
-            // Combine to get 10 questions
-            let combined = [...mistakePool, ...remainingPool];
-            m2Questions = combined.slice(0, 10);
-            
-            // Shuffle the final 10 questions so mistakes aren't always first
-            m2Questions.sort(() => 0.5 - Math.random());
+        function shuffleArray(arr) {
+            const copy = [...arr];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
 
-            m2Index = 0; m2Score = 0;
-            
-            // Render Review List
+        function getM2BankByZone(zone) {
+            return wordMasterBank.filter(w => w.zone === zone);
+        }
+
+        function generateM2Questions(zone) {
+            let pool = [...getM2BankByZone(zone)];
+            let selected = [];
+            const lastRoundIds = lastM2QuestionIdsByZone[zone] || [];
+            const targetCount = Math.min(10, pool.length);
+
+            let errorPool = shuffleArray(pool.filter(w => mistakeIds.has(w.id)));
+            let numErrorsToTake = Math.min(5, errorPool.length, targetCount);
+            for (let i = 0; i < numErrorsToTake; i++) {
+                selected.push(errorPool[i]);
+                pool = pool.filter(w => w.id !== errorPool[i].id);
+            }
+
+            let freshPool = shuffleArray(pool.filter(w => !lastRoundIds.includes(w.id)));
+            let remainingNeeded = targetCount - selected.length;
+            for (let i = 0; i < remainingNeeded && i < freshPool.length; i++) {
+                selected.push(freshPool[i]);
+                pool = pool.filter(w => w.id !== freshPool[i].id);
+            }
+
+            if (selected.length < targetCount) {
+                let backupPool = shuffleArray(pool);
+                let stillNeeded = targetCount - selected.length;
+                for (let i = 0; i < stillNeeded && i < backupPool.length; i++) {
+                    selected.push(backupPool[i]);
+                }
+            }
+
+            const finalSet = shuffleArray(selected);
+            lastM2QuestionIdsByZone[zone] = finalSet.map(q => q.id);
+            return finalSet;
+        }
+
+        function startM2(zone) {
+            currentM2Zone = zone;
+            m2Questions = generateM2Questions(zone);
+            m2Index = 0;
+            m2Score = 0;
+
             const reviewList = document.getElementById('m2-review-list');
             reviewList.innerHTML = '';
             m2Questions.forEach(q => {
@@ -1089,11 +1227,10 @@
         }
 
         function startM2Quiz() {
-            // Shuffle questions again so quiz order differs from review list order
-            m2Questions.sort(() => 0.5 - Math.random());
-
+            m2Questions = shuffleArray(m2Questions);
             document.getElementById('m2-quiz-container').classList.remove('hidden');
             document.getElementById('m2-result-container').classList.add('hidden');
+            document.getElementById('m2-result-container').classList.remove('flex');
             renderM2(); 
             navTo('m2-daily');
         }
@@ -1102,8 +1239,8 @@
             const q = m2Questions[m2Index];
             document.getElementById('m2-counter').innerText = m2Index + 1;
             document.getElementById('m2-question-text').innerText = q.q;
-            document.getElementById('m2-hint-text').innerText = q.meaning; // Show Chinese meaning as hint
-            
+            document.getElementById('m2-hint-text').innerText = q.meaning;
+
             const container = document.getElementById('m2-options-container');
             container.innerHTML = '';
             q.options.forEach((opt, idx) => {
@@ -1119,14 +1256,14 @@
             if(selected === correct) {
                 showToast("✅ Correct!", true);
                 m2Score++;
-                mistakeIds.delete(wordId); // Remove from mistakes if correct
+                mistakeIds.delete(wordId);
             } else {
                 showToast("❌ Incorrect!", false);
-                mistakeIds.add(wordId); // Add to mistakes if wrong
+                mistakeIds.add(wordId);
             }
-            
+
             setTimeout(() => {
-                if(m2Index < 9) {
+                if(m2Index < m2Questions.length - 1) {
                     m2Index++; renderM2();
                 } else {
                     document.getElementById('m2-quiz-container').classList.add('hidden');
@@ -1141,15 +1278,9 @@
         // --- M3A: Briefing Simulator ---
         function startM3AIntro() { navTo('m3-a-intro'); }
         
-        function prevM3A() {
-            if(m3aIndex > 0) { m3aIndex--; renderM3A(); }
-        }
         function skipM3A() {
             if(m3aIndex < m3aData.length - 1) { m3aIndex++; renderM3A(); }
             else { addExp(50); navTo('zone-a'); } // 畀少少 Exp 鼓勵下完成
-        }
-        function prevM3B() {
-            if(m3bIndex > 0) { m3bIndex--; renderM3B(); }
         }
         function skipM3B() {
             if(m3bIndex < m3bScriptData.length - 1) { m3bIndex++; renderM3B(); }
@@ -1162,8 +1293,6 @@ function startM3A() { m3aIndex = 0; renderM3A(); navTo('m3-a'); }
             document.getElementById('m3a-section-title').innerText = data.section;
             document.getElementById('m3a-hint').innerText = data.hint;
             document.getElementById('m3a-sentence').innerHTML = `"${wrapWords(data.text)}"`;
-            const prevBtn = document.getElementById('m3a-prev-btn');
-            if (prevBtn) prevBtn.style.visibility = m3aIndex === 0 ? 'hidden' : 'visible';
         }
         
 // --- Feature: Word-level Feedback ---
